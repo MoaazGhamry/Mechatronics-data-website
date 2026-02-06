@@ -12,7 +12,7 @@ echo "Running database migrations..."
 python manage.py migrate
 
 echo "Loading initial data..."
-python manage.py loaddata hub_data.json || echo "Warning: Data load failed, skipping..."
+python manage.py loaddata hub_data.json || echo "Warning: Failed to load hub_data.json"
 
 echo "Creating superuser (if not exists)..."
 # Optional: Script to auto-create superuser using env vars if needed, 
