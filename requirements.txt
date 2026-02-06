@@ -18,5 +18,5 @@ pandas==2.2.3
 openpyxl==3.1.5
 
 # AI & Document Processing
-google-generativeai==0.8.3
+google-genai==0.3.0
 pypdf==5.1.0
