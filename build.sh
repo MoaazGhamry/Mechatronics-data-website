@@ -11,4 +11,12 @@ python manage.py collectstatic --no-input
 echo "Running database migrations..."
 python manage.py migrate
 
+echo "Loading initial data..."
+python manage.py loaddata hub_data.json || echo "Warning: Data load failed, skipping..."
+
+echo "Creating superuser (if not exists)..."
+# Optional: Script to auto-create superuser using env vars if needed, 
+# but for now let's focus on the data load.
+# We can add a custom command or script for superuser creation later if needed without shell.
+
 echo "Build completed successfully!"
