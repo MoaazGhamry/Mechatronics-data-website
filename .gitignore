@@ -16,11 +16,15 @@ staticfiles/
 
 # Logs & temp
 *.log
+
+# Data files
 *.txt
 *.jsonl
+*.xlsx
 
 # OS
 .DS_Store
 Thumbs.db
+
 
 
