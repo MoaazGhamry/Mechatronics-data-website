@@ -1,0 +1,740 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Full Study Plan - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-3xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">Full Study Plan</span>
+                <span class="lang-ar">الخطة الدراسية الكاملة</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">A comprehensive semester-by-semester guide to your Mechatronics Engineering
+                    degree.</span>
+                <span class="lang-ar">دليل شامل فصلًا بفصل لرحلتك الدراسية في هندسة الميكاترونكس.</span>
+            </p>
+        </div>
+
+        <!-- Level 000 -->
+        <div class="mb-12">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-forest-green pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r-4 rtl:pr-4">
+                <span class="lang-en">Level 000 (Freshman)</span>
+                <span class="lang-ar">المستوى 000 (إعدادي)</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Semester 1 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 1 (Fall)</span>
+                        <span class="lang-ar">الفصل الدراسي الأول (خريف)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering
+                                            Mathematics 1</span><span class="lang-ar">رياضيات هندسية 1</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP001</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Physics
+                                            1</span><span class="lang-ar">فيزياء هندسية 1</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP002</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Eng. Drawing &
+                                            Projection (1)</span><span class="lang-ar">رسم هندسي وإسقاط (1)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE011</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Mechanics
+                                            (1)</span><span class="lang-ar">ميكانيكا هندسية (1)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP003</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering
+                                            Chemistry</span><span class="lang-ar">كيمياء هندسية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">ENE001</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Tech. Foreign
+                                            Language</span><span class="lang-ar">لغة أجنبية فنية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">TFL001</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Semester 2 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 2 (Spring)</span>
+                        <span class="lang-ar">الفصل الدراسي الثاني (ربيع)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering
+                                            Mathematics 2</span><span class="lang-ar">رياضيات هندسية 2</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP005</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Physics
+                                            2</span><span class="lang-ar">فيزياء هندسية 2</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP006</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Eng. Drawing &
+                                            Projection (2)</span><span class="lang-ar">رسم هندسي وإسقاط (2)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE012</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Mechanics
+                                            (2)</span><span class="lang-ar">ميكانيكا هندسية (2)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP007</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Production
+                                            Technology</span><span class="lang-ar">تكنولوجيا الإنتاج</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE001</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Intro to Computers &
+                                            Programming</span><span class="lang-ar">مقدمة في الحاسبات والبرمجة</span>
+                                    </td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE001</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">History of Eng. &
+                                            Technology</span><span class="lang-ar">تاريخ الهندسة والتكنولوجيا</span>
+                                    </td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">HUM001</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 100 -->
+        <div class="mb-12">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-forest-green pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r-4 rtl:pr-4">
+                <span class="lang-en">Level 100 (Sophomore)</span>
+                <span class="lang-ar">المستوى 100 (أولى ميكاترونكس)</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Semester 3 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 3 (Fall)</span>
+                        <span class="lang-ar">الفصل الدراسي الثالث (خريف)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering
+                                            Mathematics 3</span><span class="lang-ar">رياضيات هندسية 3</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP101</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Materials
+                                            Engineering</span><span class="lang-ar">هندسة المواد</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MTE101</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Mechanics of
+                                            Machines</span><span class="lang-ar">ميكانيكا الآلات</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE101</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Computer
+                                            Applications</span><span class="lang-ar">تطبيقات الحاسب</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE101</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span
+                                            class="lang-en">Thermodynamics</span><span class="lang-ar">ديناميكا
+                                            حرارية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE102</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Circuits
+                                            Theory</span><span class="lang-ar">نظرية الدوائر</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EPE102</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Semester 4 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 4 (Spring)</span>
+                        <span class="lang-ar">الفصل الدراسي الرابع (ربيع)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Introduction to
+                                            Law</span><span class="lang-ar">مدخل للقانون</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">HUM101</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Machine
+                                            Drawings</span><span class="lang-ar">رسم الآلات</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE102</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Introduction to
+                                            Mechatronics</span><span class="lang-ar">مقدمة في الميكاترونكس</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE104</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Stress
+                                            Analysis</span><span class="lang-ar">تحليل الإجهادات</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE103</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Electrical
+                                            Systems</span><span class="lang-ar">الأنظمة الكهربائية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EPE101</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Numerical
+                                            Techniques</span><span class="lang-ar">طرق عددية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EMP104</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Human Resource
+                                            Management</span><span class="lang-ar">إدارة الموارد البشرية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">HUM102</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 200 -->
+        <div class="mb-12">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-forest-green pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r-4 rtl:pr-4">
+                <span class="lang-en">Level 200 (Junior)</span>
+                <span class="lang-ar">المستوى 200 (تانية ميكاترونكس)</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Semester 5 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 5 (Fall)</span>
+                        <span class="lang-ar">الفصل الدراسي الخامس (خريف)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">College Elective
+                                            (1)</span><span class="lang-ar">متطلب كلية اختياري (1)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Fluid
+                                            Mechanics</span><span class="lang-ar">ميكانيكا الموائع</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE201</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Electronic
+                                            Engineering</span><span class="lang-ar">هندسة إلكترونية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">ECE201</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Theory of Machines &
+                                            Mechanisms</span><span class="lang-ar">نظرية الآلات والميكانيزمات</span>
+                                    </td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE203</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Manufacturing
+                                            Processes</span><span class="lang-ar">عمليات التصنيع</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE204</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering
+                                            Statistics</span><span class="lang-ar">احصاء هندسي</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">INE202</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">University Elective
+                                            (2)</span><span class="lang-ar">متطلب جامعة (2)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Semester 6 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 6 (Spring)</span>
+                        <span class="lang-ar">الفصل الدراسي السادس (ربيع)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Electronic
+                                            Circuits</span><span class="lang-ar">دوائر إلكترونية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">ECE202</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering
+                                            Economy</span><span class="lang-ar">اقتصاد هندسي</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">INE207</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Machine Elements
+                                            Design</span><span class="lang-ar">تصميم أجزاء الماكينات</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE202</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Mechanical
+                                            Vibrations</span><span class="lang-ar">اهتزازات ميكانيكية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE201</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Heat and Mass
+                                            Transfer</span><span class="lang-ar">انتقال حرارة وكتلة</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE202</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Digital Logic
+                                            Design</span><span class="lang-ar">تصميم منطق رقمي</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE202</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 300 -->
+        <div class="mb-12">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-forest-green pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r-4 rtl:pr-4">
+                <span class="lang-en">Level 300 (Senior 1)</span>
+                <span class="lang-ar">المستوى 300 (تالتة ميكاترونكس)</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Semester 7 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 7 (Fall)</span>
+                        <span class="lang-ar">الفصل الدراسي السابع (خريف)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Mechatronics Systems
+                                            Design</span><span class="lang-ar">تصميم أنظمة الميكاترونكس</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE302</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Measurement &
+                                            Instrumentation</span><span class="lang-ar">قياسات وأجهزة قياس</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE308</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Mechanical Systems
+                                            Design</span><span class="lang-ar">تصميم الأنظمة الميكانيكية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE301</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Elective
+                                            (1)</span><span class="lang-ar">مادة اختيارية هندسية (1)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Power
+                                            Electronics</span><span class="lang-ar">إلكترونيات القوى</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">EPE302</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">University Elective
+                                            (3)</span><span class="lang-ar">متطلب جامعة (3)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span
+                                            class="lang-en">Microprocessors</span><span class="lang-ar">معالجات
+                                            دقيقة</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE301</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Semester 8 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 8 (Spring)</span>
+                        <span class="lang-ar">الفصل الدراسي الثامن (ربيع)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Control
+                                            Theory</span><span class="lang-ar">نظرية التحكم</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE308</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Theory of Integrated
+                                            Systems</span><span class="lang-ar">نظرية الأنظمة المتكاملة</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">ECE305</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Robotics
+                                            (1)</span><span class="lang-ar">روبوتات (1)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE306</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Modeling and
+                                            Simulation</span><span class="lang-ar">النمذجة والمحاكاة</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE307</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Drivers and
+                                            Actuators</span><span class="lang-ar">مشغلات ومحركات</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE304</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Turbo
+                                            Machinery</span><span class="lang-ar">آلات توربينية</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE302</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Logic Controllers
+                                            (PLC)</span><span class="lang-ar">حاكمات منطقية (PLC)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE302</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Level 400 -->
+        <div class="mb-12">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-forest-green pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r-4 rtl:pr-4">
+                <span class="lang-en">Level 400 (Senior 2)</span>
+                <span class="lang-ar">المستوى 400 (رابعة ميكاترونكس - تخرج)</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Semester 9 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 9 (Fall)</span>
+                        <span class="lang-ar">الفصل الدراسي التاسع (خريف)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Graduation Project
+                                            1</span><span class="lang-ar">مشروع تخرج 1</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE402</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Simulation
+                                            Technology</span><span class="lang-ar">تكنولوجيا المحاكاة</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE407</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span
+                                            class="lang-en">Microcontrollers</span><span class="lang-ar">متحكمات
+                                            دقيقة</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">CSE401</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Computer Applications
+                                            in Mechatronics</span><span class="lang-ar">تطبيقات الحاسب في
+                                            الميكاترونكس</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE401</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">CAD/CAM</span><span
+                                            class="lang-ar">تصميم وتصنيع بالحاسب</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE406</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Elective
+                                            (2)</span><span class="lang-ar">مادة اختيارية هندسية (2)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Semester 10 -->
+                <div
+                    class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-white/10">
+                    <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4 text-center">
+                        <span class="lang-en">Semester 10 (Spring)</span>
+                        <span class="lang-ar">الفصل الدراسي العاشر (ربيع)</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-center">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-200">
+                                    <th class="p-2 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Course</span><span
+                                            class="lang-ar">المادة</span></th>
+                                    <th class="p-2"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span>
+                                    </th>
+                                    <th class="p-2 rounded-tr-lg rounded-br-lg"><span class="lang-en">CH</span><span
+                                            class="lang-ar">س</span></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Robotics
+                                            (2)</span><span class="lang-ar">روبوتات (2)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE403</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Graduation Project
+                                            2</span><span class="lang-ar">مشروع تخرج 2</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">DPE404</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Fluid Power
+                                            Systems</span><span class="lang-ar">أنظمة قوى الموائع</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">MPE405</td>
+                                    <td class="p-2 font-bold">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Elective
+                                            (3)</span><span class="lang-ar">مادة اختيارية هندسية (3)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Elective
+                                            (4)</span><span class="lang-ar">مادة اختيارية هندسية (4)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-left rtl:text-right"><span class="lang-en">Engineering Elective
+                                            (5)</span><span class="lang-ar">مادة اختيارية هندسية (5)</span></td>
+                                    <td class="p-2 font-mono text-xs text-gray-500">--</td>
+                                    <td class="p-2 font-bold">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-12 text-center">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

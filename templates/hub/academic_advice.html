@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Academic Advice - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50/50 dark:bg-charcoal/20 py-12 px-4 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-black text-charcoal dark:text-white font-['Playfair_Display'] mb-4 tracking-tight">
+                <span class="lang-en">Academic Advice</span><span class="lang-ar">نصائح المواد - المستوى الأول</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-teal-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                <span class="lang-en">Practical tips to master your subjects.</span>
+                <span class="lang-ar">نصائح عملية من طلاب سابقين للتفوق في موادك.</span>
+            </p>
+        </div>
+
+        <!-- Subject Advice List -->
+        <div class="grid gap-6">
+
+            <!-- Drawing -->
+            <div
+                class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-lg transition-all border-l-4 border-l-teal-500 rtl:border-l-0 rtl:border-r-4 rtl:border-r-teal-500">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📐</span>
+                    <span class="lang-en">Engineering Drawing</span><span class="lang-ar">الرسم والإسقاط</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-loose text-base">
+                    <span class="lang-en">
+                        Start with projections—try to enjoy it as it often comes directly from lectures. Memorize the
+                        standard practices.
+                        <br><br>
+                        For drawing: tangents are easy practice. After midterms, projection deduction gets serious. Best
+                        method: draw what you see in each view, then complete the rest with Dash Lines.
+                    </span>
+                    <span class="lang-ar">
+                        خلينا نبدأ بالإسقاط، حاول تحبه معلش لأنه مش صعب بس رخم شوية. حاول تصاحبه، لأنه في الامتحانات
+                        بييجي من المحاضرات بالنص.
+                        <br><br>
+                        تعالى بقى للرسم: في البداية هتاخد المماسات — سهلة وبسيطة. بعد الميدترم، تبدأ الجد مع استنتاج
+                        المساقط. الأحسن ترسم كل حاجة شايفها في كل مسقط، وبعدين تكمل الباقي بخط متقطع (Dash Line).
+                    </span>
+                </p>
+            </div>
+
+            <!-- Physics -->
+            <div
+                class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-lg transition-all border-l-4 border-l-teal-500 rtl:border-l-0 rtl:border-r-4 rtl:border-r-teal-500">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🔬</span>
+                    <span class="lang-en">Physics 1</span><span class="lang-ar">الفيزياء ١</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-loose text-base">
+                    <span class="lang-en">
+                        Study consistently, follow the doctor or YouTube explanations. Most importantly: solve sheets by
+                        hand. Don't leave it until the last minute.
+                    </span>
+                    <span class="lang-ar">
+                        ذاكر أول بأول، سواء مع الدكتور أو من يوتيوب. أهم حاجة: تحل الشيتات بإيدك. المادة مش صعبة، بس ما
+                        تسيبهاش لآخر لحظة وتقول "مش قادر أذاكر".
+                    </span>
+                </p>
+            </div>
+
+            <!-- Mechanics -->
+            <div
+                class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-lg transition-all border-l-4 border-l-teal-500 rtl:border-l-0 rtl:border-r-4 rtl:border-r-teal-500">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="text-3xl">⚙️</span>
+                    <span class="lang-en">Mechanics 1 (Statics)</span><span class="lang-ar">ميكانيكا ١
+                        (الاستاتيكا)</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-loose text-base">
+                    <span class="lang-en">
+                        Easy subject with good YouTube resources. It might feel long, but solving sheets is key as exams
+                        are based on them.
+                    </span>
+                    <span class="lang-ar">
+                        المادة سهلة، وفيها شرح حلو على يوتيوب. يمكن تحسها طويلة، لكن حل الشيتات مهم جدًا لأن منها بييجي
+                        الامتحان.
+                    </span>
+                </p>
+            </div>
+
+            <!-- Chemistry -->
+            <div
+                class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-lg transition-all border-l-4 border-l-teal-500 rtl:border-l-0 rtl:border-r-4 rtl:border-r-teal-500">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🧪</span>
+                    <span class="lang-en">Chemistry</span><span class="lang-ar">الكيمياء</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-loose text-base">
+                    <span class="lang-en">
+                        Toughest subject this term, but it's where you can stand out. Solve sheets twice: once early,
+                        once before exams. aiming for +95% is possible.
+                    </span>
+                    <span class="lang-ar">
+                        عارف إنها أصعب مادة في الترم، بس هي اللي بتفرق بين الطلاب بجد. حل الشيتات مرتين: مرة أول الترم،
+                        ومرة تانية قبل الامتحان. لو عملت كده، هتجيب +٩٥٪ بإذن الله.
+                    </span>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-16">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-full text-gray-600 dark:text-gray-300 font-bold hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-lg">
+                <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="lang-en">Back to Home</span><span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Credit Hour System - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-4xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">Credit Hour System</span>
+                <span class="lang-ar">نظام الساعات المعتمدة</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">Understanding how your academic progress is measured and how to manage your study
+                    load efficiently.</span>
+                <span class="lang-ar">افهم كيف يتم قياس تقدمك الأكاديمي وكيف تدير عبء دراستك بكفاءة.</span>
+            </p>
+        </div>
+
+        <!-- What is a Credit Hour? -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <i class="fas fa-clock mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                <span class="lang-en">What is a Credit Hour?</span>
+                <span class="lang-ar">يعني إيه ساعة معتمدة؟</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg mb-6">
+                <span class="lang-en">
+                    It is a unit of measurement for the study load of a course. It is not necessarily equal to the
+                    actual clock hours spent in the lecture.
+                </span>
+                <span class="lang-ar">
+                    هي وحدة قياس للعبء الدراسي للمادة. وهي لا تساوي بالضرورة عدد الساعات الفعلية اللي بتقضيها في
+                    المحاضرة.
+                </span>
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div
+                    class="bg-forest-green/5 dark:bg-emerald-900/20 p-4 rounded-xl border border-forest-green/10 flex items-center">
+                    <div class="bg-white dark:bg-white/10 p-3 rounded-full mr-4 rtl:ml-4 shadow-sm">
+                        <span class="text-xl font-bold text-forest-green dark:text-emerald-400">1</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white"><span class="lang-en">Lecture
+                                Hour</span><span class="lang-ar">ساعة محاضرة</span></h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400"><span class="lang-en">= 1 Credit
+                                Hour</span><span class="lang-ar">= 1 ساعة معتمدة</span></p>
+                    </div>
+                </div>
+                <div
+                    class="bg-forest-green/5 dark:bg-emerald-900/20 p-4 rounded-xl border border-forest-green/10 flex items-center">
+                    <div class="bg-white dark:bg-white/10 p-3 rounded-full mr-4 rtl:ml-4 shadow-sm">
+                        <span class="text-xl font-bold text-forest-green dark:text-emerald-400">2-3</span>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white"><span class="lang-en">Lab/Tutorial
+                                Hours</span><span class="lang-ar">ساعات تمارين/عملي</span></h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400"><span class="lang-en">= 1 Credit
+                                Hour</span><span class="lang-ar">= 1 ساعة معتمدة</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Difference Table -->
+        <div class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 overflow-hidden">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+                <span class="lang-en">Credit Hour System vs. Traditional System</span>
+                <span class="lang-ar">الفرق بين الساعات المعتمدة والنظام التقليدي</span>
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/3"><span class="lang-en">Feature</span><span
+                                    class="lang-ar">وجه المقارنة</span></th>
+                            <th class="p-4 w-1/3"><span class="lang-en">Credit Hour System</span><span
+                                    class="lang-ar">نظام الساعات المعتمدة</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/3"><span class="lang-en">Traditional
+                                    System</span><span class="lang-ar">النظام التقليدي (السنوات)</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 font-bold text-gray-800 dark:text-gray-200"><span
+                                    class="lang-en">Success/Fail</span><span class="lang-ar">النجاح والرسوب</span></td>
+                            <td class="p-4 text-forest-green dark:text-emerald-400 font-bold"><span class="lang-en">Per
+                                    Subject</span><span class="lang-ar">في المادة (مش السنة كلها)</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-400"><span class="lang-en">Per Year</span><span
+                                    class="lang-ar">في السنة الدراسية كاملة</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 font-bold text-gray-800 dark:text-gray-200"><span
+                                    class="lang-en">Flexibility</span><span class="lang-ar">المرونة</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-300"><span class="lang-en">High (Choose timings
+                                    & professors)</span><span class="lang-ar">عالية (تختار مواعيدك ودكاترتك)</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-400"><span class="lang-en">Low (Fixed
+                                    schedule)</span><span class="lang-ar">منعدمة (جدول موحد إجباري)</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 font-bold text-gray-800 dark:text-gray-200"><span
+                                    class="lang-en">Graduation</span><span class="lang-ar">التخرج</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-300"><span class="lang-en">Based on completing
+                                    credits</span><span class="lang-ar">بناءً على إنهاء الساعات</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-400"><span class="lang-en">Based on finishing
+                                    years</span><span class="lang-ar">بناءً على إنهاء السنوات</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 font-bold text-gray-800 dark:text-gray-200"><span class="lang-en">Summer
+                                    Term</span><span class="lang-ar">الترم الصيفي</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-300"><span class="lang-en">Available (Catch up
+                                    or Advance)</span><span class="lang-ar">متاح (للتحسين أو التسريع)</span></td>
+                            <td class="p-4 text-gray-600 dark:text-gray-400"><span class="lang-en">Not
+                                    typical</span><span class="lang-ar">غير موجود عادة</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Important Tips -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                <i class="fas fa-lightbulb mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                <span class="lang-en">Important Tips for Success</span>
+                <span class="lang-ar">نصائح هامة للنجاح في النظام</span>
+            </h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Tip 1 -->
+                <div class="flex items-start">
+                    <i class="fas fa-user-tie mt-1 mr-3 rtl:ml-3 text-secondary-color"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1"><span class="lang-en">Academic
+                                Advisor</span><span class="lang-ar">المرشد الأكاديمي</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300"><span class="lang-en">Always consult your
+                                advisor before registering courses.</span><span class="lang-ar">استشره دائمًا قبل تسجيل
+                                المواد لضمان خطة سليمة.</span></p>
+                    </div>
+                </div>
+                <!-- Tip 2 -->
+                <div class="flex items-start">
+                    <i class="fas fa-calendar-check mt-1 mr-3 rtl:ml-3 text-secondary-color"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1"><span class="lang-en">Early
+                                Registration</span><span class="lang-ar">التسجيل المبكر</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300"><span class="lang-en">Register early to
+                                secure your preferred slots.</span><span class="lang-ar">سجل مبكرًا لتضمن الأماكن في
+                                المجموعات التي تناسبك.</span></p>
+                    </div>
+                </div>
+                <!-- Tip 3 -->
+                <div class="flex items-start">
+                    <i class="fas fa-chart-line mt-1 mr-3 rtl:ml-3 text-secondary-color"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1"><span class="lang-en">Monitor
+                                GPA</span><span class="lang-ar">مراقبة المعدل (GPA)</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300"><span class="lang-en">Keep your GPA above
+                                2.0 to avoid warnings.</span><span class="lang-ar">حافظ على معدلك فوق 2.0 لتجنب
+                                الإنذارات الأكاديمية.</span></p>
+                    </div>
+                </div>
+                <!-- Tip 4 -->
+                <div class="flex items-start">
+                    <i class="fas fa-ban mt-1 mr-3 rtl:ml-3 text-red-500"></i>
+                    <div>
+                        <h4 class="font-bold text-gray-900 dark:text-white mb-1"><span
+                                class="lang-en">Withdrawal</span><span class="lang-ar">الانسحاب</span></h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300"><span class="lang-en">Withdraw if you are
+                                failing before the deadline (W grade).</span><span class="lang-ar">انسحب من المادة إذا
+                                كان مستواك سيئًا قبل الموعد المحدد (تقدير W) بدلًا من الرسوب.</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-12 text-center">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

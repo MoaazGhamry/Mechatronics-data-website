@@ -1,0 +1,118 @@
+<!-- Modern Bento Subject Card -->
+<div
+    class="group relative overflow-hidden bg-white/60 dark:bg-charcoal/40 backdrop-blur-2xl border border-gray-100 dark:border-white/5 shadow-xl rounded-[2.5rem] p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-forest-green/10 dark:hover:shadow-black/40">
+
+    <!-- Unique Accent Color (Dynamic based on subject name length or hash) -->
+    <div
+        class="absolute top-0 right-0 w-32 h-32 bg-forest-green/5 dark:bg-emerald-500/5 rounded-bl-[5rem] -mr-8 -mt-8 transition-transform duration-700 group-hover:scale-150">
+    </div>
+
+    <div class="relative z-10 flex flex-col h-full">
+        <!-- Interactive Header Area -->
+        <div class="flex items-start justify-between mb-6 cursor-pointer"
+            onclick="toggleCollapsible('{{ subject.id }}')">
+
+            <div class="flex-1">
+                <div class="flex items-center gap-3 mb-3">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-forest-green dark:bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-forest-green/20 transform transition-transform group-hover:rotate-6">
+                        <i class="fas fa-microchip text-xl"></i>
+                    </div>
+                    <span
+                        class="text-[10px] font-black uppercase tracking-[0.3em] text-forest-green dark:text-emerald-400">
+                        Level {{ subject.level.level_id }} • Sem {{ subject.semester }}
+                    </span>
+                </div>
+
+                <h3
+                    class="text-2xl font-black text-charcoal dark:text-white leading-tight font-['Outfit'] group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors">
+                    {{ subject.name }}
+                </h3>
+            </div>
+
+            <!-- Modern Toggle Button -->
+            <div
+                class="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-400 group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-all">
+                <svg id="icon-{{ subject.id }}" class="w-6 h-6 transition-transform duration-500" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Sleek Progress Section -->
+        <div class="mb-4">
+            <div class="flex justify-between items-end mb-2">
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                    <span class="lang-en">Academic Mastery</span><span class="lang-ar">إتقان المادة</span>
+                </span>
+                <span class="text-sm font-black text-forest-green dark:text-emerald-400">0%</span>
+            </div>
+            <div class="h-2 w-full bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+                <div
+                    class="h-full bg-gradient-to-r from-forest-green to-emerald-500 w-0 transition-all duration-1000 group-hover:w-[12%] rounded-full shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                </div>
+            </div>
+        </div>
+
+        <!-- Bento Material Grid (Collapsible) -->
+        <div id="content-{{ subject.id }}" class="collapsible-content">
+            <div class="pt-8 mt-6 border-t border-gray-100 dark:border-white/5">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {% for category in categories %}
+                    <a href="{% url 'hub:resource_detail' subject.id category %}"
+                        class="group/tile relative flex flex-col items-center justify-center p-5 rounded-3xl bg-gray-50/50 dark:bg-white/5 border border-transparent hover:border-forest-green/20 dark:hover:border-emerald-500/20 hover:bg-white dark:hover:bg-white/10 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-forest-green/5">
+
+                        <!-- Mini Icon -->
+                        <div class="w-10 h-10 rounded-xl mb-3 flex items-center justify-center transition-all duration-300
+                            {% if category == 'Explanation' %}bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400
+                            {% elif category == 'Lectures' %}bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400
+                            {% elif category == 'Sheets' %}bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400
+                            {% elif category == 'Midterm' %}bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400
+                            {% elif category == 'Final' %}bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400
+                            {% elif category == 'Revision' %}bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400
+                            {% else %}bg-gray-100 text-gray-600 dark:bg-gray-800/30 dark:text-gray-400{% endif %}
+                            group-hover/tile:scale-110 group-hover/tile:rotate-3">
+                            {% if category == 'Explanation' %}<i class="fas fa-book-open"></i>
+                            {% elif category == 'Lectures' %}<i class="fas fa-video"></i>
+                            {% elif category == 'Sheets' %}<i class="fas fa-file-alt"></i>
+                            {% elif category == 'Midterm' %}<i class="fas fa-pen-fancy"></i>
+                            {% elif category == 'Final' %}<i class="fas fa-user-graduate"></i>
+                            {% elif category == 'Revision' %}<i class="fas fa-sync"></i>
+                            {% else %}<i class="fas fa-folder"></i>
+                            {% endif %}
+                        </div>
+
+                        <span
+                            class="text-[10px] font-black uppercase tracking-widest text-charcoal dark:text-white mb-1">
+                            {% if category == 'Lectures' %}
+                            <span class="lang-en">Lectures</span><span class="lang-ar">محاضرات</span>
+                            {% elif category == 'Sheets' %}
+                            <span class="lang-en">Sheets</span><span class="lang-ar">شيتات</span>
+                            {% elif category == 'Explanation' %}
+                            <span class="lang-en">Explanation</span><span class="lang-ar">شرح</span>
+                            {% elif category == 'Midterm' %}
+                            <span class="lang-en">Midterm</span><span class="lang-ar">ميدتيرم</span>
+                            {% elif category == 'Final' %}
+                            <span class="lang-en">Final</span><span class="lang-ar">فاينل</span>
+                            {% elif category == 'Revision' %}
+                            <span class="lang-en">Revision</span><span class="lang-ar">مراجعة</span>
+                            {% else %}{{ category }}{% endif %}
+                        </span>
+
+                        <span class="text-[9px] font-bold text-gray-400">
+                            {% if category == 'Explanation' %}({{ subject.explanation_count }})
+                            {% elif category == 'Lectures' %}({{ subject.lectures_count }})
+                            {% elif category == 'Sheets' %}({{ subject.sheets_count }})
+                            {% elif category == 'Midterm' %}({{ subject.midterm_count }})
+                            {% elif category == 'Final' %}({{ subject.final_count }})
+                            {% elif category == 'Revision' %}({{ subject.revision_count }})
+                            {% else %}(0){% endif %}
+                        </span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

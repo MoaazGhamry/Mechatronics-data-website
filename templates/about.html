@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<span class="lang-en">About - Mechatronics Data</span><span class="lang-ar">عن المنصة - بيانات الميكاترونكس</span>
+{% endblock %}
+
+{% block content %}
+<!-- Cinematic Hero Section -->
+<section class="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+    <!-- Background Layer -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-midnight/80 via-midnight/40 to-midnight z-10"></div>
+        <img src="{% static 'img/about_hero_lab.png' %}"
+            onerror="this.src='https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop'"
+            alt="Mechatronics Lab" class="w-full h-full object-cover scale-105 animate-slow-zoom">
+    </div>
+
+    <!-- Floating Content Card -->
+    <div class="relative z-20 px-4 container mx-auto">
+        <div class="max-w-4xl mx-auto text-center">
+            <div
+                class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-forest-green/20 backdrop-blur-md border border-forest-green/30 mb-8 animate-fade-in">
+                <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
+                    <span class="lang-en">Redefining Education</span><span class="lang-ar">إعادة تعريف التعليم</span>
+                </span>
+            </div>
+
+            <h1
+                class="text-5xl md:text-7xl lg:text-8xl font-black text-white font-['Playfair_Display'] mb-8 leading-[1.1] animate-fade-in-up">
+                <span class="lang-en italic">Engineering</span><br>
+                <span class="lang-en">The Digital Hub</span>
+                <span class="lang-ar italic block">هندسة</span>
+                <span class="lang-ar block">المنصة الرقمية</span>
+            </h1>
+
+            <p
+                class="text-lg md:text-xl text-gray-300 font-['Outfit'] font-normal max-w-2xl mx-auto leading-relaxed opacity-90 animate-fade-in-up transition-all delay-200">
+                <span class="lang-en">Mechatronics Data is more than a portal; it's a digital ecosystem crafted to
+                    empower the next generation of engineers at Zagazig National University.</span>
+                <span class="lang-ar">بيانات الميكاترونكس هي أكثر من مجرد بوابة؛ إنها منظومة رقمية صُممت لتمكين الجيل
+                    القادم من المهندسين في جامعة الزقازيق الأهلية.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce cursor-pointer">
+        <div class="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2">
+            <div class="w-1 h-2 bg-white/60 rounded-full"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Post-Registration Experience Section -->
+<section class="py-24 bg-white dark:bg-midnight relative overflow-hidden">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2 class="text-sm font-black text-forest-green dark:text-emerald-400 uppercase tracking-[0.4em] mb-4">
+                <span class="lang-en">The Experience</span><span class="lang-ar">التجربة</span>
+            </h2>
+            <h3 class="text-3xl md:text-5xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                <span class="lang-en">Beyond Registration</span><span class="lang-ar">ما بعد التسجيل</span>
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Dashboard Card -->
+            <div
+                class="group p-10 rounded-[3rem] bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/5 hover:border-forest-green/20 transition-all duration-500">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-forest-green/10 dark:bg-emerald-500/10 flex items-center justify-center text-forest-green dark:text-emerald-400 mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                    <i class="fas fa-th-large text-2xl"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-charcoal dark:text-white mb-4 font-['Playfair_Display']">
+                    <span class="lang-en">Personalized Dashboard</span><span class="lang-ar">لوحة تحكم مخصصة</span>
+                </h4>
+                <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                    <span class="lang-en">Once you join, you gain access to a dynamic command center. Track your GPA,
+                        monitor academic progress, and manage your course registration all in one sleek interface
+                        designed for efficiency.</span>
+                    <span class="lang-ar">بمجرد انضمامك، ستحصل على وصول إلى مركز قيادة ديناميكي. تابع معدلك التراكمي،
+                        وراقب تقدمك الأكاديمي، وإدارة تسجيل المواد، كل ذلك في واجهة واحدة أنيقة مصممة للكفاءة.</span>
+                </p>
+            </div>
+
+            <!-- AI Assistant Card -->
+            <div
+                class="group p-10 rounded-[3rem] bg-gray-50 dark:bg-white/[0.03] border border-gray-100 dark:border-white/5 hover:border-forest-green/20 transition-all duration-500">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/20 flex items-center justify-center text-forest-green dark:text-emerald-400 mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform">
+                    <i class="fas fa-robot text-2xl"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-charcoal dark:text-white mb-4 font-['Playfair_Display']">
+                    <span class="lang-en">Academy AI Assistant</span><span class="lang-ar">المساعد الذكي
+                        للأكاديمية</span>
+                </h4>
+                <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+                    <span class="lang-en">Meet your 24/7 academic companion. Our Academy chatbot is integrated directly
+                        into your dashboard to answer questions about regulations, assist with course info, and guide
+                        you through the Mechatronics curriculum.</span>
+                    <span class="lang-ar">تعرف على رفيقك الأكاديمي المتاح على مدار الساعة. تم دمج المساعد الذكي الخاص
+                        بنا مباشرة في لوحة التحكم للإجابة على التساؤلات حول اللوائح، والمساعدة في معلومات المواد،
+                        وإرشادك خلال منهج الميكاترونكس.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Luxury Philosophy & Vision Section -->
+<section class="py-32 relative bg-white dark:bg-midnight overflow-hidden">
+    <!-- Sophisticated Background Decor -->
+    <div
+        class="absolute top-0 right-0 w-1/3 h-full bg-gray-50 dark:bg-white/[0.02] -skew-x-12 transform origin-top translate-x-20">
+    </div>
+
+    <div class="container mx-auto px-4 md:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <!-- Left: Impactful Text -->
+            <div class="space-y-12">
+                <div>
+                    <h2
+                        class="text-sm font-black text-forest-green dark:text-emerald-400 uppercase tracking-[0.4em] mb-4">
+                        <span class="lang-en">Philosophy</span><span class="lang-ar">فلسفتنا</span>
+                    </h2>
+                    <h3
+                        class="text-4xl md:text-5xl font-bold text-charcoal dark:text-white font-['Playfair_Display'] leading-tight mb-8">
+                        <span class="lang-en">Bridge the Gap between Theory and Reality.</span>
+                        <span class="lang-ar">جسر الفجوة بين النظرية والواقع.</span>
+                    </h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-['Inter']">
+                        <span class="lang-en">We believe that academic resources shouldn't be scattered PDF files. They
+                            should be interactive, accessible, and structured insights that guide your professional
+                            growth. Mechatronics Data Hub was born from the need to centralize the brilliant
+                            intellectual capital of our department.</span>
+                        <span class="lang-ar">نحن نؤمن بأن المصادر الأكاديمية لا ينبغي أن تكون ملفات PDF مبعثرة. يجب أن
+                            تكون رؤى تفاعلية، سهلة الوصول، ومنظمة توجه نموك المهني. ولدت منصة بيانات الميكاترونكس من
+                            الحاجة إلى مركزة رأس المال الفكري الرائع لقسمنا.</span>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 md:gap-8">
+                    <div
+                        class="p-4 md:p-8 rounded-2xl md:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 group hover:border-forest-green/30 dark:hover:border-emerald-500/30 transition-all duration-500">
+                        <div
+                            class="text-2xl md:text-4xl font-black text-forest-green dark:text-emerald-400 mb-2 md:mb-4 font-['Playfair_Display'] italic">
+                            01.</div>
+                        <h4
+                            class="text-sm md:text-lg font-bold text-charcoal dark:text-white mb-1 md:mb-2 uppercase tracking-wide">
+                            <span class="lang-en">Centralization</span><span class="lang-ar">المركزية</span>
+                        </h4>
+                        <p
+                            class="text-[10px] md:text-sm text-gray-500 dark:text-gray-400 leading-tight md:leading-normal">
+                            <span class="lang-en">One source of truth for every lecture, lab, and exam.</span>
+                            <span class="lang-ar">مصدر واحد للحقيقة لكل محاضرة ومعمل وامتحان.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="p-4 md:p-8 rounded-2xl md:rounded-3xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 group hover:border-forest-green/30 dark:hover:border-emerald-500/30 transition-all duration-500">
+                        <div
+                            class="text-2xl md:text-4xl font-black text-forest-green dark:text-emerald-400 mb-2 md:mb-4 font-['Playfair_Display'] italic">
+                            02.</div>
+                        <h4
+                            class="text-sm md:text-lg font-bold text-charcoal dark:text-white mb-1 md:mb-2 uppercase tracking-wide">
+                            <span class="lang-en">Accessibility</span><span class="lang-ar">سهولة الوصول</span>
+                        </h4>
+                        <p
+                            class="text-[10px] md:text-sm text-gray-500 dark:text-gray-400 leading-tight md:leading-normal">
+                            <span class="lang-en">Optimized for every device, anytime, anywhere.</span>
+                            <span class="lang-ar">محسن لكل الأجهزة، في أي وقت وفي أي مكان.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Premium Visual Grid -->
+            <div class="grid grid-cols-2 gap-4 relative">
+                <div class="absolute -inset-10 bg-forest-green/10 blur-[100px] rounded-full z-0"></div>
+                <div class="space-y-4 pt-12">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop"
+                        class="rounded-[2.5rem] w-full h-80 object-cover shadow-2xl relative z-10 border border-white/10"
+                        alt="Tech Interaction">
+                    <div class="p-8 rounded-[2.5rem] bg-forest-green text-white relative z-10 shadow-2xl">
+                        <p class="text-4xl font-black font-['Playfair_Display'] mb-2">100%</p>
+                        <p class="text-xs font-bold uppercase tracking-[0.2em] opacity-80">
+                            <span class="lang-en">Student Centric</span><span class="lang-ar">محور الطالب</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-8 rounded-[2.5rem] bg-midnight dark:bg-charcoal text-white shadow-2xl relative z-10">
+                        <i class="fas fa-microchip text-4xl text-emerald-400 mb-6"></i>
+                        <h5 class="text-xl font-bold font-['Playfair_Display']">
+                            <span class="lang-en">Modern Tech</span><span class="lang-ar">تقنية حديثة</span>
+                        </h5>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop"
+                        class="rounded-[2.5rem] w-full h-96 object-cover shadow-2xl relative z-10 border border-white/10"
+                        alt="Engineering Hub">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- The ZNU Development Team -->
+<section class="py-32 bg-gray-50 dark:bg-white/[0.02]">
+    <div class="container mx-auto px-4 md:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h2 class="text-sm font-black text-forest-green dark:text-emerald-400 uppercase tracking-[0.4em] mb-4">
+                <span class="lang-en">The Masters</span><span class="lang-ar">المبدعون</span>
+            </h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-charcoal dark:text-white font-['Playfair_Display'] mb-6">
+                <span class="lang-en">ZNU Development Team</span><span class="lang-ar">فريق تطوير جامعة الزقازيق
+                    الأهلية</span>
+            </h3>
+            <p class="text-gray-500 dark:text-gray-400 font-['Outfit']">
+                <span class="lang-en">Meet the dedicated engineers who brought this platform to life with passion and
+                    precision.</span>
+                <span class="lang-ar">تعرف على المهندسين المخلصين الذين أحيوا هذه المنصة بشغف ودقة.</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            <!-- Moaaz Elghamry -->
+            <a href="https://www.linkedin.com/in/moaaz-mohamed-elghamry-164a00303/" target="_blank"
+                class="group relative block p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-white dark:bg-midnight border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="relative w-24 h-24 md:w-40 md:h-40 mx-auto mb-4 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden shadow-xl ring-4 ring-gray-50 dark:ring-white/5 group-hover:ring-forest-green/20 transition-all">
+                    <img src="{% static 'img/MoaazElghamry.png' %}" alt="Moaaz Elghamry"
+                        class="w-full h-full object-cover scale-110">
+                    <div
+                        class="absolute inset-0 bg-forest-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-linkedin text-xl md:text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h4
+                        class="text-base md:text-xl font-bold text-charcoal dark:text-white mb-1 group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors">
+                        Moaaz Elghamry</h4>
+                    <p
+                        class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-gray-400 dark:text-gray-500">
+                        <span class="lang-en">Full-Stack (Python)</span><span class="lang-ar">مطور شامل (بايثون)</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Mohamed Atia -->
+            <a href="https://www.linkedin.com/in/mohamed-mohamed-atia-57138b360/" target="_blank"
+                class="group relative block p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-white dark:bg-midnight border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="relative w-24 h-24 md:w-40 md:h-40 mx-auto mb-4 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden shadow-xl ring-4 ring-gray-50 dark:ring-white/5 group-hover:ring-forest-green/20 transition-all">
+                    <img src="{% static 'img/MohamedAtia.png' %}" alt="Mohamed Atia"
+                        class="w-full h-full object-cover scale-110">
+                    <div
+                        class="absolute inset-0 bg-forest-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-linkedin text-xl md:text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h4
+                        class="text-base md:text-xl font-bold text-charcoal dark:text-white mb-1 group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors">
+                        Mohamed Atia</h4>
+                    <p
+                        class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-gray-400 dark:text-gray-500">
+                        <span class="lang-en">Full-Stack (Python)</span><span class="lang-ar">مطور شامل (بايثون)</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Mohamed Khaled -->
+            <a href="https://www.linkedin.com/in/mohamed-khaled-ramadan-56a332332/" target="_blank"
+                class="group relative block p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-white dark:bg-midnight border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="relative w-24 h-24 md:w-40 md:h-40 mx-auto mb-4 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden shadow-xl ring-4 ring-gray-50 dark:ring-white/5 group-hover:ring-forest-green/20 transition-all">
+                    <img src="{% static 'img/MohamedKhaled11.png' %}" alt="Mohamed Khaled"
+                        class="w-full h-full object-cover scale-110" style="object-position: center 15%;">
+                    <div
+                        class="absolute inset-0 bg-forest-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-linkedin text-xl md:text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h4
+                        class="text-base md:text-xl font-bold text-charcoal dark:text-white mb-1 group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors">
+                        Mohamed Khaled</h4>
+                    <p
+                        class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-gray-400 dark:text-gray-500">
+                        <span class="lang-en">Full-Stack (Python)</span><span class="lang-ar">مطور شامل (بايثون)</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Mohammed Romy -->
+            <a href="https://www.linkedin.com/in/mohamed-ahmed-romy-811198323/" target="_blank"
+                class="group relative block p-4 md:p-8 rounded-[2rem] md:rounded-[3rem] bg-white dark:bg-midnight border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                <div
+                    class="relative w-24 h-24 md:w-40 md:h-40 mx-auto mb-4 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden shadow-xl ring-4 ring-gray-50 dark:ring-white/5 group-hover:ring-forest-green/20 transition-all">
+                    <img src="{% static 'img/MohamedRomy.png' %}" alt="Mohamed Romy"
+                        class="w-full h-full object-cover scale-110">
+                    <div
+                        class="absolute inset-0 bg-forest-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i class="fab fa-linkedin text-xl md:text-3xl text-white"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h4
+                        class="text-base md:text-xl font-bold text-charcoal dark:text-white mb-1 group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors">
+                        Mohamed Romy</h4>
+                    <p
+                        class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-gray-400 dark:text-gray-500">
+                        <span class="lang-en">Full-Stack (Python)</span><span class="lang-ar">مطور شامل (بايثون)</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Visionary Call to Action -->
+<section class="py-24 relative overflow-hidden bg-forest-green dark:bg-emerald-950">
+    <div class="absolute inset-0 opacity-20">
+        <div
+            class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-400 rounded-full blur-[150px] translate-x-1/2 translate-y-1/2">
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white font-['Playfair_Display'] mb-8 leading-tight">
+            <span class="lang-en">Ready to Explore the<br>Engineering Excellence?</span>
+            <span class="lang-ar">جاهز لاستكشاف<br>التميز الهندسي؟</span>
+        </h2>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a href="{% url 'hub:levels' %}"
+                class="px-12 py-5 bg-white text-forest-green font-black rounded-full uppercase tracking-widest text-xs hover:shadow-[0_10px_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 transition-all duration-300">
+                <span class="lang-en">Start Learning</span><span class="lang-ar">ابدأ التعلم</span>
+            </a>
+            <a href="{% url 'hub:contact' %}"
+                class="px-12 py-5 bg-transparent border-2 border-white/30 text-white font-black rounded-full uppercase tracking-widest text-xs hover:bg-white/10 transition-all duration-300">
+                <span class="lang-en">Contribute Now</span><span class="lang-ar">ساهم الآن</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes slow-zoom {
+        from {
+            transform: scale(1);
+        }
+
+        to {
+            transform: scale(1.1);
+        }
+    }
+
+    .animate-slow-zoom {
+        animation: slow-zoom 20s ease-in-out infinite alternate;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+{% endblock %}

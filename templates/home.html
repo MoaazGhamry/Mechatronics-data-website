@@ -1,0 +1,414 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen relative">
+
+    <!-- Global Fixed Background Video -->
+    <div class="fixed inset-0 -z-10 h-full w-full overflow-hidden">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover"
+            poster="{% static 'img/zagazig national university(1).jpeg' %}">
+            <source src="{% static 'video/background.mp4' %}" type="video/mp4">
+        </video>
+        <!-- Dynamic overlay for content readability - High Transparency -->
+        <div class="absolute inset-0 bg-white/60 dark:bg-charcoal/30 transition-colors duration-500"></div>
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-white/10 dark:from-charcoal/30 via-transparent to-white/5 dark:to-charcoal/10 transition-colors duration-500">
+        </div>
+    </div>
+
+    <!-- Scrollable Content Wrapper -->
+    <div class="relative z-10">
+
+        <!-- Hero Section -->
+        <div class="min-h-[600px] flex items-center justify-start px-8 md:px-20 pt-24 pb-12">
+            <div class="max-w-4xl text-left rtl:text-right">
+                <header class="mb-10">
+                    <h1
+                        class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-forest-green to-emerald-400 font-['Playfair_Display'] leading-tight">
+                        <span
+                            class="lang-en block text-2xl md:text-3xl font-light text-gray-600 dark:text-gray-300 mb-2">Welcome
+                            to the Student Support Platform of</span>
+                        <span class="lang-en block text-4xl md:text-6xl mb-4">Zagazig National University</span>
+                        <div class="h-1 w-24 bg-forest-green rounded-full mb-4"></div>
+                        <span
+                            class="lang-en block text-xl md:text-2xl font-medium text-forest-green tracking-wide">Faculty
+                            of Engineering – Mechatronics Department</span>
+
+                        <span
+                            class="lang-ar block text-2xl md:text-3xl font-light text-gray-600 dark:text-gray-400 mb-2">مرحباً
+                            بكم في منصة دعم الطلاب بجامعة</span>
+                        <span class="lang-ar block text-4xl md:text-6xl mb-4">الزقازيق الأهلية</span>
+                        <div class="h-1 w-24 bg-forest-green rounded-full mb-4 mr-0 ml-auto rtl:ml-0 rtl:mr-auto"></div>
+                        <span class="lang-ar block text-xl md:text-2xl font-medium text-forest-green tracking-wide">كلية
+                            الهندسة - قسم الميكاترونكس</span>
+                    </h1>
+                </header>
+
+                <div class="relative group max-w-3xl">
+                    <!-- Glassmorphism Card -->
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-forest-green/20 to-emerald-400/20 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000">
+                    </div>
+                    <div
+                        class="relative p-8 md:p-10 rounded-[2rem] bg-white/50 dark:bg-charcoal/50 backdrop-blur-2xl border border-white/30 dark:border-white/10 shadow-2xl">
+                        <div class="space-y-6">
+                            <p class="text-xl text-gray-800 dark:text-gray-100 leading-relaxed font-medium">
+                                <span class="lang-en">Here you will find everything you need to facilitate your
+                                    educational journey within the department.</span>
+                                <span class="lang-ar">ستجد هنا كل ما تحتاجه لتسهيل مسيرتك التعليمية داخل القسم.</span>
+                            </p>
+
+                            <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                                <span class="lang-en">Log in to access your personal dashboard and take full advantage
+                                    of the academic chatbot and all platform services.</span>
+                                <span class="lang-ar">سجل الدخول للوصول إلى لوحتك الشخصية والاستفادة الكاملة من الروبوت
+                                    الأكاديمي وجميع خدمات المنصة.</span>
+                            </p>
+                        </div>
+
+                        <div
+                            class="pt-8 mt-6 border-t border-gray-200 dark:border-white/10 flex flex-wrap gap-4 shrink-0">
+                            <a href="{% url 'hub:levels' %}"
+                                class="px-8 py-4 bg-forest-green hover:bg-forest-green/90 text-white rounded-2xl font-bold text-lg transition-all shadow-lg hover:shadow-forest-green/20 transform hover:-translate-y-1">
+                                <span class="lang-en">Explore Levels</span>
+                                <span class="lang-ar">استكشف المستويات</span>
+                            </a>
+                            <a href="{% url 'hub:about_department' %}"
+                                class="px-8 py-4 bg-white/50 dark:bg-white/10 hover:bg-white/70 dark:hover:bg-white/20 text-charcoal dark:text-white border border-gray-200 dark:border-white/20 backdrop-blur-md rounded-2xl font-bold text-lg transition-all shadow-lg transform hover:-translate-y-1">
+                                <span class="lang-en">Department</span>
+                                <span class="lang-ar">القسم</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mechatronics Components Section -->
+    <div class="max-w-6xl mx-auto px-4 mt-20 mb-16">
+        <div class="text-center mb-12">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-charcoal dark:text-white mb-2 drop-shadow-md font-['Playfair_Display'] transition-colors duration-300">
+                <span class="lang-en">The Pillars of Mechatronics</span>
+                <span class="lang-ar">ركائز هندسة الميكاترونكس</span>
+            </h2>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Mechanical Engineering -->
+            <div
+                class="group relative p-8 rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 backdrop-blur-xl hover:bg-white/50 dark:hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-lg">
+                <div
+                    class="absolute -right-4 -top-4 w-24 h-24 bg-forest-green/20 rounded-full blur-2xl group-hover:bg-forest-green/30 transition-colors">
+                </div>
+                <div class="relative z-10 text-center">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gradient-to-br from-forest-green to-emerald-500 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:rotate-12 transition-transform">
+                        ⚙️
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-4">
+                        <span class="lang-en">Mechanical</span>
+                        <span class="lang-ar">الميكانيكا</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                        <span class="lang-en">Design and analysis of physical systems, machines, and manufacturing
+                            processes.</span>
+                        <span class="lang-ar">تصميم وتحليل الأنظمة الفيزيائية، والآلات، وعمليات التصنيع
+                            المتطورة.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Electrical & Electronics -->
+            <div
+                class="group relative p-8 rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 backdrop-blur-xl hover:bg-white/50 dark:hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-lg">
+                <div
+                    class="absolute -right-4 -top-4 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl group-hover:bg-blue-500/30 transition-colors">
+                </div>
+                <div class="relative z-10 text-center">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-cyan-400 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:-rotate-12 transition-transform">
+                        ⚡
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-4">
+                        <span class="lang-en">Electrical</span>
+                        <span class="lang-ar">الكهرباء</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                        <span class="lang-en">Power systems, circuits, sensors, and electronic components that drive
+                            automation.</span>
+                        <span class="lang-ar">أنظمة الطاقة، الدوائر الكهربائية، الحساسات، والمكونات الإلكترونية التي
+                            تقود الأتمتة.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Software & Control -->
+            <div
+                class="group relative p-8 rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 backdrop-blur-xl hover:bg-white/50 dark:hover:bg-white/15 transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-lg">
+                <div
+                    class="absolute -right-4 -top-4 w-24 h-24 bg-purple-500/20 rounded-full blur-2xl group-hover:bg-purple-500/30 transition-colors">
+                </div>
+                <div class="relative z-10 text-center">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-indigo-400 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                        💻
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-4">
+                        <span class="lang-en">Software</span>
+                        <span class="lang-ar">البرمجيات</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+                        <span class="lang-en">Control algorithms, programming, and artificial intelligence that
+                            manage the system.</span>
+                        <span class="lang-ar">خوارزميات التحكم، البرمجة، والذكاء الاصطناعي الذي يدير وينسق عمل
+                            المنظومة.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Academic & Regulations Section -->
+    <div class="max-w-6xl mx-auto px-4 mt-20 mb-8 text-center">
+        <h2 class="text-3xl font-bold text-charcoal dark:text-white mb-2 drop-shadow-md">
+            <span class="lang-en">Academic & Regulations</span><span class="lang-ar">الأكاديميات واللوائح</span>
+        </h2>
+        <div class="h-1 w-20 bg-forest-green mx-auto rounded-full shadow-sm"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- About Department Card -->
+            <a href="{% url 'hub:about_department' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-forest-green/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-forest-green/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        🏛️
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">About Department</span><span class="lang-ar">عن القسم</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Learn about our vision, mission, and goals.</span>
+                        <span class="lang-ar">تعرف على رؤيتنا، رسالتنا، وأهدافنا.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Academic Regulations Card -->
+            <a href="{% url 'hub:academic_regulations' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-yellow-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-yellow-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        📜
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Regulations</span><span class="lang-ar">اللوائح الأكاديمية</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Rules, grading system, and policies.</span>
+                        <span class="lang-ar">القواعد، نظام الدرجات، والسياسات.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Credit Hour System Card -->
+            <a href="{% url 'hub:credit_hour' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-indigo-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        🔢
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Credit Hour & GPA</span><span class="lang-ar">الساعات المعتمدة</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Understand how GPA is calculated.</span>
+                        <span class="lang-ar">افهم نظام الساعات وكيفية حساب المعدل.</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Educational Resources Section -->
+    <div class="max-w-6xl mx-auto px-4 mt-20 mb-8 text-center">
+        <h2 class="text-3xl font-bold text-charcoal dark:text-white mb-2 drop-shadow-md">
+            <span class="lang-en">Educational Resources</span><span class="lang-ar">المصادر التعليمية</span>
+        </h2>
+        <div class="h-1 w-20 bg-emerald-500 mx-auto rounded-full shadow-sm"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Full Study Plan Card -->
+            <a href="{% url 'hub:study_plan' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-emerald-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        📅
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Study Plan</span><span class="lang-ar">الخطة الدراسية</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Comprehensive curriculum for all levels.</span>
+                        <span class="lang-ar">المنهج الدراسي الشامل لجميع المستويات.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Basic Software Card -->
+            <a href="{% url 'hub:basic_software' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-blue-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        💻
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Basic Software</span><span class="lang-ar">برامج أساسية</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Essential tools like SolidWorks, MATLAB, and more.</span>
+                        <span class="lang-ar">الأدوات الأساسية مثل SolidWorks و MATLAB وغيرها.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Online Courses Card -->
+            <a href="{% url 'hub:online_courses' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-purple-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        🎓
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Online Courses</span><span class="lang-ar">كورسات أونلاين</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Curated resources from Coursera, EdX, and YouTube.</span>
+                        <span class="lang-ar">مصادر مختارة من Coursera و EdX ويوتيوب.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Engineering Terminology Card -->
+            <a href="{% url 'hub:engineering_terminology' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-cyan-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-cyan-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        📖
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Terminology</span><span class="lang-ar">مصطلحات هندسية</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Key mechatronics terms.</span>
+                        <span class="lang-ar">أهم المصطلحات في الهندسة والميكاترونكس.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Prerequisite Courses Card -->
+            <a href="{% url 'hub:prerequisite_courses' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-rose-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-rose-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        🔗
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Prerequisites</span><span class="lang-ar">المواد المعتمدة</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Map of subjects and their dependencies.</span>
+                        <span class="lang-ar">توضيح المواد التي تعتمد على بعضها.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Drawing Tools Card -->
+            <a href="{% url 'hub:tools' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-orange-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        📐
+                    </div>
+                    <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display']">
+                        <span class="lang-en">Drawing Tools</span><span class="lang-ar">أدوات الرسم</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium">
+                        <span class="lang-en">Required equipment for engineering.</span>
+                        <span class="lang-ar">الأدوات المطلوبة لمادة الرسم الهندسي.</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Support & Admission Section -->
+    <div class="max-w-6xl mx-auto px-4 mt-20 mb-8 text-center">
+        <h2 class="text-3xl font-bold text-charcoal dark:text-white mb-2 drop-shadow-md">
+            <span class="lang-en">Support & Admission</span><span class="lang-ar">الدعم والالتحاق</span>
+        </h2>
+        <div class="h-1 w-20 bg-pink-500 mx-auto rounded-full shadow-sm"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Registration Card -->
+            <a href="{% url 'hub:registration' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-pink-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-pink-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        📝
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display'] transition-colors duration-300">
+                        <span class="lang-en">Registration</span><span class="lang-ar">التقديم والأوراق</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium transition-colors duration-300">
+                        <span class="lang-en">Required documents for admission.</span>
+                        <span class="lang-ar">المستندات المطلوبة للالتحاق بالكلية.</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Time Management Card -->
+            <a href="{% url 'hub:time_management' %}"
+                class="group relative overflow-hidden rounded-[2.5rem] bg-white/80 dark:bg-white/10 border border-gray-200 dark:border-white/10 hover:border-teal-400/50 hover:bg-white/50 dark:hover:bg-white/15 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <div class="p-8 relative z-10">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-teal-500/20 flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                        ⏳
+                    </div>
+                    <h3
+                        class="text-2xl font-bold text-charcoal dark:text-white mb-2 font-['Playfair_Display'] transition-colors duration-300">
+                        <span class="lang-en">Time Management</span><span class="lang-ar">إدارة الوقت</span>
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm font-medium transition-colors duration-300">
+                        <span class="lang-en">Tips for academic balance.</span>
+                        <span class="lang-ar">نصائح لتحقيق التوازن وإدارة الوقت.</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

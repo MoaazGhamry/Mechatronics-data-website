@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registration Documents - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-3xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">Application Documents</span>
+                <span class="lang-ar">الأوراق المطلوبة للتقديم</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">Checklist of required documents for new student registration.</span>
+                <span class="lang-ar">قائمة بالمستندات المطلوبة لتسجيل الطلاب الجدد بالكلية.</span>
+            </p>
+        </div>
+
+        <!-- Documents List -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <i class="fas fa-file-alt mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                <span class="lang-en">Required Documents</span>
+                <span class="lang-ar">المستندات المطلوبة</span>
+            </h2>
+            <ul class="space-y-4">
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">1</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Original High School Certificate or equivalent (Stamped).</span>
+                        <span class="lang-ar">أصل شهادة الثانوية العامة أو ما يعادلها (معتمدة ومختومة).</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">2</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Computerized Birth Certificate (Original).</span>
+                        <span class="lang-ar">أصل شهادة الميلاد المميكنة (كمبيوتر) حديثة.</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">3</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">6 Recent Personal Photos (4x6, White Background).</span>
+                        <span class="lang-ar">عدد 6 صور شخصية حديثة مقاس 4×6 بخلفية بيضاء.</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">4</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Copy of Student National ID (Valid).</span>
+                        <span class="lang-ar">صورة بطاقة الرقم القومي للطالب (سارية).</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">5</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Copy of Guardian's National ID.</span>
+                        <span class="lang-ar">صورة بطاقة ولي الأمر (للطلبة القصر أو القائم بالسداد).</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">6</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Military Form 2 (Namozag 2 Gond) for males.</span>
+                        <span class="lang-ar">نموذج 2 جند (للطلاب الذكور).</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">7</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Military Form 6 or 7 (Namozag 6/7 Gond) for males over 18.</span>
+                        <span class="lang-ar">نموذج 6 جند أو 7 جند (لمن أتم 18 عامًا من الذكور).</span>
+                    </span>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-white/5 p-4 rounded-xl transition hover:shadow-sm">
+                    <span
+                        class="flex-shrink-0 w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-500 flex items-center justify-center text-white text-sm font-bold mr-4 rtl:ml-4 mt-0.5">8</span>
+                    <span class="text-gray-700 dark:text-gray-200 text-lg">
+                        <span class="lang-en">Tuition Fees Payment Receipt.</span>
+                        <span class="lang-ar">إيصال سداد المصروفات الدراسية (القسط الأول).</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Important Notes -->
+        <div
+            class="bg-yellow-50 dark:bg-yellow-900/10 rounded-2xl shadow-lg p-8 border border-yellow-200 dark:border-yellow-700/30">
+            <h2 class="text-2xl font-bold text-yellow-800 dark:text-yellow-400 mb-6 flex items-center">
+                <i class="fas fa-exclamation-circle mr-3 rtl:ml-3"></i>
+                <span class="lang-en">Important Notes</span>
+                <span class="lang-ar">ملاحظات هامة</span>
+            </h2>
+            <ul class="space-y-3 marker:text-yellow-600 dark:marker:text-yellow-500">
+                <li class="flex items-start">
+                    <span class="text-yellow-600 dark:text-yellow-500 mr-2 rtl:ml-2 mt-1">•</span>
+                    <span class="text-gray-800 dark:text-gray-300">
+                        <span class="lang-en"><strong>University Requirements:</strong> Additional documents might be
+                            requested based on the program. Check official website.</span>
+                        <span class="lang-ar"><strong>قد تطلب الجامعة</strong> مستندات إضافية حسب البرنامج، يُرجى مراجعة
+                            الموقع الرسمي.</span>
+                    </span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-yellow-600 dark:text-yellow-500 mr-2 rtl:ml-2 mt-1">•</span>
+                    <span class="text-gray-800 dark:text-gray-300">
+                        <span class="lang-en"><strong>Accuracy:</strong> Ensure all data in the application form is
+                            correct and uploaded photos are clear.</span>
+                        <span class="lang-ar"><strong>تأكد</strong> من صحة البيانات في استمارة التقديم، ورفع صورة واضحة
+                            من شهادة الثانوية.</span>
+                    </span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-yellow-600 dark:text-yellow-500 mr-2 rtl:ml-2 mt-1">•</span>
+                    <span class="text-gray-800 dark:text-gray-300">
+                        <span class="lang-en"><strong>Online Registration:</strong> Application is done online through
+                            the university portal.</span>
+                        <span class="lang-ar"><strong>يتم التسجيل</strong> أونلاين عبر موقع الجامعة الرسمي.</span>
+                    </span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-yellow-600 dark:text-yellow-500 mr-2 rtl:ml-2 mt-1">•</span>
+                    <span class="text-gray-800 dark:text-gray-300">
+                        <span class="lang-en"><strong>Processing:</strong> After deadline, the university reviews data
+                            and performs internal coordination.</span>
+                        <span class="lang-ar"><strong>بعد إغلاق التقديم</strong>، تراجع الجامعة البيانات وتقوم بالتنسيق
+                            الداخلي.</span>
+                    </span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-yellow-600 dark:text-yellow-500 mr-2 rtl:ml-2 mt-1">•</span>
+                    <span class="text-gray-800 dark:text-gray-300">
+                        <span class="lang-en"><strong>Placement:</strong> Upon acceptance, you receive the admission
+                            file (Application, Declarations, etc.).</span>
+                        <span class="lang-ar"><strong>تُسلم الجامعة</strong> للطالب ملف التقديم (طلب الالتحاق، إقرار صحة
+                            المستندات، استمارة الرغبات) عند القبول.</span>
+                    </span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-yellow-600 dark:text-yellow-500 mr-2 rtl:ml-2 mt-1">•</span>
+                    <span class="text-gray-800 dark:text-gray-300">
+                        <span class="lang-en"><strong>Confirmation:</strong> You must attend within 48 hours of initial
+                            acceptance to pay first installment and finalize procedures.</span>
+                        <span class="lang-ar"><strong>يجب الحضور</strong> خلال 48 ساعة من القبول المبدئي لدفع القسط
+                            الأول واستكمال الإجراءات.</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-12 text-center">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}<span class="lang-en">Mechatronics Hub - Navigation</span><span class="lang-ar">بوابة الميكاترونكس -
+    التصفح</span>{% endblock %}
+
+{% block extra_style %}
+.slider-container {
+scroll-behavior: smooth;
+-ms-overflow-style: none;
+scrollbar-width: none;
+}
+.slider-container::-webkit-scrollbar {
+display: none;
+}
+.level-card {
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+{% endblock %}
+
+{% block main_padding %}{% endblock %}
+
+{% block content %}
+<main
+    class="min-h-screen flex flex-col items-center justify-start px-4 pt-32 pb-12 relative overflow-hidden transition-colors">
+
+    <div class="text-center mb-16 relative z-10 max-w-2xl mx-auto">
+        <span
+            class="inline-block py-1 px-3 rounded-full bg-forest-green/10 dark:bg-emerald-500/10 text-forest-green dark:text-emerald-400 text-xs font-bold tracking-widest uppercase mb-4 border border-forest-green/20 dark:border-emerald-500/20">
+            <span class="lang-en">Student Portal</span><span class="lang-ar">بوابة الطالب</span>
+        </span>
+        <h2 class="text-4xl md:text-6xl font-black text-charcoal dark:text-off-white tracking-tight mb-4">
+            <span class="lang-en">Select Your <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-forest-green to-emerald-500">Journey</span></span>
+            <span class="lang-ar">اختر <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-forest-green to-emerald-500">مسارك</span></span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 text-lg">
+            <span class="lang-en">Access your comprehensive learning materials, lecture archives, and grading
+                systems.</span>
+            <span class="lang-ar">وصول شامل للمواد التعليمية ومحفوظات المحاضرات.</span>
+        </p>
+    </div>
+
+    <!-- Vibrant Grid -->
+    <div class="w-full max-w-[95rem] relative z-10 px-4">
+        <!-- 5-column grid for XL screens -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {% for level in levels %}
+            <a href="{% url 'hub:level_detail' level.level_id %}"
+                class="group relative flex flex-col h-[420px] rounded-[32px] overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl shadow-xl">
+
+                <!-- Card Background Gradient -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-charcoal to-midnight dark:from-gray-900 dark:to-black group-hover:from-forest-green group-hover:to-emerald-800 transition-colors duration-500">
+                </div>
+
+                <!-- Noise Texture Overlay -->
+                <div
+                    class="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay">
+                </div>
+
+                <!-- Top Section: Level Info -->
+                <div class="relative z-10 p-8 pb-4 h-1/2 flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg">
+                            {% if level.level_id == '000' %}
+                            <i class="fa-solid fa-layer-group text-2xl"></i>
+                            {% endif %}
+                            {% if level.level_id == '100' %}
+                            <i class="fa-solid fa-cogs text-2xl"></i>
+                            {% endif %}
+                            {% if level.level_id == '200' %}
+                            <i class="fa-solid fa-microchip text-2xl"></i>
+                            {% endif %}
+                            {% if level.level_id == '300' %}
+                            <i class="fa-solid fa-robot text-2xl"></i>
+                            {% endif %}
+                            {% if level.level_id == '400' %}
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                            {% endif %}
+                        </div>
+                        <span
+                            class="text-white/40 font-black text-5xl tracking-tighter opacity-50 group-hover:opacity-100 transition-opacity">
+                            {{ level.level_id|slice:":1" }}<span class="text-3xl">{{ level.level_id|slice:"1:" }}</span>
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-charcoal dark:text-white mb-1">
+                            {% if level.level_id == '000' %}<span class="lang-en">Foundation</span><span
+                                class="lang-ar">إعدادي</span>{% endif %}
+                            {% if level.level_id == '100' %}<span class="lang-en">Sophomore</span><span
+                                class="lang-ar">الفرقة الأولى</span>{% endif %}
+                            {% if level.level_id == '200' %}<span class="lang-en">Junior</span><span
+                                class="lang-ar">الفرقة الثانية</span>{% endif %}
+                            {% if level.level_id == '300' %}<span class="lang-en">Senior</span><span
+                                class="lang-ar">الفرقة الثالثة</span>{% endif %}
+                            {% if level.level_id == '400' %}<span class="lang-en">Graduation</span><span
+                                class="lang-ar">الفرقة الرابعة</span>{% endif %}
+                        </h3>
+                        <p class="text-white/70 text-sm font-medium"><span class="lang-en">Academic Year
+                                2024-2025</span><span class="lang-ar">العام الأكاديمي 2024-2025</span></p>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: Materials Preview (The "Inside") -->
+                <div
+                    class="relative z-10 h-1/2 bg-white dark:bg-charcoal/90 backdrop-blur-xl border-t border-white/10 p-6 flex flex-col justify-between group-hover:bg-white/95 dark:group-hover:bg-charcoal/95 transition-colors">
+
+                    <!-- Materials List -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-500">
+                                <i class="fa-solid fa-book-open text-xs"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-bold uppercase tracking-wide text-gray-400">
+                                    <span class="lang-en">Curriculum</span><span class="lang-ar">المنهج الدراسي</span>
+                                </p>
+                                <p class="text-sm font-bold">{{ level.course_count }} <span class="lang-en">Core
+                                        Courses</span><span class="lang-ar">مواد أساسية</span></p>
+                                <p class="text-[10px] text-gray-500 mt-1 line-clamp-1 leading-tight">
+                                    {% for s in level.preview_subjects %}{{ s.name }} <span class="text-gray-400">({{
+                                        s.file_count }})</span>{% if not forloop.last %}, {% endif %}{% endfor %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <div
+                                class="w-8 h-8 rounded-full bg-purple-50 dark:bg-purple-900/30 flex items-center justify-center text-purple-500">
+                                <i class="fa-solid fa-video text-xs"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-bold uppercase tracking-wide text-gray-400">
+                                    <span class="lang-en">Library</span><span class="lang-ar">المكتبة</span>
+                                </p>
+                                <p class="text-sm font-bold">{{ level.lecture_count }} <span class="lang-en">Lecture
+                                        Files</span><span class="lang-ar">ملفات المحاضرات</span></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-gray-600 dark:text-gray-300">
+                            <div
+                                class="w-8 h-8 rounded-full bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-500">
+                                <i class="fa-solid fa-file-pen text-xs"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-bold uppercase tracking-wide text-gray-400">
+                                    <span class="lang-en">Assignments</span><span class="lang-ar">التكليفات</span>
+                                </p>
+                                <p class="text-sm font-bold">{{ level.assignment_count }} <span
+                                        class="lang-en">Sheets/Tasks</span><span class="lang-ar">شيتات / مهام</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div
+                        class="mt-4 pt-4 border-t border-gray-100 dark:border-white/10 flex items-center justify-between group/link">
+                        <span class="text-sm font-bold text-forest-green dark:text-emerald-400">
+                            <span class="lang-en">Enter Dashboard</span><span class="lang-ar">ادخل اللوحة</span>
+                        </span>
+                        <i
+                            class="fa-solid fa-arrow-right-long text-forest-green dark:text-emerald-400 transform group-hover/link:translate-x-2 transition-transform"></i>
+                    </div>
+
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

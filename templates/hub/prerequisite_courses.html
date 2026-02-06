@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Prerequisite Courses - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50/50 dark:bg-charcoal/20 py-12 px-4 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-black text-charcoal dark:text-white font-['Playfair_Display'] mb-4 tracking-tight">
+                <span class="lang-en">Prerequisite Course Map</span><span class="lang-ar">خارطة المتطلبات
+                    الدراسية</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-rose-500 dark:bg-rose-400 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                <span class="lang-en">Understand the dependencies between subjects and plan your academic path
+                    effectively.</span>
+                <span class="lang-ar">افهم الترابط بين المواد الدراسية والمتطلبات السابقة لكل مادة لتخطيط مسارك
+                    الأكاديمي بنجاح.</span>
+            </p>
+        </div>
+
+        <!-- Prerequisite Table Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-[2.5rem] shadow-xl border border-gray-100 dark:border-white/10 overflow-hidden mb-12">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left rtl:text-right border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="py-6 px-8 text-sm font-bold uppercase tracking-wider">
+                                <span class="lang-en">Level</span><span class="lang-ar">المستوى</span>
+                            </th>
+                            <th class="py-6 px-8 text-sm font-bold uppercase tracking-wider">
+                                <span class="lang-en">Subject</span><span class="lang-ar">المادة</span>
+                            </th>
+                            <th class="py-6 px-8 text-sm font-bold uppercase tracking-wider">
+                                <span class="lang-en">Unlocks / Prerequisite for</span><span class="lang-ar">تفتح /
+                                    متطلب لـ</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 dark:divide-white/5">
+                        <!-- Level 0 -->
+                        <tr class="bg-forest-green/5 dark:bg-emerald-400/5">
+                            <td colspan="3"
+                                class="py-4 px-8 text-center font-bold text-forest-green dark:text-emerald-400">
+                                <span class="lang-en">Level 0</span><span class="lang-ar">المستوى 0</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">0</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Engineering Drawing & Projection 1</span><span class="lang-ar">رسم
+                                    هندسي وإسقاط 1</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Engineering Drawing & Projection 2</span><span class="lang-ar">رسم
+                                    هندسي وإسقاط 2</span>
+                            </td>
+                        </tr>
+
+                        <!-- Level 100 -->
+                        <tr class="bg-forest-green/5 dark:bg-emerald-400/5">
+                            <td colspan="3"
+                                class="py-4 px-8 text-center font-bold text-forest-green dark:text-emerald-400">
+                                <span class="lang-en">Level 100</span><span class="lang-ar">المستوى 100</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">100</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Mathematics 2</span><span class="lang-ar">رياضيات 2</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Mathematics 3</span><span class="lang-ar">رياضيات 3</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">100</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Mechanics 2</span><span class="lang-ar">ميكانيكا 2</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Mechanics of Machines</span><span class="lang-ar">ميكانيكا
+                                    الآلات</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">100</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Computer Applications</span><span class="lang-ar">تطبيقات
+                                    الحاسب</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Programming Basics, Numerical Methods</span><span
+                                    class="lang-ar">أساسيات البرمجة، طرق عددية</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">100</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Engineering Drawing & Projection 2</span><span class="lang-ar">رسم
+                                    هندسي وإسقاط 2</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Machine Drawing</span><span class="lang-ar">رسم ماكينات</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">100</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Engineering Materials</span><span class="lang-ar">مواد
+                                    هندسية</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Stress Analysis</span><span class="lang-ar">تحليل إجهادات</span>
+                            </td>
+                        </tr>
+
+                        <!-- Level 200 -->
+                        <tr class="bg-forest-green/5 dark:bg-emerald-400/5">
+                            <td colspan="3"
+                                class="py-4 px-8 text-center font-bold text-forest-green dark:text-emerald-400">
+                                <span class="lang-en">Level 200</span><span class="lang-ar">المستوى 200</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">200</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Mechanics of Machines</span><span class="lang-ar">ميكانيكا
+                                    الآلات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Fluid Mechanics, Theory of Machines</span><span
+                                    class="lang-ar">ميكانيكا الموائع، نظرية الآلات</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">200</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Production Technology</span><span class="lang-ar">تكنولوجيا
+                                    الإنتاج</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Manufacturing Processes</span><span class="lang-ar">عمليات
+                                    التصنيع</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">200</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Electronics Engineering</span><span class="lang-ar">هندسة
+                                    الإلكترونيات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Digital Logic Design, Electronic Circuits</span><span
+                                    class="lang-ar">تصميم منطق رقمي، دوائر إلكترونية</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">200</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Machine Drawing + Stress Analysis</span><span class="lang-ar">رسم
+                                    ماكينات + تحليل إجهادات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Machine Elements Design</span><span class="lang-ar">تصميم عناصر
+                                    الماكينات</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">200</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Mathematics 3 + Mechanics of Machines</span><span
+                                    class="lang-ar">رياضيات 3 + ميكانيكا الآلات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Mechanical Vibrations</span><span class="lang-ar">اهتزازات
+                                    ميكانيكية</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">200</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Thermodynamics</span><span class="lang-ar">ديناميكا حرارية</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Heat & Mass Transfer</span><span class="lang-ar">انتقال حرارة
+                                    وكتلة</span>
+                            </td>
+                        </tr>
+
+                        <!-- Level 300 -->
+                        <tr class="bg-forest-green/5 dark:bg-emerald-400/5">
+                            <td colspan="3"
+                                class="py-4 px-8 text-center font-bold text-forest-green dark:text-emerald-400">
+                                <span class="lang-en">Level 300</span><span class="lang-ar">المستوى 300</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">300</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Electronics Engineering + Machine Elements Design</span><span
+                                    class="lang-ar">هندسة إلكترونيات + تصميم عناصر ماكينات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Mechatronics Systems Design</span><span class="lang-ar">تصميم نظم
+                                    ميكاترونيكس</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">300</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Fluid Mechanics</span><span class="lang-ar">ميكانيكا
+                                    الموائع</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Measurement and Instrumentation</span><span class="lang-ar">قياسات
+                                    وأجهزة</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">300</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Machine Elements Design</span><span class="lang-ar">تصميم عناصر
+                                    الماكينات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Mechanical Systems Design</span><span class="lang-ar">تصميم نظم
+                                    ميكانيكية</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">300</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Mechanical Vibrations</span><span class="lang-ar">اهتزازات
+                                    ميكانيكية</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Control Theory</span><span class="lang-ar">نظرية التحكم</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">300</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Theory of Machines</span><span class="lang-ar">نظرية الآلات</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Robotics 1</span><span class="lang-ar">روبوتات 1</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">300</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Mechatronics Systems Design</span><span class="lang-ar">تصميم نظم
+                                    ميكاترونيكس</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Motors and Actuators, Modeling and Simulation</span><span
+                                    class="lang-ar">محركات ومشغلات، نمذجة ومحاكاة</span>
+                            </td>
+                        </tr>
+
+                        <!-- Level 400 -->
+                        <tr class="bg-forest-green/5 dark:bg-emerald-400/5">
+                            <td colspan="3"
+                                class="py-4 px-8 text-center font-bold text-forest-green dark:text-emerald-400">
+                                <span class="lang-en">Level 400</span><span class="lang-ar">المستوى 400</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">400</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Modeling and Simulation</span><span class="lang-ar">نمذجة
+                                    ومحاكاة</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Simulation Technology</span><span class="lang-ar">تكنولوجيا
+                                    المحاكاة</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">400</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Robotics 1</span><span class="lang-ar">روبوتات 1</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Robotics 2</span><span class="lang-ar">روبوتات 2</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                            <td class="py-5 px-8 font-bold text-gray-700 dark:text-gray-300">400</td>
+                            <td class="py-5 px-8 text-gray-900 dark:text-white font-medium">
+                                <span class="lang-en">Graduation Project 1</span><span class="lang-ar">مشروع تخرج
+                                    1</span>
+                            </td>
+                            <td class="py-5 px-8 text-gray-600 dark:text-gray-400">
+                                <span class="lang-en">Graduation Project 2</span><span class="lang-ar">مشروع تخرج
+                                    2</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-12">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-full text-gray-600 dark:text-gray-300 font-bold hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-lg">
+                <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="lang-en">Back to Home</span><span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

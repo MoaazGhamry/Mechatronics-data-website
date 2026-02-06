@@ -1,0 +1,445 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Support Dashboard{% endblock %}
+
+{% block content %}
+<main
+    class="min-h-screen pt-24 pb-4 px-2 md:px-4 flex flex-col items-center bg-gray-50 dark:bg-midnight transition-colors">
+
+    <div
+        class="w-full max-w-7xl h-[calc(100vh-8rem)] bg-white dark:bg-charcoal rounded-[32px] shadow-2xl overflow-hidden flex relative border border-gray-100 dark:border-white/5">
+
+        <!-- Sidebar: Active Sessions (Always visible on Desktop, visible on Mobile when chat closed) -->
+        <div id="sessions-sidebar"
+            class="w-full md:w-1/3 border-r border-gray-100 dark:border-white/5 flex flex-col bg-gray-50/50 dark:bg-black/20 h-full">
+            <div class="p-6 border-b border-gray-100 dark:border-white/5">
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-1">Inbox</h2>
+                <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">{{ sessions|length }} Active
+                    Conversations</p>
+            </div>
+
+            <div class="flex-1 overflow-y-auto custom-scrollbar" id="chat-sessions-list">
+                {% for session in sessions %}
+                <div onclick="selectSession('{{ session.session_token }}')"
+                    class="p-4 border-b border-gray-100 dark:border-white/5 cursor-pointer hover:bg-white dark:hover:bg-white/5 transition-colors group relative session-item border-l-4 border-transparent"
+                    id="session-item-{{ session.session_token }}">
+                    <div class="flex flex-col mb-1">
+                        <!-- Header Line: Badge + Time -->
+                        <div class="flex justify-between items-center mb-1">
+                            {% if session.user %}
+                            <span
+                                class="px-2 py-0.5 rounded-md bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 text-[10px] font-bold uppercase tracking-widest">
+                                Logged In
+                            </span>
+                            {% else %}
+                            <span
+                                class="px-2 py-0.5 rounded-md bg-gray-100 text-gray-500 dark:bg-gray-700/50 dark:text-gray-400 text-[10px] font-bold uppercase tracking-widest">
+                                Guest
+                            </span>
+                            {% endif %}
+                            <span class="text-[10px] text-gray-400">{{ session.updated_at|timesince }} ago</span>
+                        </div>
+
+                        <!-- Name -->
+                        <h3 class="font-bold text-gray-900 dark:text-white truncate text-sm">
+                            {% if session.user %}
+                            {{ session.user.get_full_name|default:session.user.username }}
+                            {% else %}
+                            {{ session.guest_name|default:"Visitor" }}
+                            {% endif %}
+                        </h3>
+                    </div>
+
+                    <!-- Subtext (Email or Detail) -->
+                    <p class="text-xs text-gray-500 truncate mt-1">
+                        {% if session.user %}
+                        {{ session.user.email }}
+                        {% else %}
+                        {{ session.guest_email|default:"No email provided" }}
+                        {% endif %}
+                    </p>
+
+                    {% if session.unread_for_admin > 0 %}
+                    <span class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full"></span>
+                    {% endif %}
+                </div>
+                {% empty %}
+                <div class="p-8 text-center text-gray-400">
+                    <i class="fa-solid fa-inbox text-4xl mb-4 opacity-20"></i>
+                    <p class="text-sm">No active chats.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Main Chat Area (Slide-over drawer on Mobile, Flex on Desktop) -->
+        <div id="main-chat-area"
+            class="absolute inset-0 z-20 bg-white dark:bg-charcoal w-full h-full transform translate-x-full transition-transform duration-300 md:static md:translate-x-0 md:flex-1 md:flex md:flex-col md:relative">
+
+            <!-- Empty State (Desktop Only) -->
+            <div id="no-chat-selected"
+                class="absolute inset-0 flex flex-col items-center justify-center text-gray-300 dark:text-gray-600 hidden md:flex">
+                <i class="fa-regular fa-comments text-6xl mb-4"></i>
+                <p class="text-lg font-medium">Select a conversation to start chatting</p>
+            </div>
+
+            <!-- Active Chat Interface -->
+            <div id="active-chat-interface" class="hidden flex-col h-full w-full">
+                <!-- Header -->
+                <div
+                    class="p-4 border-b border-gray-100 dark:border-white/5 flex justify-between items-center bg-white dark:bg-charcoal z-10 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <!-- Mobile Back Button -->
+                        <button onclick="closeChatDrawer()"
+                            class="md:hidden w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-white/10 text-gray-500 dark:text-gray-400 transition-colors">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+
+                        <div>
+                            <h3 id="current-user-name" class="font-bold text-lg text-gray-900 dark:text-white">User Name
+                            </h3>
+                            <span id="current-user-status"
+                                class="text-xs text-green-500 font-bold uppercase tracking-widest">Active Now</span>
+                        </div>
+                    </div>
+                    <button onclick="endChat()"
+                        class="px-4 py-2 bg-red-50 text-red-500 hover:bg-red-100 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors">
+                        End Conversation
+                    </button>
+                </div>
+
+                <!-- Messages -->
+                <div id="admin-chat-messages"
+                    class="flex-1 p-6 overflow-y-auto space-y-4 bg-gray-50/30 dark:bg-black/20 custom-scrollbar">
+                    <!-- JS will populate -->
+                </div>
+
+                <!-- Input -->
+                <div
+                    class="p-4 border-t border-gray-100 dark:border-white/5 bg-white dark:bg-charcoal shrink-0 relative z-20">
+                    <form onsubmit="sendAdminMessage(event)" class="relative flex gap-4 items-center">
+                        <input type="file" id="admin-file-input" class="hidden" onchange="handleAdminFileSelect(this)">
+                        <button type="button" onclick="document.getElementById('admin-file-input').click()"
+                            class="p-3 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors shrink-0">
+                            <i class="fa-solid fa-paperclip"></i>
+                        </button>
+
+                        <!-- Preview -->
+                        <div id="admin-file-preview"
+                            class="hidden absolute bottom-full left-0 mb-4 bg-white dark:bg-charcoal border border-gray-200 dark:border-white/10 p-2 rounded-lg shadow-lg flex items-center gap-2 max-w-xs z-50">
+                            <i class="fa-solid fa-file text-gray-500"></i>
+                            <span id="admin-preview-name"
+                                class="text-xs truncate max-w-[150px] dark:text-white">file.png</span>
+                            <button type="button" onclick="clearAdminFile()"
+                                class="text-red-500 hover:text-red-700 ml-2">
+                                <i class="fa-solid fa-times"></i>
+                            </button>
+                        </div>
+
+                        <input type="text" id="admin-message-input" placeholder="Type your reply..." autocomplete="off"
+                            class="flex-1 px-6 py-3 bg-gray-100 dark:bg-white/5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-forest-green dark:text-white relative z-10">
+                        <button type="submit"
+                            class="w-12 h-12 bg-forest-green text-white rounded-full flex items-center justify-center hover:bg-emerald-600 transition-colors shadow-lg shrink-0">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    let currentSessionId = null;
+    let pollInterval = null;
+    let lastMessageId = 0;
+
+    function selectSession(sessionId) {
+        currentSessionId = sessionId;
+        lastMessageId = 0;
+
+        // UI Logic
+        const chatArea = document.getElementById('main-chat-area');
+        const emptyState = document.getElementById('no-chat-selected');
+        const interface = document.getElementById('active-chat-interface');
+
+        // Mobile: Slide in drawer
+        chatArea.classList.remove('translate-x-full');
+
+        // Show interface, hide empty state
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('md:flex'); // Critical: Remove responsive flex to allow hidden to work
+        interface.classList.remove('hidden');
+        interface.classList.add('flex');
+
+        // Highlight sidebar item
+        document.querySelectorAll('.session-item').forEach(el => el.classList.remove('bg-forest-green/5', 'border-forest-green'));
+        document.querySelectorAll('.session-item').forEach(el => el.classList.add('border-transparent'));
+
+        const activeItem = document.getElementById(`session-item-${sessionId}`);
+        if (activeItem) {
+            // Update Headers
+            const nameEl = activeItem.querySelector('h3');
+            const badgeEl = activeItem.querySelector('span.uppercase');
+            const name = nameEl ? nameEl.innerText.trim() : 'Unknown';
+            const statusText = badgeEl ? badgeEl.innerText.trim() : 'Active';
+            const isGuest = statusText === 'GUEST';
+
+            document.getElementById('current-user-name').innerText = name;
+            const statusEl = document.getElementById('current-user-status');
+            statusEl.innerText = statusText;
+
+            statusEl.className = isGuest
+                ? "text-xs text-gray-500 font-bold uppercase tracking-widest"
+                : "text-xs text-green-500 font-bold uppercase tracking-widest";
+
+            activeItem.classList.remove('border-transparent');
+            activeItem.classList.add('bg-forest-green/5', 'border-forest-green');
+        }
+
+        document.getElementById('admin-chat-messages').innerHTML = '';
+
+        // Mark as read
+        fetch("{% url 'hub:chat_mark_read' %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ session_id: sessionId })
+        }).then(() => {
+            const activeItem = document.getElementById(`session-item-${sessionId}`);
+            if (activeItem && activeItem.querySelector('.bg-red-500')) {
+                activeItem.querySelector('.bg-red-500').remove();
+            }
+        });
+
+        startPolling();
+    }
+
+    function closeChatDrawer() {
+        // Mobile: Slide out drawer
+        document.getElementById('main-chat-area').classList.add('translate-x-full');
+
+        // Optional: Reset selection if you want, but strictly not necessary for drawer behavior
+        // currentSessionId = null; 
+    }
+
+    function startPolling() {
+        if (pollInterval) clearInterval(pollInterval);
+        fetchMessages();
+        pollInterval = setInterval(fetchMessages, 3000);
+
+        // Also poll for sidebar sessions
+        if (!sessionPollInterval) {
+            sessionPollInterval = setInterval(fetchSessions, 5000);
+        }
+    }
+
+    let sessionPollInterval = null;
+    // Start session polling immediately
+    sessionPollInterval = setInterval(fetchSessions, 5000);
+
+    function fetchSessions() {
+        fetch("{% url 'hub:chat_sessions' %}")
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) updateSidebar(data.sessions);
+            });
+    }
+
+    function updateSidebar(sessions) {
+        const list = document.getElementById('chat-sessions-list'); // Robust selector
+        // Note: Re-rendering full list might be jarring if user is clicking.
+        // For now, simple diffing or just checking if counts match?
+        // Let's iterate and update/append.
+
+        // Simple strategy: Clear and Re-render (but safeguard active selection)
+        // Ideally we check if list needs update.
+
+        const existingIds = Array.from(list.querySelectorAll('.session-item')).map(el => el.id.replace('session-item-', ''));
+        const newIds = sessions.map(s => s.id.toString());
+
+        // If lists are identical in ID and unread count, skip
+        // For simplicity, let's just re-render but preserve active state.
+
+        let newContent = '';
+        sessions.forEach(s => {
+            const isActive = currentSessionId && currentSessionId.toString() === s.id.toString();
+            // Re-construct HTML (Must match existing template structure!)
+            // Note: This duplicates template code. In production, use client-side template or Vue/React.
+            // I will inject the HTML construction here carefully.
+
+            const badgeClass = s.status === 'LOGGED IN'
+                ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400'
+                : 'bg-gray-100 text-gray-500 dark:bg-gray-700/50 dark:text-gray-400';
+
+            const activeClass = isActive ? 'bg-forest-green/5 border-forest-green' : 'border-transparent';
+
+            newContent += `
+                <div onclick="selectSession('${s.id}')"
+                    class="p-4 border-b border-gray-100 dark:border-white/5 cursor-pointer hover:bg-white dark:hover:bg-white/5 transition-colors group relative session-item border-l-4 ${activeClass}"
+                    id="session-item-${s.id}">
+                    <div class="flex flex-col mb-1">
+                        <div class="flex justify-between items-center mb-1">
+                                <span class="px-2 py-0.5 rounded-md ${badgeClass} text-[10px] font-bold uppercase tracking-widest">
+                                    ${s.status}
+                                </span>
+                            <span class="text-[10px] text-gray-400">${s.updated_at}</span>
+                        </div>
+
+                        <h3 class="font-bold text-gray-900 dark:text-white truncate text-sm">
+                            ${s.name}
+                        </h3>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500 truncate mt-1">
+                        ${s.email}
+                    </p>
+
+                    ${s.unread > 0 ? '<span class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full"></span>' : ''}
+                </div>
+            `;
+        });
+
+        // Only replace if HTML is significantly different to avoid scroll jumping?
+        // Or specific check.
+        // For now, replacing innerHTML is the most reliable way to show new chats.
+        // To prevent sidebar scroll reset, we can save scrollTop.
+        const scrollPos = list.scrollTop;
+        if (list.innerHTML.trim() !== newContent.trim()) {
+            list.innerHTML = newContent;
+            list.scrollTop = scrollPos;
+        }
+    }
+
+    function fetchMessages() {
+        if (!currentSessionId) return;
+
+        fetch(`{% url 'hub:chat_get' %}?session_id=${currentSessionId}&last_id=${lastMessageId}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.messages.length > 0) {
+                    data.messages.forEach(msg => {
+                        appendMessage(msg);
+                        lastMessageId = Math.max(lastMessageId, msg.id);
+                    });
+                }
+            });
+    }
+
+    function appendMessage(msg) {
+        const container = document.getElementById('admin-chat-messages');
+        const isSupport = msg.sender === 'support';
+
+        const div = document.createElement('div');
+        div.className = `flex flex-col space-y-1 ${isSupport ? 'items-end' : 'items-start'}`;
+
+        let contentHtml = '';
+
+        // Check for file
+        if (msg.has_file) {
+            const isImage = msg.file_name.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+            if (isImage) {
+                contentHtml += `<div class="mb-2"><img src="${msg.file_url}" alt="Attachment" class="max-w-full rounded-lg shadow-sm max-h-48 object-cover cursor-pointer" onclick="window.open('${msg.file_url}', '_blank')"></div>`;
+            } else {
+                contentHtml += `
+                    <div class="mb-2 flex items-center p-2 bg-gray-100 dark:bg-white/10 rounded-lg group hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer" onclick="window.open('${msg.file_url}', '_blank')">
+                        <div class="mr-2 w-8 h-8 flex items-center justify-center bg-gray-200 dark:bg-white/10 rounded-full text-gray-500 dark:text-gray-300">
+                             <i class="fa-solid fa-file-arrow-down text-xs"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                             <p class="text-[10px] sm:text-xs font-bold truncate ${isSupport ? 'text-white' : 'text-gray-800 dark:text-gray-200'}">${msg.file_name}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        if (msg.message) {
+            contentHtml += `<span>${msg.message}</span>`;
+        }
+
+        div.innerHTML = `
+            <div class="${isSupport ? 'bg-forest-green text-white rounded-tr-none' : 'bg-white dark:bg-white/10 text-gray-800 dark:text-gray-200 rounded-tl-none'} px-6 py-3 rounded-2xl shadow-sm max-w-[70%] text-sm">
+                ${contentHtml}
+            </div>
+            <span class="text-[10px] text-gray-400 ${isSupport ? 'pr-2' : 'pl-2'}">
+                ${isSupport ? 'You' : 'Student'} • ${msg.created_at}
+            </span>
+        `;
+
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // Handle File Selection (Admin)
+    function handleAdminFileSelect(input) {
+        if (input.files && input.files[0]) {
+            document.getElementById('admin-file-preview').classList.remove('hidden');
+            document.getElementById('admin-preview-name').textContent = input.files[0].name;
+        }
+    }
+
+    function clearAdminFile() {
+        document.getElementById('admin-file-input').value = '';
+        document.getElementById('admin-file-preview').classList.add('hidden');
+    }
+
+    function sendAdminMessage(e) {
+        e.preventDefault();
+        const input = document.getElementById('admin-message-input');
+        const fileInput = document.getElementById('admin-file-input');
+        const text = input.value.trim();
+        const file = fileInput.files[0];
+
+        if ((!text && !file) || !currentSessionId) return;
+
+        // Optimistic UI REMOVED to prevent duplication and sync issues
+        // The file upload takes time anyway, so better to wait for server response via polling or immediate fetch.
+        // if (text && !file) {
+        //    appendMessage({ sender: 'support', message: text, created_at: 'Now' });
+        // }
+
+        // Prepare FormData
+        const formData = new FormData();
+        formData.append('session_id', currentSessionId);
+        formData.append('sender', 'support');
+        if (text) formData.append('message', text);
+        if (file) formData.append('file', file);
+
+        // Clear input
+        input.value = '';
+        clearAdminFile();
+
+        fetch("{% url 'hub:chat_send' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: formData
+        }).then(() => {
+            fetchMessages(); // Refresh to show file/confirm send
+        });
+    }
+
+    function endChat() {
+        if (!confirm('Are you sure you want to end this conversation?')) return;
+
+        fetch("{% url 'hub:chat_end' %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ session_id: currentSessionId })
+        }).then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload(); // Refresh to remove session from list
+                }
+            });
+    }
+</script>
+{% endblock %}

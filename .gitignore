@@ -1,0 +1,26 @@
+# Google credentials
+credentials.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+*.db
+media/
+staticfiles/
+
+# Env
+.env
+
+# Logs & temp
+*.log
+*.txt
+*.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
+
+

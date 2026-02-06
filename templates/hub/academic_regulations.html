@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Academic Regulations - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-4xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">Academic Regulations</span>
+                <span class="lang-ar">اللائحة الأكاديمية</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">Everything you need to know about the credit hour system, grading, and graduation
+                    requirements.</span>
+                <span class="lang-ar">كل ما تحتاج معرفته عن نظام الساعات المعتمدة، التقديرات، ومتطلبات التخرج.</span>
+            </p>
+        </div>
+
+        <!-- Introduction -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2 class="text-2xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Outfit']">
+                <span class="lang-en">Introduction</span>
+                <span class="lang-ar">مقدمة</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                <span class="lang-en">The Mechatronics Engineering program at Zagazig National University is offered
+                    under the Credit Hour System. It aims to qualify students with the knowledge and skills necessary
+                    for advanced engineering fields such as smart systems, robotics, and automatic control.</span>
+                <span class="lang-ar">برنامج هندسة الميكاترونيات بجامعة الزقازيق الأهلية يُقدَّم بنظام الساعات المعتمدة،
+                    ويهدف إلى تأهيل الطالب بالمعرفة والمهارات اللازمة للعمل في المجالات الهندسية المتقدمة، مثل الأنظمة
+                    الذكية، الروبوتات، والتحكم الآلي.</span>
+            </p>
+        </div>
+
+        <!-- Study System & Duration Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Study System -->
+            <div
+                class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-white/10">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-calendar-alt mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                    <span class="lang-en">Study System</span>
+                    <span class="lang-ar">نظام الدراسة</span>
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en"><strong>Autumn Semester:</strong> Starts 3rd week of September (14
+                                weeks).</span>
+                            <span class="lang-ar"><strong>فصل الخريف:</strong> يبدأ في الأسبوع الثالث من سبتمبر (لمدة 14
+                                أسبوعًا).</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en"><strong>Spring Semester:</strong> Starts 3rd week of February (14
+                                weeks).</span>
+                            <span class="lang-ar"><strong>فصل الربيع:</strong> يبدأ في الأسبوع الثالث من فبراير (لمدة 14
+                                أسبوعًا).</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en"><strong>Summer Semester:</strong> Starts 3rd week of June (7 intensive
+                                weeks).</span>
+                            <span class="lang-ar"><strong>فصل الصيف:</strong> يبدأ في الأسبوع الثالث من يونيو (لمدة 7
+                                أسابيع مكثفة).</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Graduation Requirements -->
+            <div
+                class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-white/10">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-user-graduate mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                    <span class="lang-en">Graduation Requirements</span>
+                    <span class="lang-ar">متطلبات التخرج</span>
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Minimum duration: 4.5 years. Maximum: 10 years.</span>
+                            <span class="lang-ar">الحد الأدنى: 4 سنوات ونصف. الحد الأقصى: 10 سنوات.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Complete <strong>165 Credit Hours</strong>.</span>
+                            <span class="lang-ar">اجتياز <strong>165 ساعة معتمدة</strong>.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Minimum GPA of <strong>2.00</strong>.</span>
+                            <span class="lang-ar">معدل تراكمي (GPA) لا يقل عن 2.00.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="w-1.5 h-1.5 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3 flex-shrink-0"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Graduation Project & Summer Training (8 weeks).</span>
+                            <span class="lang-ar">مشروع تخرج + تدريب صيفي لمدة 8 أسابيع.</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Objectives & Fields -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-forest-green/5 dark:bg-emerald-900/20 rounded-2xl p-8 border border-forest-green/10">
+                <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4">
+                    <span class="lang-en">Program Objectives</span>
+                    <span class="lang-ar">أهداف البرنامج</span>
+                </h3>
+                <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>• <span class="lang-en">Teach engineering and management fundamentals.</span><span
+                            class="lang-ar">تعليم الطالب أساسيات الهندسة والإدارة.</span></li>
+                    <li>• <span class="lang-en">Develop problem-solving and analysis skills.</span><span
+                            class="lang-ar">تنمية قدرته على تحليل المشكلات وحلها بكفاءة.</span></li>
+                    <li>• <span class="lang-en">Enhance teamwork and decision-making skills.</span><span
+                            class="lang-ar">تنمية مهارات التعاون، العمل الجماعي، واتخاذ القرار.</span></li>
+                    <li>• <span class="lang-en">Prepare for the job market or postgraduate studies.</span><span
+                            class="lang-ar">إعداده لسوق العمل أو الدراسات العليا.</span></li>
+                </ul>
+            </div>
+            <div class="bg-forest-green/5 dark:bg-emerald-900/20 rounded-2xl p-8 border border-forest-green/10">
+                <h3 class="text-xl font-bold text-forest-green dark:text-emerald-400 mb-4">
+                    <span class="lang-en">Work Fields</span>
+                    <span class="lang-ar">مجالات العمل</span>
+                </h3>
+                <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>• <span class="lang-en">Electromechanical Systems.</span><span class="lang-ar">الأنظمة
+                            الكهروميكانيكية.</span></li>
+                    <li>• <span class="lang-en">Robotics and Automation.</span><span class="lang-ar">الروبوتات
+                            والأتمتة.</span></li>
+                    <li>• <span class="lang-en">Intelligent Control Systems.</span><span class="lang-ar">أنظمة التحكم
+                            الذكي.</span></li>
+                    <li>• <span class="lang-en">Sensors, Motors, and Actuators.</span><span class="lang-ar">المستشعرات
+                            والمحركات والمشغلات.</span></li>
+                    <li>• <span class="lang-en">Contracting, Factories, Electronics Industry.</span><span
+                            class="lang-ar">شركات المقاولات والمصانع والصناعات الإلكترونية.</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Grading Distribution -->
+        <div class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 overflow-hidden">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+                <span class="lang-en">Grade Distribution per Course</span>
+                <span class="lang-ar">توزيع الدرجات لكل مقرر</span>
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg"><span class="lang-en">Item</span><span
+                                    class="lang-ar">البند</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg"><span class="lang-en">Percentage</span><span
+                                    class="lang-ar">النسبة</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 text-gray-600 dark:text-gray-300"><span class="lang-en">Semester
+                                    Work</span><span class="lang-ar">أعمال الفصل</span></td>
+                            <td class="p-4 font-bold text-forest-green dark:text-emerald-400">10%</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 text-gray-600 dark:text-gray-300"><span class="lang-en">Practical /
+                                    Oral</span><span class="lang-ar">عملي / شفهي</span></td>
+                            <td class="p-4 font-bold text-forest-green dark:text-emerald-400">20%</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+                            <td class="p-4 text-gray-600 dark:text-gray-300"><span class="lang-en">Midterm
+                                    Exam</span><span class="lang-ar">امتحان منتصف الفصل</span></td>
+                            <td class="p-4 font-bold text-forest-green dark:text-emerald-400">20%</td>
+                        </tr>
+                        <tr class="bg-forest-green/5 dark:bg-emerald-900/10">
+                            <td class="p-4 font-bold text-gray-800 dark:text-white"><span class="lang-en">Final
+                                    Exam</span><span class="lang-ar">الامتحان النهائي</span></td>
+                            <td class="p-4 font-bold text-forest-green dark:text-emerald-400">50%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div
+                class="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-xl text-center text-sm text-yellow-800 dark:text-yellow-200">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <span class="lang-en">Note: You must score at least <strong>30%</strong> in the final exam to pass.
+                    Total pass mark is 60%.</span>
+                <span class="lang-ar">ملاحظة: يجب على الطالب الحصول على <strong>30%</strong> على الأقل في الامتحان
+                    النهائي، ويعتبر ناجحًا إذا حصل على 60% أو أكثر كمجموع.</span>
+            </div>
+        </div>
+
+        <!-- Grading System Table -->
+        <div class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-8 mb-8 overflow-hidden">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+                <span class="lang-en">Grading System & GPA</span>
+                <span class="lang-ar">جدول التقديرات و GPA</span>
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse text-sm md:text-base">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-3"><span class="lang-en">Grade</span><span class="lang-ar">التقدير</span></th>
+                            <th class="p-3"><span class="lang-en">Code</span><span class="lang-ar">الرمز</span></th>
+                            <th class="p-3"><span class="lang-en">Score</span><span class="lang-ar">الدرجة</span></th>
+                            <th class="p-3"><span class="lang-en">Points</span><span class="lang-ar">النقاط</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- A+ -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">High Exc.</span><span class="lang-ar">ممتاز
+                                    مرتفع</span></td>
+                            <td class="p-3 font-bold">A+</td>
+                            <td class="p-3">97 - 100</td>
+                            <td class="p-3 font-bold text-forest-green">4.00</td>
+                        </tr>
+                        <!-- A -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">Excellent</span><span class="lang-ar">ممتاز</span>
+                            </td>
+                            <td class="p-3 font-bold">A</td>
+                            <td class="p-3">93 - 96</td>
+                            <td class="p-3 font-bold text-forest-green">4.00</td>
+                        </tr>
+                        <!-- A- -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">Exc. Low</span><span class="lang-ar">ممتاز
+                                    منخفض</span></td>
+                            <td class="p-3 font-bold">A-</td>
+                            <td class="p-3">89 - 92</td>
+                            <td class="p-3 font-bold text-forest-green">3.70</td>
+                        </tr>
+                        <!-- B+ -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">Very Good High</span><span class="lang-ar">جيد جدًا
+                                    مرتفع</span></td>
+                            <td class="p-3 font-bold">B+</td>
+                            <td class="p-3">84 - 88</td>
+                            <td class="p-3 font-bold text-forest-green">3.30</td>
+                        </tr>
+                        <!-- B -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">Very Good</span><span class="lang-ar">جيد جدًا</span>
+                            </td>
+                            <td class="p-3 font-bold">B</td>
+                            <td class="p-3">80 - 83</td>
+                            <td class="p-3 font-bold text-forest-green">3.00</td>
+                        </tr>
+                        <!-- C -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">Good</span><span class="lang-ar">جيد</span></td>
+                            <td class="p-3 font-bold">C</td>
+                            <td class="p-3">70 - 72</td>
+                            <td class="p-3 font-bold text-forest-green">2.00</td>
+                        </tr>
+                        <!-- D -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3"><span class="lang-en">Acceptable</span><span class="lang-ar">مقبول</span>
+                            </td>
+                            <td class="p-3 font-bold">D</td>
+                            <td class="p-3">60 - 63</td>
+                            <td class="p-3 font-bold text-forest-green">1.00</td>
+                        </tr>
+                        <!-- F -->
+                        <tr class="bg-red-50 dark:bg-red-900/10">
+                            <td class="p-3"><span class="lang-en">Fail</span><span class="lang-ar">راسب</span></td>
+                            <td class="p-3 font-bold text-red-600">F</td>
+                            <td class="p-3 text-red-600">&lt; 60</td>
+                            <td class="p-3 font-bold text-red-600">0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- GPA Calculation Example -->
+        <div class="bg-gray-50 dark:bg-charcoal/50 rounded-2xl p-8 border border-gray-200 dark:border-white/5">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <span class="lang-en">How to Calculate GPA?</span>
+                <span class="lang-ar">طريقة حساب المعدل التراكمي (GPA)</span>
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                <span class="lang-en">GPA = Sum of (Course Hours × Points) ÷ Total Hours.</span>
+                <span class="lang-ar">يُحسب المعدل التراكمي GPA عن طريق ضرب عدد ساعات كل مادة × نقاط التقدير الخاص بها،
+                    ثم يتم جمع كل الناتج وقسمته على مجموع عدد الساعات.</span>
+            </p>
+
+            <div class="bg-white dark:bg-charcoal p-6 rounded-xl shadow-sm border border-gray-100 dark:border-white/10">
+                <p class="font-bold text-forest-green dark:text-emerald-400 mb-2">
+                    <span class="lang-en">Example:</span><span class="lang-ar">مثال:</span>
+                </p>
+                <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1 font-mono">
+                    <li>Subject 1 (3 hrs) × A (4.0) = 12.00</li>
+                    <li>Subject 2 (3 hrs) × B (3.0) = 9.00</li>
+                    <li>Subject 3 (2 hrs) × B (3.0) = 6.00</li>
+                    <li>Subject 4 (3 hrs) × C (2.0) = 6.00</li>
+                </ul>
+                <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <p class="font-bold text-gray-900 dark:text-white">
+                        Sum = 33.00 &emsp; Hours = 11
+                    </p>
+                    <p class="text-lg font-bold text-forest-green dark:text-emerald-400 mt-1">
+                        GPA = 33 ÷ 11 = 3.00
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Back Button -->
+        <div class="mt-12 text-center">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

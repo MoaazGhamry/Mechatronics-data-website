@@ -1,0 +1,479 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Engineering Terminology - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-3xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">Engineering Terminology Dictionary</span>
+                <span class="lang-ar">قاموس المصطلحات الهندسية</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">Essential technical terms every Mechatronics student needs to know.</span>
+                <span class="lang-ar">مصطلحات فنية أساسية يحتاجها كل طالب ميكاترونكس.</span>
+            </p>
+        </div>
+
+        <!-- Mechanics Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">🔧</span>
+                <span class="lang-en">Mechanics & Production</span>
+                <span class="lang-ar">ميكانيكا وإنتاج</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/2"><span class="lang-en">English
+                                    Term</span><span class="lang-ar">المصطلح الإنجليزي</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/2"><span class="lang-en">Arabic
+                                    Meaning</span><span class="lang-ar">المعنى بالعربي</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Torque</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">عزم الدوران</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Force</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">القوة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Stress</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">إجهاد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Strain</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">انفعال</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Tension</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">شد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Compression</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">ضغط</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Friction</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">احتكاك</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Elasticity</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">المرونة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Plasticity</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">اللدونة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Ductility</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">القابلية للتمدد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Hardness</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">الصلابة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Fatigue</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">الإجهاد المتكرر</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Wear</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">التآكل</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Thermal Expansion</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">التمدد الحراري</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">CAD</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">التصميم بالحاسوب</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">CAM</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">التصنيع بالحاسوب</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">CNC</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">التحكم الرقمي</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Kinematics</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">كينماتيكا (حركيات)</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Dynamics</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">ديناميكا</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Electricity Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">⚡</span>
+                <span class="lang-en">Electricity & Electronics</span>
+                <span class="lang-ar">كهرباء وإلكترونيات</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/2"><span class="lang-en">English
+                                    Term</span><span class="lang-ar">المصطلح الإنجليزي</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/2"><span class="lang-en">Arabic
+                                    Meaning</span><span class="lang-ar">المعنى بالعربي</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Voltage</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">الجهد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Current</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">التيار</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Resistance</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">المقاومة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Capacitance</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">السعة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Inductance</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">الحث</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Power</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">القدرة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Impedance</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">الممانعة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Reactance</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">المفاعلة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">AC (Alternating Current)</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تيار متردد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">DC (Direct Current)</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تيار مستمر</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Multimeter</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">جهاز قياس متعدد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Oscilloscope</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">راسم الإشارة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Transformer</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">محول كهربائي</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Relay</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">ريليه</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Diode</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">دايود</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Transistor</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">ترانزستور</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Robotics Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">🤖</span>
+                <span class="lang-en">Robotics & Control</span>
+                <span class="lang-ar">روبوتات وتحكم</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/2"><span class="lang-en">English
+                                    Term</span><span class="lang-ar">المصطلح الإنجليزي</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/2"><span class="lang-en">Arabic
+                                    Meaning</span><span class="lang-ar">المعنى بالعربي</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Sensor</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مستشعر</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Actuator</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مشغل / محرك</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Servo Motor</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">محرك سيرفو</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Stepper Motor</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">محرك خطوة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">PID (Proportional Integral
+                                Derivative)</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تحكم تناسبي تكاملي تفاضلي</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Feedback</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تغذية راجعة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">End Effector</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">أداة نهاية الذراع</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Gripper</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">قابض</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Inverse Kinematics</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">كينماتيكا عكسية</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Autonomous</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">ذاتي القيادة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Embedded Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">🖥</span>
+                <span class="lang-en">Embedded Systems & Programming</span>
+                <span class="lang-ar">أنظمة مضمنة وبرمجة</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/2"><span class="lang-en">English
+                                    Term</span><span class="lang-ar">المصطلح الإنجليزي</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/2"><span class="lang-en">Arabic
+                                    Meaning</span><span class="lang-ar">المعنى بالعربي</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Microcontroller</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">متحكم دقيق</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Arduino</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">أردوينو</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">PWM (Pulse Width Modulation)
+                            </td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تعديل عرض النبضة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Interrupt</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مقاطعة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Serial Communication</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">اتصال تسلسلي</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Embedded System</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">نظام مضمن</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Firmware</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">برنامج ثابت</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">GPIO</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مداخل/مخارج عامة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Math Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">📐</span>
+                <span class="lang-en">Mathematics</span>
+                <span class="lang-ar">رياضيات</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/2"><span class="lang-en">English
+                                    Term</span><span class="lang-ar">المصطلح الإنجليزي</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/2"><span class="lang-en">Arabic
+                                    Meaning</span><span class="lang-ar">المعنى بالعربي</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Matrix</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مصفوفة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Vector</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">متجه</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Determinant</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">المحدد</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Eigenvalue</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">قيمة ذاتية</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Fourier Transform</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تحويل فورييه</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Laplace Transform</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تحويل لابلاس</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Differential Equation</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">معادلة تفاضلية</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Integration</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">تكامل</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Derivative</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مشتقة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Academic Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">📚</span>
+                <span class="lang-en">Academic Terms</span>
+                <span class="lang-ar">مصطلحات أكاديمية</span>
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-center border-collapse">
+                    <thead>
+                        <tr class="bg-forest-green text-white">
+                            <th class="p-4 rounded-tl-lg rounded-bl-lg w-1/2"><span class="lang-en">English
+                                    Term</span><span class="lang-ar">المصطلح الإنجليزي</span></th>
+                            <th class="p-4 rounded-tr-lg rounded-br-lg w-1/2"><span class="lang-en">Arabic
+                                    Meaning</span><span class="lang-ar">المعنى بالعربي</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Prerequisite</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">متطلب سابق</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">GPA</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">المعدل التراكمي</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Credit Hour</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">ساعة معتمدة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Semester</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">فصل دراسي</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Elective Course</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مادة اختيارية</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Core Course</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">مادة أساسية</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Withdrawal</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">انسحاب من المادة</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                            <td class="p-3 font-semibold text-gray-800 dark:text-gray-200">Academic Advisor</td>
+                            <td class="p-3 text-gray-600 dark:text-gray-400">المرشد الأكاديمي</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Print Button -->
+        <div class="mt-8 text-center">
+            <button onclick="window.print()"
+                class="inline-flex items-center px-6 py-3 bg-forest-green dark:bg-emerald-500/20 dark:border-emerald-500/50 dark:hover:bg-emerald-500/30 text-white dark:text-emerald-400 border border-transparent rounded-full font-bold shadow-md hover:shadow-lg hover:bg-forest-green-dark transition-all duration-300">
+                <i class="fas fa-print mr-2 rtl:ml-2"></i>
+                <span class="lang-en">Print / Save PDF</span>
+                <span class="lang-ar">طباعة / تحميل PDF</span>
+            </button>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-8 text-center">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

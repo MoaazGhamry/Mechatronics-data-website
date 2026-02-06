@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Campus Guide - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50/50 dark:bg-charcoal/20 py-12 px-4 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1
+                class="text-4xl md:text-5xl font-black text-charcoal dark:text-white font-['Playfair_Display'] mb-4 tracking-tight">
+                <span class="lang-en">Campus Guide</span><span class="lang-ar">دليل الحرم الجامعي</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-orange-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                <span class="lang-en">Explore ZNU campus buildings and facilities.</span>
+                <span class="lang-ar">تعرف على أهم المباني والمرافق في الحرم الجامعي وقسم الميكاترونيكس.</span>
+            </p>
+        </div>
+
+        <!-- Map Container -->
+        <div
+            class="mb-16 bg-white dark:bg-white/5 rounded-[2rem] p-4 shadow-xl border border-gray-100 dark:border-white/10 overflow-hidden">
+            <div
+                class="relative aspect-video rounded-3xl overflow-hidden bg-gray-100 dark:bg-white/5 flex items-center justify-center group">
+                <!-- Using a generic placeholder if image missing, or the expected path -->
+                <img src="{% static 'img/campus_map.jpg' %}" alt="Campus Map"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    onerror="this.src='https://placehold.co/1200x675/e2e8f0/475569?text=Campus+Map+Image+Missing'">
+
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                    <p class="text-white font-bold text-sm bg-black/50 px-4 py-2 rounded-full backdrop-blur-md">
+                        <span class="lang-en">Aerial View of Campus</span><span class="lang-ar">صورة جوية للحرم
+                            الجامعي</span>
+                    </p>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-400 mt-4 font-mono">
+                <span class="lang-en">Note: Please refer to the numbered locations below.</span>
+                <span class="lang-ar">ملاحظة: يرجى الرجوع إلى المواقع الموضحة أدناه.</span>
+            </p>
+        </div>
+
+        <!-- Locations Grid -->
+        <div class="grid gap-12">
+
+            <!-- Category 1 -->
+            <div class="relative">
+                <div
+                    class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full opacity-30">
+                </div>
+                <div class="pl-6 rtl:pl-0 rtl:pr-6">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
+                        <span class="text-3xl">🏛️</span>
+                        <span class="lang-en">Academic Buildings</span><span class="lang-ar">المباني الأكاديمية
+                            الرئيسية</span>
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-forest-green dark:text-emerald-400 mb-2">
+                                <span class="lang-en">Main Admin Building</span><span class="lang-ar">المبنى الإداري
+                                    الرئيسي</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Central area: Admission, Student Affairs, and Administration
+                                    offices.</span>
+                                <span class="lang-ar">المنطقة المركزية: يضم شؤون الطلاب، القبول والتسجيل، وإدارة
+                                    الجامعة.</span>
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-forest-green dark:text-emerald-400 mb-2">
+                                <span class="lang-en">Engineering Buildings</span><span class="lang-ar">مباني الكليات
+                                    الهندسية</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Large square buildings: Lecture halls, faculty offices, and
+                                    labs.</span>
+                                <span class="lang-ar">المباني المربعة الكبيرة: تضم قاعات المحاضرات، مكاتب أعضاء هيئة
+                                    التدريس، والمعامل.</span>
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-forest-green dark:text-emerald-400 mb-2">
+                                <span class="lang-en">Specialized Workshops</span><span class="lang-ar">المباني
+                                    الأكاديمية المتخصصة / الورش</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Clustered buildings: Mechatronics labs (Robotics, Control) and
+                                    workshops.</span>
+                                <span class="lang-ar">المباني المتقاربة: معامل الميكاترونيكس (روبوتات، تحكم) والورش
+                                    العملية.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2 -->
+            <div class="relative">
+                <div
+                    class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-transparent rounded-full opacity-30">
+                </div>
+                <div class="pl-6 rtl:pl-0 rtl:pr-6">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
+                        <span class="text-3xl">☕</span>
+                        <span class="lang-en">Student Services</span><span class="lang-ar">المرافق الخدمية
+                            والطلابية</span>
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-blue-600 dark:text-blue-400 mb-2">
+                                <span class="lang-en">Central Library</span><span class="lang-ar">المكتبة
+                                    المركزية</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Distinctive building with books and study areas.</span>
+                                <span class="lang-ar">مبنى مميز يضم الكتب والمراجع ومناطق هادئة للمذاكرة.</span>
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-blue-600 dark:text-blue-400 mb-2">
+                                <span class="lang-en">Cafeterias</span><span class="lang-ar">المطاعم والكافتيريات</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Food and beverages for students.</span>
+                                <span class="lang-ar">أماكن مخصصة للوجبات والمشروبات.</span>
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-blue-600 dark:text-blue-400 mb-2">
+                                <span class="lang-en">Clinic</span><span class="lang-ar">العيادة الطبية</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Primary healthcare and first aid.</span>
+                                <span class="lang-ar">لتقديم الرعاية الصحية الأولية والإسعافات.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="relative">
+                <div
+                    class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 to-transparent rounded-full opacity-30">
+                </div>
+                <div class="pl-6 rtl:pl-0 rtl:pr-6">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-3">
+                        <span class="text-3xl">⚽</span>
+                        <span class="lang-en">Sports & Recreation</span><span class="lang-ar">المناطق الرياضية
+                            والترفيهية</span>
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-green-600 dark:text-green-400 mb-2">
+                                <span class="lang-en">Sports Fields</span><span class="lang-ar">الملاعب الرياضية</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Football, basketball, and volleyball courts (Top Right).</span>
+                                <span class="lang-ar">ملاعب كرة القدم والسلة والطائرة (أعلى اليمين).</span>
+                            </p>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/5">
+                            <h4 class="font-bold text-green-600 dark:text-green-400 mb-2">
+                                <span class="lang-en">Green Areas</span><span class="lang-ar">الحدائق والمساحات
+                                    الخضراء</span>
+                            </h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                <span class="lang-en">Open spaces for relaxation and study.</span>
+                                <span class="lang-ar">مساحات مفتوحة للاسترخاء والمذاكرة في الهواء الطلق.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-16">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-full text-gray-600 dark:text-gray-300 font-bold hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-lg">
+                <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="lang-en">Back to Home</span><span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

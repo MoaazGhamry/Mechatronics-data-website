@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Department - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-4xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">About Mechatronics Department</span>
+                <span class="lang-ar">عن قسم الميكاترونكس</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">Discover the engineering discipline that bridges the gap between mechanics,
+                    electronics, and intelligence.</span>
+                <span class="lang-ar">اكتشف التخصص الهندسي الذي يربط بين الميكانيكا، والإلكترونيات، والذكاء
+                    الاصطناعي.</span>
+            </p>
+        </div>
+
+        <!-- Intro Section -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-xl p-8 mb-8 border border-gray-100 dark:border-white/10 transform transition hover:-translate-y-1 duration-300">
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+                <div class="shrink-0 p-3 bg-forest-green/10 dark:bg-emerald-500/10 rounded-xl">
+                    <i class="fas fa-lightbulb text-2xl text-forest-green dark:text-emerald-400"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 font-['Outfit']">
+                        <span class="lang-en">What is Mechatronics?</span>
+                        <span class="lang-ar">ما هو قسم الميكاترونكس؟</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                        <span class="lang-en">
+                            Imagine combining mechanical skills, electronics, programming, and control to design smart
+                            machines that work autonomously or assist people — that is exactly what Mechatronics is.
+                            <br><br>
+                            It is an engineering discipline that combines multiple fields to design efficient smart
+                            systems. Instead of being just a mechanical engineer or just a programmer, here you learn
+                            how to be a "comprehensive engineer" who can work on devices from concept to execution.
+                        </span>
+                        <span class="lang-ar">
+                            تخيل إنك بتجمع بين مهارات الميكانيكا، والكهرباء، والبرمجة، والإلكترونيات، وتستخدمهم مع بعض
+                            علشان تصمم آلات ذكية تشتغل لوحدها أو تساعد الناس — ده بالضبط هو تخصص الميكاترونكس.
+                            <br><br>
+                            الميكاترونكس هو تخصص هندسي بيجمع بين أكتر من مجال علشان يقدر يصمم أنظمة ذكية تشتغل بكفاءة.
+                            يعني بدل ما تكون مهندس ميكانيكا لوحدك أو مبرمج لوحدك، هنا أنت بتتعلم إزاي تكون "مهندس شامل"
+                            يقدر يشتغل على الأجهزة من أول فكرتها لحد تنفيذها الفعلي.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Examples Grid -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Daily Life Examples -->
+            <div
+                class="bg-white dark:bg-charcoal rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-white/10">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                    <i class="fas fa-robot mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                    <span class="lang-en">Examples from Daily Life</span>
+                    <span class="lang-ar">أمثلة من الحياة اليومية</span>
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Robot vacuum cleaners that clean autonomously.</span>
+                            <span class="lang-ar">الروبوت اللي بينظف الأرضية لوحده.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Smart vending machines.</span>
+                            <span class="lang-ar">ماكينة البيع اللي بتعرف نوع المنتج وتخرّجه لك.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Automatic doors with presence sensors.</span>
+                            <span class="lang-ar">باب يفتح تلقائي لما تقرب منه.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Drones for filming or delivery.</span>
+                            <span class="lang-ar">درون (طائرة صغيرة) بتصور أو بتوصل طلبات.</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- What You Will Learn -->
+            <div
+                class="bg-white dark:bg-charcoal rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-white/10">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                    <i class="fas fa-graduation-cap mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                    <span class="lang-en">What Will You Learn?</span>
+                    <span class="lang-ar">هتتعلم إيه في القسم؟</span>
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Design of mechanical parts and motion analysis.</span>
+                            <span class="lang-ar">تصميم أجزاء ميكانيكية وحساب حركتها.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Electrical circuits and motor control.</span>
+                            <span class="lang-ar">فهم الدوائر الكهربائية وتشغيل المحركات.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Programming controllers (Arduino, Raspberry Pi).</span>
+                            <span class="lang-ar">برمجة المتحكمات مثل الأردوينو والراسبيري باي.</span>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-2 h-2 mt-2 bg-emerald-500 rounded-full mr-3 rtl:ml-3"></span>
+                        <span class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Using sensors for data acquisition.</span>
+                            <span class="lang-ar">استخدام الحساسات (Sensors) لجمع البيانات من البيئة.</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Career Paths & Why Fun -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Career Paths -->
+            <div class="bg-forest-green dark:bg-emerald-900/30 rounded-2xl shadow-xl p-8 border border-forest-green/20">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                    <i class="fas fa-briefcase mr-3 rtl:ml-3 text-emerald-300"></i>
+                    <span class="lang-en">Where Can You Work?</span>
+                    <span class="lang-ar">بتشتغل فين بعد التخرج؟</span>
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center text-white/90">
+                        <i class="fas fa-check text-emerald-400 text-sm mr-3 rtl:ml-3"></i>
+                        <span class="lang-en">Robotics and smart manufacturing.</span>
+                        <span class="lang-ar">شركات الروبوتات والتصنيع الذكي.</span>
+                    </li>
+                    <li class="flex items-center text-white/90">
+                        <i class="fas fa-check text-emerald-400 text-sm mr-3 rtl:ml-3"></i>
+                        <span class="lang-en">Automotive and heavy industries.</span>
+                        <span class="lang-ar">مصانع السيارات والصناعات الثقيلة.</span>
+                    </li>
+                    <li class="flex items-center text-white/90">
+                        <i class="fas fa-check text-emerald-400 text-sm mr-3 rtl:ml-3"></i>
+                        <span class="lang-en">Electronics and consumer devices.</span>
+                        <span class="lang-ar">شركات الإلكترونيات والأجهزة الذكية.</span>
+                    </li>
+                    <li class="flex items-center text-white/90">
+                        <i class="fas fa-check text-emerald-400 text-sm mr-3 rtl:ml-3"></i>
+                        <span class="lang-en">Medical sector (device design).</span>
+                        <span class="lang-ar">القطاع الطبي (تصميم أجهزة تشخيص وتحكم).</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Why Fun -->
+            <div
+                class="bg-white dark:bg-charcoal rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-white/10">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                    <i class="fas fa-smile-beam mr-3 rtl:ml-3 text-forest-green dark:text-emerald-400"></i>
+                    <span class="lang-en">Why is it Fun?</span>
+                    <span class="lang-ar">ليه القسم ده ممتع؟</span>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <span class="lang-en">
+                        If you enjoy experimenting, always asking "how does this work?", or love building things with
+                        your own hands — Mechatronics is for you.
+                        You will find yourself working on real ideas, designing them, and seeing them move and respond
+                        in the real world!
+                    </span>
+                    <span class="lang-ar">
+                        لو بتحب التجربة، وبتفكر دايمًا "ليه الجهاز ده بيشتغل كده؟"، أو بتحب تبرمج وتفك وتوصّل وتبني حاجة
+                        بإيدك — فالميكاترونكس هو التخصص المناسب ليك.
+                        هتلاقي نفسك بتشتغل على أفكار حقيقية، بتصمّمها، وتنفّذها، وتشوفها بتتحرك وتستجيب فعليًا!
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Highlight Box -->
+        <div
+            class="bg-gradient-to-r from-forest-green to-emerald-600 rounded-2xl p-8 text-center text-white shadow-2xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h3 class="text-2xl font-bold mb-4 font-['Playfair_Display']">
+                    <span class="lang-en">Do you have a passion for technology?</span>
+                    <span class="lang-ar">هل عندك شغف بالتكنولوجيا؟</span>
+                </h3>
+                <p class="text-lg opacity-90 max-w-2xl mx-auto">
+                    <span class="lang-en">If you want to start an engineering future that combines practical work with
+                        smart tech, Mechatronics is your gateway to innovation.</span>
+                    <span class="lang-ar">لو حابب تبدأ مستقبل هندسي بيجمع بين الشغل العملي والتكنولوجيا الذكية،
+                        فالميكاترونكس هو بوابتك لعالم الابتكار.</span>
+                </p>
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-12 text-center">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

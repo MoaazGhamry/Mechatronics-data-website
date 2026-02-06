@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Online Courses - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50/50 dark:bg-charcoal/20 py-12 px-4 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-black text-charcoal dark:text-white font-['Playfair_Display'] mb-4 tracking-tight">
+                <span class="lang-en">Online Courses & Resources</span><span class="lang-ar">كورسات وموارد
+                    أونلاين</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-purple-500 dark:bg-purple-400 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                <span class="lang-en">Leverage global educational platforms and specialized YouTube channels to enhance
+                    your skills.</span>
+                <span class="lang-ar">استفد من المنصات التعليمية العالمية وقنوات اليوتيوب المتخصصة لتعزيز فهمك وتطوير
+                    مهاراتك.</span>
+            </p>
+        </div>
+
+        <!-- Section 1: Platforms -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    class="flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-2xl">🎓</span>
+                <h2 class="text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                    <span class="lang-en">Learning Platforms</span><span class="lang-ar">منصات الكورسات التعليمية</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Coursera -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Coursera</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Wide range of courses and certificates from top global
+                            universities.</span>
+                        <span class="lang-ar">مجموعة واسعة من الكورسات والشهادات من جامعات عالمية.</span>
+                    </p>
+                    <a href="https://www.coursera.org/" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-purple-600 hover:text-white transition-colors">
+                        Visit Coursera
+                    </a>
+                </div>
+
+                <!-- edX -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">edX</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Courses from prestigious institutions like MIT and Harvard.</span>
+                        <span class="lang-ar">كورسات من جامعات مثل MIT و Harvard.</span>
+                    </p>
+                    <a href="https://www.edx.org/" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-purple-600 hover:text-white transition-colors">
+                        Visit edX
+                    </a>
+                </div>
+
+                <!-- Udemy -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Udemy</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Thousands of courses in various fields, often at affordable prices.</span>
+                        <span class="lang-ar">آلاف الكورسات في مختلف المجالات، بأسعار اقتصادية وزهيدة.</span>
+                    </p>
+                    <a href="https://www.udemy.com/" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-purple-600 hover:text-white transition-colors">
+                        Visit Udemy
+                    </a>
+                </div>
+
+                <!-- FutureLearn -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">FutureLearn</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Courses from international universities and cultural institutions.</span>
+                        <span class="lang-ar">كورسات من جامعات ومؤسسات ثقافية عالمية.</span>
+                    </p>
+                    <a href="https://www.futurelearn.com/" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-purple-600 hover:text-white transition-colors">
+                        Visit FutureLearn
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: YouTube Channels -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    class="flex items-center justify-center w-12 h-12 rounded-2xl bg-red-100 dark:bg-red-900/30 text-2xl">📺</span>
+                <h2 class="text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                    <span class="lang-en">YouTube Channels (Arabic)</span><span class="lang-ar">قنوات يوتيوب تعليمية
+                        (بالعربية)</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Mohamed Maher -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Eng. Mohamed Maher</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-6 leading-relaxed min-h-[48px]">
+                        <span class="lang-en">Excellent explanations in Electric Circuits, Electronics, and Automatic
+                            Control.</span>
+                        <span class="lang-ar">شروحات ممتازة في الدوائر الكهربية، الإلكترونيات، والتحكم الآلي.</span>
+                    </p>
+                    <a href="https://youtube.com/@mohamedmaher22" target="_blank"
+                        class="block w-full text-center py-2 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-red-600 hover:text-white transition-colors">
+                        Visit Channel
+                    </a>
+                </div>
+
+                <!-- KimCam -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">KimCam</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-6 leading-relaxed min-h-[48px]">
+                        <span class="lang-en">Explanations for most engineering subjects.</span>
+                        <span class="lang-ar">شرح لمعظم مواد كلية الهندسة.</span>
+                    </p>
+                    <a href="https://youtube.com/@KimCamChannel" target="_blank"
+                        class="block w-full text-center py-2 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-red-600 hover:text-white transition-colors">
+                        Visit Channel
+                    </a>
+                </div>
+
+                <!-- Elzero -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Elzero Web School</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-xs mb-6 leading-relaxed min-h-[48px]">
+                        <span class="lang-en">Comprehensive programming and tech tutorials.</span>
+                        <span class="lang-ar">شروحات في البرمجة والعديد من المجالات التقنية.</span>
+                    </p>
+                    <a href="https://youtube.com/@elzerowebschool" target="_blank"
+                        class="block w-full text-center py-2 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-red-600 hover:text-white transition-colors">
+                        Visit Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Extra Resources -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    class="flex items-center justify-center w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-900/30 text-2xl">📚</span>
+                <h2 class="text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                    <span class="lang-en">Additional Resources</span><span class="lang-ar">مصادر إضافية</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Wikipedia -->
+                <div
+                    class="flex items-start gap-4 bg-white dark:bg-white/5 rounded-[1.5rem] p-6 border border-gray-100 dark:border-white/5">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Wikipedia / Scholarpedia</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs mb-3">
+                            <span class="lang-en">General and detailed info on scientific terms.</span>
+                            <span class="lang-ar">لمعلومات عامة ومفصلة عن أي مصطلح علمي.</span>
+                        </p>
+                        <a href="https://ar.wikipedia.org/" target="_blank"
+                            class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Visit
+                            Wikipedia</a>
+                    </div>
+                </div>
+
+                <!-- Chegg -->
+                <div
+                    class="flex items-start gap-4 bg-white dark:bg-white/5 rounded-[1.5rem] p-6 border border-gray-100 dark:border-white/5">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Chegg / Slader</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs mb-3">
+                            <span class="lang-en">Helpful for understanding problem-solving steps.</span>
+                            <span class="lang-ar">يساعد في فهم خطوات حل المسائل في الكتب.</span>
+                        </p>
+                        <a href="https://www.chegg.com/" target="_blank"
+                            class="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">Visit Chegg</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-16">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-full text-gray-600 dark:text-gray-300 font-bold hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-lg">
+                <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="lang-en">Back to Home</span><span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

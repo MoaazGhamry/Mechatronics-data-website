@@ -1,0 +1,404 @@
+import os
+
+file_path = r"F:\New folder (7)\Mechatronics-Data\Mechatronics-Data\templates\hub\resource_detail.html"
+
+# The completely corrected content with valid syntax on line 135 and 153
+correct_content = """{% extends "base.html" %}
+{% load resource_filters %}
+
+{% block title %}{{ subject_name }} - {{ category }}{% endblock %}
+
+{% block content %}
+<main class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Back Navigation -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'hub:student_dashboard' %}"
+            class="inline-flex items-center space-x-2 px-4 py-2 bg-white dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-300 font-bold mb-8 hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm border border-gray-100 dark:border-white/5 group">
+            <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-sm uppercase tracking-wide"><span class="lang-en">Back to Dashboard</span><span
+                    class="lang-ar">عودة للوحة القيادة</span></span>
+        </a>
+        {% else %}
+        <a href="{% url 'hub:level_detail' subject_obj.level.level_id %}"
+            class="inline-flex items-center space-x-2 px-4 py-2 bg-white dark:bg-white/5 rounded-full text-gray-600 dark:text-gray-300 font-bold mb-8 hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm border border-gray-100 dark:border-white/5 group">
+            <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-sm uppercase tracking-wide"><span class="lang-en">Back to Level {{
+                    subject_obj.level.level_id }}</span><span class="lang-ar">عودة للمستوى {{ subject_obj.level.level_id
+                    }}</span></span>
+        </a>
+        {% endif %}
+
+        <!-- Page Header -->
+        <div class="mb-8">
+            <div class="flex items-center space-x-3 mb-2">
+                <div class="h-8 w-1 bg-forest-green dark:bg-emerald-500 rounded-full"></div>
+                <span class="text-forest-green dark:text-emerald-400 font-black text-sm uppercase tracking-[0.2em]">
+                    {{ subject_name }}
+                </span>
+            </div>
+            <h1
+                class="text-4xl md:text-5xl font-black text-charcoal dark:text-white tracking-tight font-['Playfair_Display'] capitalize">
+                {{ category }}
+            </h1>
+        </div>
+
+        <!-- Professional "Zen" Toolbar -->
+        <div class="sticky top-6 z-50 mb-12">
+            <div
+                class="bg-white/70 dark:bg-charcoal/70 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 rounded-3xl p-2 shadow-2xl shadow-gray-200/20 dark:shadow-black/40 flex flex-col md:flex-row items-center gap-2">
+                <!-- Search Module -->
+                <div class="relative flex-1 w-full group">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400 group-focus-within:text-forest-green dark:group-focus-within:text-emerald-500 transition-colors"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <input type="text" id="resourceSearch" placeholder="Search resources / بحث في المصادر ..."
+                        class="w-full pl-12 pr-4 py-3.5 bg-gray-50/50 dark:bg-black/20 border-none rounded-2xl focus:ring-0 text-sm font-medium text-charcoal dark:text-white placeholder-gray-400 transition-all outline-none"
+                        onkeyup="filterResources()">
+                </div>
+
+                <!-- Vertical Divider (Desktop Only) -->
+                <div class="hidden md:block w-px h-8 bg-gray-200 dark:bg-white/10 mx-1"></div>
+
+                <!-- Sort Module -->
+                <div class="relative w-full md:w-48 shrink-0">
+                    <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+                        </svg>
+                    </div>
+                    <select id="resourceSort" onchange="sortResources()"
+                        class="appearance-none w-full pl-10 pr-10 py-3.5 bg-gray-50/50 dark:bg-black/20 border-none rounded-2xl text-[10px] font-black uppercase tracking-widest text-gray-600 dark:text-gray-300 cursor-pointer focus:ring-0 outline-none transition-all">
+                        <option value="date_desc">Newest First</option>
+                        <option value="date_asc">Oldest First</option>
+                        <option value="name_asc">A-Z Name</option>
+                        <option value="name_desc">Z-A Name</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Tabs (Conditional for Sheets) -->
+        {% if category == 'Sheets' %}
+        <div class="mb-8 flex justify-center">
+            <div
+                class="inline-flex bg-gray-100/50 dark:bg-white/5 p-1 rounded-2xl border border-gray-200/50 dark:border-white/10">
+                <button onclick="setTypeFilter('all')" id="filter-all"
+                    class="type-filter-btn active px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all">
+                    <span class="lang-en">All</span><span class="lang-ar">الكل</span>
+                </button>
+                <button onclick="setTypeFilter('sheet')" id="filter-sheet"
+                    class="type-filter-btn px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-charcoal dark:hover:text-white transition-all">
+                    <span class="lang-en">Sheets</span><span class="lang-ar">الشيتات</span>
+                </button>
+                <button onclick="setTypeFilter('solution')" id="filter-solution"
+                    class="type-filter-btn px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-charcoal dark:hover:text-white transition-all">
+                    <span class="lang-en">Solutions</span><span class="lang-ar">الحلول</span>
+                </button>
+            </div>
+        </div>
+
+        <style>
+            .type-filter-btn.active {
+                background-color: var(--forest-green, #22543d);
+                color: white;
+                box-shadow: 0 4px 12px rgba(34, 84, 61, 0.2);
+            }
+
+            .dark .type-filter-btn.active {
+                background-color: #10b981;
+                /* emerald-500 */
+                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            }
+        </style>
+        {% endif %}
+
+        <!-- Resources List (2 columns on mobile) -->
+        <div id="resourcesGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+            {% if resources %}
+            {% for resource in resources %}
+            <div class="resource-card bg-white dark:bg-charcoal border border-gray-100 dark:border-white/5 rounded-[1.5rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-gray-200/50 dark:hover:shadow-black/50 hover:border-forest-green/30 dark:hover:border-emerald-500/30 transition-all duration-300 group relative flex flex-col h-full"
+                data-name="{{ resource.title|default:resource.download_url|lower }}"
+                data-date="{{ resource.upload_date|date:'Y-m-d' }}" {% if category == 'Sheets' %} {% with
+                fname=resource.download_url|default:''|lower %}
+                data-type="{% if 'solution' in fname or 'حل' in fname %}solution{% else %}sheet{% endif %}" {% endwith
+                %} {% endif %}>
+
+                <!-- Decorative Hover Glow -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-forest-green/5 via-transparent to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                </div>
+
+                <!-- Top Bar: Quick Info -->
+                <div
+                    class="px-4 py-3 flex items-center justify-between bg-gray-50/50 dark:bg-white/5 border-b border-gray-100 dark:border-white/5">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-forest-green dark:bg-emerald-500 animate-pulse"></div>
+                        <span
+                            class="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">Document</span>
+                    </div>
+                    {% if '.pdf' in resource.download_url|default:''|lower or 'drive.google.com' in resource.download_url|default:''|lower %}
+                    <div
+                        class="bg-red-500/10 text-red-600 dark:text-red-400 text-[9px] font-black px-2 py-0.5 rounded-full border border-red-500/20 shadow-sm shrink-0">
+                        PDF
+                    </div>
+                    {% else %}
+                    <div
+                        class="bg-forest-green/10 text-forest-green dark:text-emerald-400 text-[9px] font-black px-2 py-0.5 rounded-full border border-forest-green/20 shadow-sm shrink-0 uppercase">
+                        LINK
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Middle Section: Preview Area -->
+                <div
+                    class="relative h-48 flex items-center justify-center bg-white dark:bg-charcoal overflow-hidden group/preview">
+                    {% if resource.preview_url %}
+                    <iframe src="{{ resource.preview_url }}" class="absolute inset-0 w-full h-full border-0"
+                        allow="autoplay"></iframe>
+                    {% else %}
+                    <!-- Document Icon Fallback -->
+                    <div class="flex flex-col items-center justify-center text-gray-300 dark:text-gray-700">
+                        <span class="text-5xl mb-2">📁</span>
+                        <p class="text-xs">No Preview</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Metadata Section (The requested "Space") -->
+                <div class="px-4 md:px-6 py-4 flex flex-col gap-2">
+                    <h3 class="font-bold text-gray-800 dark:text-gray-100 text-xs md:text-sm line-clamp-2 font-['Outfit']"
+                        title="{{ resource.title }}">
+                        {{ resource.title|default:resource.category }}
+                    </h3>
+                    <div
+                        class="flex items-center justify-between text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            {{ resource.upload_date|date:"M d, Y" }}
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                            </svg>
+                            {{ resource.upload_date|date:"M d, Y" }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: Actions -->
+                <div class="p-3 md:p-6 pt-0 flex flex-col sm:flex-row gap-2 md:gap-3">
+                    <a href="{{ resource.preview_url }}" target="_blank"
+                        class="flex-1 py-3 md:py-3 bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-300 rounded-xl md:rounded-2xl font-bold hover:bg-gray-100 dark:hover:bg-white/10 transition-all text-[10px] md:text-xs uppercase tracking-widest text-center"
+                        title="Preview">
+                        <span class="lang-en">View</span><span class="lang-ar">عرض</span>
+                    </a>
+
+                    <a href="{{ resource.download_url }}" target="_blank"
+                        class="flex-1 py-3 md:py-3 bg-forest-green dark:bg-emerald-600 text-white rounded-xl md:rounded-2xl font-bold hover:shadow-lg transition-all text-[10px] md:text-xs uppercase tracking-widest text-center">
+                        <span class="lang-en">Download</span><span class="lang-ar">تحميل</span>
+                    </a>
+
+                    {% if user.is_staff %}
+                    <form method="POST" action="{% url 'hub:delete_resource' resource.pk %}"
+                        class="shrink-0 flex justify-center"
+                        onsubmit="return confirm('Confirm deletion? / تأكيد الحذف؟');">
+                        {% csrf_token %}
+                        <button type="submit"
+                            class="w-full sm:w-10 h-10 flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-xl transition-all"
+                            title="Delete">
+                            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div
+                class="text-center py-24 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-[2.5rem] border border-dashed border-gray-200 dark:border-white/10 shadow-sm relative overflow-hidden group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-white/5 pointer-events-none">
+                </div>
+                <div
+                    class="relative w-24 h-24 bg-gray-100 dark:bg-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 text-gray-400 group-hover:scale-110 group-hover:bg-forest-green/10 dark:group-hover:bg-emerald-500/10 group-hover:text-forest-green dark:group-hover:text-emerald-500 transition-all duration-500">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                </div>
+                <h3
+                    class="relative text-2xl font-black text-gray-900 dark:text-white mb-3 font-['Playfair_Display'] tracking-tight">
+                    <span class="lang-en">Content coming soon</span><span class="lang-ar">المحتوى قريباً</span>
+                </h3>
+                <p class="relative text-gray-500 dark:text-gray-400 max-w-md mx-auto font-medium">
+                    <span class="lang-en">No {{ category }} files have been uploaded for <span
+                            class="text-forest-green dark:text-emerald-400 font-bold">{{ subject_name }}</span> yet.
+                        Check back later!</span>
+                    <span class="lang-ar">لم يتم رفع ملفات
+                        {% if category == 'Lectures' %}محاضرات{% elif category == 'Sheets' %}شيتات{% elif category ==
+                        'Explanation' %}شرح{% elif category == 'Midterm' %}ميدتيرم{% elif category == 'Final' %}فاينل{%
+                        elif category == 'Revision' %}مراجعة{% else %}{{ category }}{% endif %}
+                        لـ <span class="text-forest-green dark:text-emerald-400 font-bold">{{ subject_name }}</span>
+                        بعد. تفقد الموقع لاحقاً!</span>
+                </p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Search Script -->
+        <script>
+            let currentTypeFilter = 'all';
+
+            function setTypeFilter(type) {
+                currentTypeFilter = type;
+
+                // Update UI
+                const buttons = document.querySelectorAll('.type-filter-btn');
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.classList.add('text-gray-500', 'dark:text-gray-400');
+                });
+
+                const activeBtn = document.getElementById(`filter-${type}`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                    activeBtn.classList.remove('text-gray-500', 'dark:text-gray-400');
+                }
+
+                filterResources();
+            }
+
+            function filterResources() {
+                const searchInput = document.getElementById('resourceSearch');
+                const filter = searchInput.value.toLowerCase();
+                const container = document.getElementById('resourcesGrid');
+                const cards = container.getElementsByClassName('resource-card');
+
+                for (let i = 0; i < cards.length; i++) {
+                    const name = cards[i].getAttribute('data-name');
+                    const type = cards[i].getAttribute('data-type') || 'all';
+
+                    const matchesSearch = name.includes(filter);
+                    const matchesType = currentTypeFilter === 'all' || type === currentTypeFilter;
+
+                    if (matchesSearch && matchesType) {
+                        cards[i].style.display = "";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+
+            function sortResources() {
+                const sortValue = document.getElementById('resourceSort').value;
+                const container = document.getElementById('resourcesGrid');
+                const cards = Array.from(container.getElementsByClassName('resource-card'));
+
+                cards.sort((a, b) => {
+                    const dateA = a.getAttribute('data-date');
+                    const dateB = b.getAttribute('data-date');
+                    const nameA = a.getAttribute('data-name');
+                    const nameB = b.getAttribute('data-name');
+
+                    if (sortValue === 'date_desc') return dateB.localeCompare(dateA);
+                    if (sortValue === 'date_asc') return dateA.localeCompare(dateB);
+                    if (sortValue === 'name_asc') return nameA.localeCompare(nameB);
+                    if (sortValue === 'name_desc') return nameB.localeCompare(nameA);
+                });
+
+                cards.forEach(card => container.appendChild(card));
+            }
+        </script>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<!-- PDF.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+    // Set worker source
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    async function loadPdfPreviews() {
+        const containers = document.querySelectorAll('.pdf-preview-container');
+
+        containers.forEach(async (container) => {
+            const url = container.dataset.pdfUrl;
+            const canvas = container.querySelector('.pdf-preview-canvas');
+            const loader = container.querySelector('.pdf-loader');
+            const context = canvas.getContext('2d');
+
+            try {
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument(url);
+                const pdf = await loadingTask.promise;
+
+                // Get first page
+                const page = await pdf.getPage(1);
+
+                // Set scale for thumbnail
+                const viewport = page.getViewport({ scale: 0.5 });
+
+                // Prepare canvas
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render page
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+
+                await page.render(renderContext).promise;
+
+                // Show canvas, hide loader
+                canvas.classList.remove('opacity-0');
+                loader.classList.add('hidden');
+
+            } catch (error) {
+                console.error("Error generating PDF preview for:", url, error);
+                // Fallback: Show a PDF icon if rendering fails
+                loader.innerHTML = '<span class="text-4xl">📄</span>';
+                loader.classList.remove('animate-pulse');
+            }
+        });
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', loadPdfPreviews);
+</script>
+{% endblock %}"""
+
+try:
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(correct_content)
+    print("SUCCESS: File rewritten correctly.")
+except Exception as e:
+    print(f"ERROR: {e}")

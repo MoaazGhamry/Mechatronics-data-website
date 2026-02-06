@@ -1,0 +1,584 @@
+{% extends "base.html" %}
+{% load static resource_filters %}
+
+{% block title %}<span class="lang-en">My Dashboard - Mechatronics Hub</span><span class="lang-ar">لوحتي - بوابة
+    الميكاترونكس</span>{% endblock %}
+
+{% block content %}
+<main class="container mx-auto px-4 py-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+        <!-- Main Content Column -->
+        <div class="lg:col-span-3">
+            <!-- Header & Stats -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-6">
+                <div>
+                    <h2
+                        class="text-4xl font-extrabold text-charcoal dark:text-off-white tracking-tight font-['Outfit']">
+                        <span class="lang-en">Student Dashboard</span><span class="lang-ar">لوحة الطالب</span>
+                    </h2>
+                    <p class="text-gray-500 dark:text-gray-400 font-medium mt-1">
+                        <span class="lang-en">Personalized for Level {{ current_level_id }}</span>
+                        <span class="lang-ar">مخصصة للمستوى {{ current_level_id }}</span>
+                    </p>
+                </div>
+
+                <!-- Quick Stats Bar (Premium Glass Design) -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-end gap-3 w-full lg:w-auto">
+                    <!-- Date Pill -->
+                    <div
+                        class="group backdrop-blur-md bg-white/90 dark:bg-charcoal/90 px-5 h-16 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] border border-white/40 dark:border-white/5 flex items-center gap-3 sm:px-6 sm:gap-4 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 flex-shrink-0 rounded-full bg-gradient-to-tr from-emerald-50 to-emerald-100 dark:from-emerald-500/10 dark:to-emerald-400/5 text-forest-green dark:text-emerald-400 flex items-center justify-center border border-emerald-100/50 dark:border-emerald-500/20 shadow-sm group-hover:scale-110 transition-transform">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="min-w-0">
+                            <span id="current-date"
+                                class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em] leading-none mb-1.5 truncate text-center sm:text-left">...</span>
+                            <span id="current-time"
+                                class="block text-base font-black text-gray-900 dark:text-white leading-none truncate text-center sm:text-left font-['Outfit']">...</span>
+                        </div>
+                    </div>
+
+                    <!-- GPA Pill -->
+                    <a href="{% url 'hub:profile' %}"
+                        class="group backdrop-blur-md bg-white/90 dark:bg-charcoal/90 px-5 h-16 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)] border border-white/40 dark:border-white/5 flex items-center gap-3 sm:px-6 sm:gap-4 hover:shadow-xl transition-all duration-300 cursor-pointer">
+                        <div
+                            class="w-10 h-10 flex-shrink-0 rounded-full bg-gradient-to-tr from-forest-green to-emerald-600 dark:from-emerald-600 dark:to-emerald-500 flex items-center justify-center text-white text-[10px] font-black shadow-lg shadow-forest-green/20 dark:shadow-emerald-900/40 border border-white/20 group-hover:scale-110 transition-transform">
+                            <span class="lang-en">GPA</span><span class="lang-ar">معدل</span>
+                        </div>
+                        <div class="min-w-0">
+                            <span
+                                class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em] leading-none mb-1.5 truncate text-center sm:text-left">
+                                <span class="lang-en">Current GPA</span><span class="lang-ar">المعدل
+                                    الحالي</span></span>
+                            <span
+                                class="block text-base font-black text-gray-900 dark:text-white leading-none truncate text-center sm:text-left font-['Outfit']">
+                                {{ profile.gpa }}
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Add Course Button -->
+                    <button onclick="openCourseModal()"
+                        class="group backdrop-blur-md bg-white/95 dark:bg-charcoal px-5 h-16 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.2)] border-2 border-white dark:border-white/10 flex items-center justify-center gap-3 sm:px-6 sm:gap-4 hover:shadow-2xl hover:border-forest-green/20 dark:hover:border-emerald-500/20 transition-all duration-300 cursor-pointer active:scale-95">
+                        <div
+                            class="w-10 h-10 flex-shrink-0 rounded-full bg-gradient-to-br from-gray-900 to-black dark:from-emerald-400 dark:to-emerald-600 flex items-center justify-center text-white transition-transform group-hover:rotate-90 group-hover:scale-110 shadow-lg shadow-black/20 dark:shadow-emerald-900/40 border border-white/20">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                        <div class="text-center sm:text-left min-w-0">
+                            <span
+                                class="block text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em] leading-none mb-1.5 truncate">
+                                <span class="lang-en">Academic</span><span class="lang-ar">أكاديمي</span></span>
+                            <span
+                                class="block text-base font-black text-gray-900 dark:text-white leading-none truncate font-['Outfit']">
+                                <span class="lang-en">Add Course</span><span class="lang-ar">أضف مادة</span>
+                            </span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Continue Learning Section -->
+            {% if last_resource %}
+            <div class="mb-8 animate-fade-in-up">
+                <div
+                    class="bg-gradient-to-r from-forest-green to-[#2d5a27] dark:from-emerald-900 dark:to-gray-900 rounded-[2rem] p-6 text-white relative overflow-hidden shadow-lg group">
+                    <!-- Background Pattern -->
+                    <div class="absolute right-0 top-0 h-full w-1/2 opacity-10">
+                        <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+                        </svg>
+                    </div>
+
+                    <div class="relative z-10 flex items-center justify-between">
+                        <div>
+                            <span
+                                class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-widest mb-2 border border-white/10">
+                                <span class="lang-en">Continue Learning</span><span class="lang-ar">تابع
+                                    التعلم</span></span>
+                            <h3 class="text-2xl font-bold font-['Outfit'] mb-1">{{ last_resource.name }}</h3>
+                            <p class="text-white/80 text-sm font-medium">
+                                {{ last_resource.subject }} • {{ last_resource.type }}
+                            </p>
+                        </div>
+                        <a href="#"
+                            class="w-12 h-12 rounded-full bg-white text-forest-green flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Semester Switcher Removed (Controlled Globally by Admin) -->
+
+
+            <!-- Subjects Containers (Zen Portal Layout) -->
+            <div class="space-y-8">
+                <!-- Semester 1 Section -->
+                <div id="semester1" class="{% if current_semester != 1 %}hidden{% endif %} space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        {% if subjects_s1 %}
+                        {% for subject in subjects_s1 %}
+                        <div class="w-full">
+                            {% include "partials/dashboard_subject_card.html" %}
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div
+                            class="col-span-full flex flex-col items-center justify-center py-16 px-4 text-center opacity-60">
+                            <div
+                                class="w-20 h-20 mb-6 bg-forest-green/5 dark:bg-emerald-500/5 rounded-full flex items-center justify-center">
+                                <i class="fas fa-book-open text-3xl text-gray-300 dark:text-gray-600"></i>
+                            </div>
+                            <p class="text-gray-500 dark:text-gray-400 font-medium italic mb-8">
+                                <span class="lang-en">No subjects found for Semester 1.</span>
+                                <span class="lang-ar">لا توجد مواد في الفصل الأول.</span>
+                            </p>
+                            {% if current_level_id == '000' %}
+                            <button onclick="openCourseModal()"
+                                class="inline-flex items-center px-8 py-3 bg-forest-green text-white rounded-full font-bold hover:scale-105 transition-transform active:scale-95 cursor-pointer">
+                                <span class="lang-en">Add Course</span><span class="lang-ar">أضف مادة</span>
+                            </button>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Semester 2 Section -->
+                <div id="semester2" class="{% if current_semester != 2 %}hidden{% endif %} space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                        {% if subjects_s2 %}
+                        {% for subject in subjects_s2 %}
+                        <div class="w-full">
+                            {% include "partials/dashboard_subject_card.html" %}
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div
+                            class="col-span-full flex flex-col items-center justify-center py-16 px-4 text-center opacity-60">
+                            <div
+                                class="w-20 h-20 mb-6 bg-forest-green/5 dark:bg-emerald-500/5 rounded-full flex items-center justify-center">
+                                <i class="fas fa-book-open text-3xl text-gray-300 dark:text-gray-600"></i>
+                            </div>
+                            <p class="text-gray-500 dark:text-gray-400 font-medium italic">
+                                <span class="lang-en">No subjects found for Semester 2.</span>
+                                <span class="lang-ar">لا توجد مواد في الفصل الثاني.</span>
+                            </p>
+                            {% if current_level_id == '000' %}
+                            <button onclick="openCourseModal()"
+                                class="mt-8 px-8 py-3 bg-forest-green text-white rounded-full font-bold hover:scale-105 transition-transform active:scale-95 cursor-pointer">
+                                <span class="lang-en">Add Course</span><span class="lang-ar">أضف مادة</span>
+                            </button>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sidebar: Quick Notes & Upcoming Events -->
+        <div class="lg:col-span-1 space-y-8">
+            <!-- Glassmorphism Notes Card -->
+            <div
+                class="bg-white dark:bg-midnight/80 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-[20px] shadow-2xl overflow-hidden relative group">
+                <!-- Header -->
+                <div
+                    class="px-6 py-5 border-b border-gray-100 dark:border-white/5 bg-gray-50 dark:bg-white/5 flex items-center justify-between">
+                    <h3 class="font-bold text-charcoal dark:text-off-white"><span class="lang-en">Quick
+                            Notes</span><span class="lang-ar">ملاحظات سريعة</span></h3>
+                    <div class="w-2 h-2 rounded-full bg-forest-green dark:bg-emerald-400 animate-pulse"></div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-6">
+                    {% csrf_token %}
+                    <input type="text" id="note-title"
+                        class="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-3 mb-3 text-sm text-charcoal dark:text-off-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-forest-green/50 dark:focus:ring-emerald-500/50 transition-all font-bold"
+                        placeholder="Headline...">
+
+                    <textarea id="note-input" rows="3"
+                        class="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl p-3 text-sm text-charcoal dark:text-off-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-forest-green/50 dark:focus:ring-emerald-500/50 resize-none transition-all"
+                        placeholder="Type a reminder..."></textarea>
+
+                    <button onclick="addNote()"
+                        class="mt-3 w-full py-2 bg-forest-green hover:bg-forest-hover dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white font-bold rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-forest-green/20 dark:shadow-emerald-900/20 transform active:scale-95 transition-all">
+                        <span class="lang-en">+ Add Note</span><span class="lang-ar">+ أضف ملاحظة</span>
+                    </button>
+
+                    <p class="text-center text-[10px] text-gray-400 italic mt-4">No notes yet.</p>
+                </div>
+
+                <!-- Notes List -->
+                <div id="notes-list" class="px-6 pb-6 space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar hidden">
+                    <!-- Notes injected here -->
+                </div>
+            </div>
+
+            <!-- Latest Uploads Widget -->
+            <div
+                class="bg-white dark:bg-midnight/80 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-[20px] shadow-lg overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
+                    <h3 class="font-bold text-charcoal dark:text-off-white"><span class="lang-en">Latest
+                            Uploads</span><span class="lang-ar">أحدث الملفات</span></h3>
+                </div>
+                <div class="p-4 space-y-2">
+                    {% for resource in recent_uploads %}
+                    <a href="{{ resource.download_url }}" target="_blank"
+                        class="flex items-start space-x-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors cursor-pointer group">
+                        <!-- Icon Box -->
+                        <div
+                            class="shrink-0 w-10 h-10 bg-red-50 dark:bg-red-900/10 rounded-lg flex items-center justify-center text-red-500 group-hover:bg-red-100 dark:group-hover:bg-red-900/20 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            class="text-sm font-bold text-charcoal dark:text-off-white leading-tight mb-0.5
+                            group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors truncate">
+                            {{ resource.subject.name }} - {{ resource.category }}
+                            </h4>
+                            <p
+                                class="text-[10px] text-gray-400 uppercase font-bold tracking-wide flex items-center gap-1">
+                                {{ resource.subject.name|truncatechars:20 }}
+                                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                                {{ resource.upload_date|date:"M d" }}
+                            </p>
+                        </div>
+                    </a>
+                    {% empty %}
+                    <div class="text-center py-6">
+                        <p class="text-xs text-gray-400 italic">No recent uploads found.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Course Search Modal -->
+<div id="course-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-charcoal/60 dark:bg-black/80 backdrop-blur-sm transition-opacity"
+        onclick="closeCourseModal()"></div>
+
+    <!-- Modal content -->
+    <div class="relative w-full max-w-2xl bg-white dark:bg-midnight rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-white/5 overflow-hidden transform transition-all scale-95 opacity-0 duration-300"
+        id="course-modal-content">
+        <!-- Close Button -->
+        <button onclick="closeCourseModal()"
+            class="absolute top-6 right-6 text-gray-400 hover:text-charcoal dark:hover:text-white transition-colors z-10">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <div class="p-8">
+            <h3 class="text-2xl font-black text-charcoal dark:text-white mb-6 font-['Outfit']">
+                <span class="lang-en">Discover & Add Courses</span><span class="lang-ar">اكتشف وأضف المواد</span>
+            </h3>
+
+            <!-- Search Bar -->
+            <div class="relative mb-6">
+                <input type="text" id="course-search-input" oninput="searchCourses()"
+                    class="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl py-4 pl-12 pr-6 text-charcoal dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-forest-green/50 dark:focus:ring-emerald-500/50 transition-all shadow-inner"
+                    placeholder="Search by subject name...">
+                <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+
+            <!-- Filters -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <select id="level-filter" onchange="searchCourses()"
+                    class="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <option value="all">Every Level</option>
+                    <option value="000">Level 000</option>
+                    <option value="100">Level 100</option>
+                    <option value="200">Level 200</option>
+                    <option value="300">Level 300</option>
+                    <option value="400">Level 400</option>
+                </select>
+                <select id="semester-filter" onchange="searchCourses()"
+                    class="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm font-bold text-gray-600 dark:text-gray-300 focus:outline-none">
+                    <option value="all">All Semesters</option>
+                    <option value="1">First Semester</option>
+                    <option value="2">Second Semester</option>
+                </select>
+            </div>
+
+            <!-- Results List -->
+            <div id="course-results" class="space-y-4 max-h-[400px] overflow-y-auto custom-scrollbar pr-2">
+                <div class="text-center py-12 opacity-50">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <p class="font-medium">Type to search for subjects...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // --- SEMESTER SWITCHER UI (Reuse of Logic) ---
+    // Note: The toggleCollapsible logic is already in script.js and works globally.
+    // We just need the semester switcher logic here or reused.
+
+    // We can define showSemester here or ensure script.js covers it globally. 
+    // Since script.js has `window.showSemester`, we don't need to redefine it if it handles these specific IDs.
+    // Looking at script.js: it targets 'semester1', 'semester2', 'sem1Btn', 'sem2Btn'. These match our new template structure perfectly.
+
+    // --- CLOCK ---
+    function updateClock() {
+        const now = new Date();
+        const dateOptions = { weekday: 'short', month: 'short', day: 'numeric' };
+        const timeOptions = { hour: '2-digit', minute: '2-digit' };
+
+        const d = document.getElementById('current-date');
+        const t = document.getElementById('current-time');
+        if (d) d.textContent = now.toLocaleDateString('en-US', dateOptions);
+        if (t) t.textContent = now.toLocaleTimeString('en-US', timeOptions);
+    }
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call
+
+    // --- TOAST NOTIFICATIONS ---
+    function showToast(message, type = 'success') {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            container.className = 'fixed bottom-6 right-6 z-50 flex flex-col gap-3';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        const bgClass = type === 'success' ? 'bg-forest-green dark:bg-emerald-green' : 'bg-red-500';
+        toast.className = `${bgClass} text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform transition-all duration-300 translate-y-10 opacity-0`;
+        toast.innerHTML = `<span class="font-bold text-sm">${message}</span>`;
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.remove('translate-y-10', 'opacity-0'));
+        setTimeout(() => {
+            toast.classList.add('translate-y-10', 'opacity-0');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // --- QUICK NOTES (Preserved) ---
+    function loadNotes() {
+        fetch('{% url "hub:get_notes_ajax" %}')
+            .then(res => res.json())
+            .then(data => {
+                const list = document.getElementById('notes-list');
+                list.innerHTML = '';
+                if (data.notes.length === 0) {
+                    list.innerHTML = '<p class="text-gray-500 text-xs italic text-center py-4">No notes yet.</p>';
+                } else {
+                    data.notes.forEach(note => {
+                        const div = document.createElement('div');
+                        div.className = "bg-yellow-100 transform rotate-1 p-3 shadow-md relative group";
+                        div.style.borderRadius = "2px";
+                        div.innerHTML = `
+                            <button onclick="deleteNote(${note.id})" class="absolute top-1 right-1 text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                            <h4 class="text-charcoal font-black text-xs mb-1 pr-4">${note.title}</h4>
+                            <p class="text-gray-800 text-xs font-handwriting leading-relaxed">${note.content}</p>
+                            <div class="mt-2 flex justify-end">
+                                <span class="text-[9px] text-gray-500 font-bold uppercase tracking-widest">${note.created_at}</span>
+                            </div>
+                        `;
+                        list.appendChild(div);
+                    });
+                }
+            })
+            .catch(err => console.error("Error loading notes:", err));
+    }
+
+    function deleteNote(noteId) {
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const formData = new FormData();
+        formData.append('note_id', noteId);
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        fetch('{% url "hub:delete_note_ajax" %}', {
+            method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': csrfToken }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) { showToast("Note deleted."); loadNotes(); }
+                else { showToast(data.error || 'Failed.', 'error'); }
+            });
+    }
+
+    function addNote() {
+        const titleInput = document.getElementById('note-title');
+        const input = document.getElementById('note-input');
+        const title = titleInput.value.trim();
+        const content = input.value.trim();
+        if (!content) return;
+
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const formData = new FormData();
+        formData.append('title', title || 'Note');
+        formData.append('content', content);
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        fetch('{% url "hub:add_note_ajax" %}', {
+            method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': csrfToken }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    input.value = ''; titleInput.value = ''; showToast("Note saved!"); loadNotes();
+                } else { showToast('Error saving note.', 'error'); }
+            });
+    }
+
+    // --- COURSE SEARCH & REGISTRATION ---
+    let hasModifiedCourses = false;
+
+    function openCourseModal() {
+        hasModifiedCourses = false; // Reset on open
+        const modal = document.getElementById('course-modal');
+        const content = document.getElementById('course-modal-content');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+            content.classList.remove('scale-95', 'opacity-0');
+            content.classList.add('scale-100', 'opacity-100');
+        }, 10);
+        searchCourses(); // Initial empty search
+    }
+
+    function closeCourseModal() {
+        const modal = document.getElementById('course-modal');
+        const content = document.getElementById('course-modal-content');
+        content.classList.remove('scale-100', 'opacity-100');
+        content.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            // Auto-refresh if courses were modified
+            if (hasModifiedCourses) {
+                location.reload();
+            }
+        }, 300);
+    }
+
+    let searchTimeout;
+    function searchCourses() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const query = document.getElementById('course-search-input').value;
+            const level = document.getElementById('level-filter').value;
+            const semester = document.getElementById('semester-filter').value;
+            const results = document.getElementById('course-results');
+
+            results.innerHTML = '<div class="flex justify-center py-8"><div class="w-8 h-8 border-4 border-forest-green border-t-transparent rounded-full animate-spin"></div></div>';
+
+            fetch(`{% url "hub:search_subjects_ajax" %}?q=${encodeURIComponent(query)}&level=${level}&semester=${semester}`)
+                .then(res => res.json())
+                .then(data => {
+                    results.innerHTML = '';
+                    if (data.subjects.length === 0) {
+                        results.innerHTML = '<p class="text-center py-8 text-gray-500 italic">No courses found matching your search.</p>';
+                        return;
+                    }
+                    data.subjects.forEach(s => {
+                        const div = document.createElement('div');
+                        div.className = "group flex items-center justify-between p-5 bg-white dark:bg-white/5 rounded-[1.5rem] border border-gray-100 dark:border-white/10 hover:border-forest-green/30 dark:hover:border-emerald-500/30 hover:shadow-xl hover:shadow-black/5 transition-all duration-300 transform hover:-translate-y-1";
+                        div.innerHTML = `
+                            <div class="flex items-center gap-4 min-w-0 flex-1">
+                                <div class="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-white/5 flex items-center justify-center text-forest-green dark:text-emerald-400 shrink-0 border border-gray-100 dark:border-white/5 transition-transform group-hover:scale-110">
+                                    <i class="${s.icon} text-xl"></i>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <h4 class="font-black text-charcoal dark:text-white truncate text-base mb-1 font-['Outfit']">${s.name}</h4>
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-[9px] font-black uppercase tracking-[0.1em] text-forest-green dark:text-emerald-400 bg-forest-green/10 dark:bg-emerald-400/10 px-2 py-1 rounded-lg border border-forest-green/10">LV ${s.level}</span>
+                                        <span class="text-[9px] font-black uppercase tracking-[0.1em] text-gray-400 bg-gray-50 dark:bg-white/5 px-2 py-1 rounded-lg border border-gray-100 dark:border-white/5">SEM ${s.semester}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="toggleRegistration(this, ${s.id})" 
+                                class="register-btn ml-4 shrink-0 px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.1em] shadow-lg transition-all duration-300 transform active:scale-90 ${s.is_registered
+                                ? 'bg-red-50 text-red-500 border border-red-100 hover:bg-red-500 hover:text-white'
+                                : 'bg-forest-green text-white hover:bg-forest-hover shadow-forest-green/20'
+                            }">
+                                ${s.is_registered ? 'Remove' : 'Add Course'}
+                            </button>
+                        `;
+                        results.appendChild(div);
+                    });
+                });
+        }, 300);
+    }
+
+    function toggleRegistration(btn, subjectId) {
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        const formData = new FormData();
+        formData.append('subject_id', subjectId);
+        formData.append('csrfmiddlewaretoken', csrfToken);
+
+        btn.disabled = true;
+        btn.innerHTML = '...';
+
+        fetch('{% url "hub:toggle_registration_ajax" %}', {
+            method: 'POST', body: formData, headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': csrfToken }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    const msg = data.action === 'added'
+                        ? `Course added to Semester ${data.semester}!`
+                        : "Course removed.";
+                    showToast(msg);
+                    hasModifiedCourses = true; // Mark as modified for refresh on close
+
+                    // Update button UI
+                    if (data.action === 'added') {
+                        btn.className = "register-btn ml-4 shrink-0 px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.1em] shadow-lg transition-all duration-300 transform active:scale-90 bg-red-50 text-red-500 border border-red-100 hover:bg-red-500 hover:text-white";
+                        btn.innerHTML = 'Remove';
+                    } else {
+                        btn.className = "register-btn ml-4 shrink-0 px-6 py-2.5 rounded-full text-[11px] font-black uppercase tracking-[0.1em] shadow-lg transition-all duration-300 transform active:scale-90 bg-forest-green text-white hover:bg-forest-hover shadow-forest-green/20";
+                        btn.innerHTML = 'Add Course';
+                    }
+                } else {
+                    showToast(data.error || "Toggle failed.", 'error');
+                }
+                btn.disabled = false;
+            });
+    }
+
+    loadNotes();
+</script>
+
+<!-- Toast Container -->
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"></div>
+{% endblock %}

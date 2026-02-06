@@ -1,0 +1,1114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mechatronics Engineering Data Hub{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'forest-green': '#2D5A27',
+                        'forest-hover': '#23471e',
+                        'emerald-green': '#4ADE80',
+                        'emerald-hover': '#3bb36a',
+                        'midnight': '#000000',
+                        'charcoal': '#111111',
+                        'charcoal-light': '#1a1a1a',
+                        'off-white': '#F5F7F8',
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+            // Early Theme Initialization
+            (function () {
+                const savedTheme = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            })();
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern SVG Gauge Animation */
+        .group:hover .stroke-forest-green,
+        .group:hover .stroke-emerald-500 {
+            stroke-dashoffset: 30 !important;
+            /* Example 70% progress */
+        }
+
+        /* Glassmorphism Button Gloss Effect */
+        .group\/btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .group\/btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.1s, color 0.1s;
+        }
+
+        html:not(.dark) body {
+            background-color: transparent;
+            /* Changed from #F5F7F8 */
+            color: #1F2937;
+        }
+
+        html.dark body {
+            background-color: transparent;
+            /* Changed from #111827 */
+            color: #F8FAFC;
+        }
+
+        /* Background Image Styles */
+        .bg-image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -50;
+            background-image: url("{% static 'img/zagazig national university(1).jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: filter 0.5s ease;
+        }
+
+        /* No blur for maximum background clarity */
+        html:not(.dark) .bg-image-container {
+            filter: blur(0px);
+            -webkit-filter: blur(0px);
+        }
+
+        /* Overlay to ensure text readability */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -40;
+            transition: background-color 0.3s ease;
+        }
+
+        html:not(.dark) .bg-overlay {
+            background-color: rgba(245, 247, 248, 0.2);
+            /* Ultra high transparency for light mode */
+        }
+
+        html.dark .bg-overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+            /* maximum transparency for high-end glass effect */
+        }
+
+        .page-transition {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* Global Form Styles */
+        .form-input,
+        .form-select {
+            display: block;
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1F2937 !important;
+            /* High contrast dark grey for light mode */
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+            padding-right: 3rem;
+            cursor: pointer;
+        }
+
+        .dark .form-input,
+        .dark .form-select {
+            background-color: #000000;
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #F8FAFC !important;
+            /* Brighter white for dark mode */
+        }
+
+        /* Prevent browser autofill from breaking dark theme */
+        /* Prevent browser autofill from breaking dark theme - Global Fix */
+        .dark input:-webkit-autofill,
+        .dark input:-webkit-autofill:hover,
+        .dark input:-webkit-autofill:focus,
+        .dark textarea:-webkit-autofill,
+        .dark textarea:-webkit-autofill:hover,
+        .dark textarea:-webkit-autofill:focus,
+        .dark select:-webkit-autofill,
+        .dark select:-webkit-autofill:hover,
+        .dark select:-webkit-autofill:focus,
+        .dark .form-input:-webkit-autofill {
+            -webkit-text-fill-color: #F8FAFC !important;
+            -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important;
+            transition: background-color 5000s ease-in-out 0s;
+            caret-color: #F8FAFC;
+        }
+
+        .dark .form-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        /* Option styling for contrast - Force colors */
+        .form-select option,
+        select option {
+            background-color: white !important;
+            color: #111827 !important;
+        }
+
+        .dark .form-select option,
+        .dark select option {
+            background-color: #111827 !important;
+            color: #F8FAFC !important;
+        }
+
+        .form-input:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #2D5A27;
+            box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .dark .form-input:focus,
+        .dark .form-select:focus {
+            border-color: #4ADE80;
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+        }
+
+        /* Submit Button Interactivity */
+        button[type="submit"]:active,
+        .btn-active:active {
+            transform: perspective(1px) scale(0.97) translateY(1px);
+            filter: brightness(0.9);
+        }
+
+        /* File Input Styling */
+        input[type="file"] {
+            color: transparent;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: #2D5A27;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .dark input[type="file"]::file-selector-button {
+            background: #4ADE80;
+            color: #111827;
+        }
+
+
+
+        /* Hamburger Menu Animation */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Collapsible Content Utilities */
+        .collapsible-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
+        }
+
+        .collapsible-content.active {
+            max-height: 2000px;
+            opacity: 1;
+            transition: max-height 0.6s ease-in-out, opacity 0.4s ease-in;
+        }
+
+        /* Bilingual System Styles */
+        html[lang="en"] .lang-ar {
+            display: none !important;
+        }
+
+        html[lang="ar"] .lang-en {
+            display: none !important;
+        }
+
+        /* RTL Adjustments */
+        html[dir="rtl"] .space-x-3> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+
+        html[dir="rtl"] .space-x-4> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+
+        html[dir="rtl"] .space-x-8> :not([hidden])~ :not([hidden]) {
+            --tw-space-x-reverse: 1;
+        }
+
+        html[dir="rtl"] .border-r {
+            border-right-width: 0;
+            border-left-width: 1px;
+        }
+
+        html[dir="rtl"] .pr-6 {
+            padding-right: 0;
+            padding-left: 1.5rem;
+        }
+
+        html[dir="rtl"] .pl-1 {
+            padding-left: 0;
+            padding-right: 0.25rem;
+        }
+
+        html[dir="rtl"] .pr-4 {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+
+        html[dir="rtl"] .mr-1\.5 {
+            margin-right: 0;
+            margin-left: 0.375rem;
+        }
+
+        html[dir="rtl"] .ml-2 {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+
+        /* Global Smoothing */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .no-transition,
+        .no-transition * {
+            transition: none !important;
+        }
+    </style>
+    <script>
+        // Global Language Controller
+        (function () {
+            const langKey = 'app_language';
+            const savedLang = localStorage.getItem(langKey) || 'en';
+
+            function applyLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                localStorage.setItem(langKey, lang);
+            }
+
+            // Apply immediately to prevent flash
+            applyLanguage(savedLang);
+
+            window.toggleLanguage = function () {
+                const current = document.documentElement.lang;
+                const next = current === 'en' ? 'ar' : 'en';
+                applyLanguage(next);
+            }
+        })();
+    </script>
+    {% block extra_style %}{% endblock %}
+</head>
+
+<body class="min-h-screen flex flex-col text-charcoal dark:text-off-white">
+    <!-- Background Elements -->
+    <div class="bg-image-container"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Header (Fixed) -->
+    <header
+        class="fixed top-0 left-0 right-0 h-20 sm:h-24 bg-white/90 dark:bg-midnight/40 backdrop-blur-2xl shadow-sm z-[100] transition-colors">
+        <div class="w-full px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4">
+            <!-- Brand (Far Left) -->
+            <a href="{% url 'hub:home' %}" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+                <img src="{% static 'img/logo.png' %}" alt="University Logo" class="h-10 sm:h-12 w-auto object-contain">
+                <span
+                    class="text-lg sm:text-xl lg:text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display'] whitespace-nowrap">
+                    <span class="lang-en">Mechatronics Data</span><span class="lang-ar">داتا ميكاترونكس</span>
+                </span>
+            </a>
+
+            <!-- Desktop Navigation (Center) -->
+            <nav class="hidden lg:flex items-center justify-center gap-6 xl:gap-8 flex-1">
+                <a href="{% url 'hub:home' %}"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-forest-green dark:hover:text-emerald-green transition-colors font-['Outfit'] uppercase tracking-wide">
+                    <span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span>
+                </a>
+                <a href="{% url 'hub:about' %}"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-forest-green dark:hover:text-emerald-green transition-colors font-['Outfit'] uppercase tracking-wide">
+                    <span class="lang-en">About</span><span class="lang-ar">عن المنصة</span>
+                </a>
+                <a href="{% url 'hub:levels' %}"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-forest-green dark:hover:text-emerald-green transition-colors font-['Outfit'] uppercase tracking-wide">
+                    <span class="lang-en">Levels</span><span class="lang-ar">المستويات</span>
+                </a>
+                <a href="{% url 'hub:contact' %}"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-forest-green dark:hover:text-emerald-green transition-colors font-['Outfit'] uppercase tracking-wide">
+                    <span class="lang-en">Contact</span><span class="lang-ar">تواصل معنا</span>
+                </a>
+                {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <a href="{% url 'hub:admin_dashboard' %}"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-forest-green dark:hover:text-emerald-green transition-colors font-['Outfit'] uppercase tracking-wide">
+                    <span class="lang-en">Dashboard</span><span class="lang-ar">لوحة التحكم</span>
+                </a>
+                {% else %}
+                <a href="{% url 'hub:student_dashboard' %}"
+                    class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-forest-green dark:hover:text-emerald-green transition-colors font-['Outfit'] uppercase tracking-wide">
+                    <span class="lang-en">Dashboard</span><span class="lang-ar">لوحة الطالب</span>
+                </a>
+                {% endif %}
+                <a href="{% url 'hub:ai_assistant' %}"
+                    class="text-sm font-black text-forest-green dark:text-emerald-400 hover:opacity-70 transition-colors font-['Outfit'] uppercase tracking-[0.2em] flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-forest-green dark:bg-emerald-400 animate-pulse"></span>
+                    <span class="lang-en">AI Academy</span><span class="lang-ar">أكاديمية الذكاء</span>
+                </a>
+                {% endif %}
+            </nav>
+
+            <!-- Right Section (Theme, User/Auth) -->
+            <div class="flex items-center justify-end shrink-0 gap-2 sm:gap-3">
+                <div
+                    class="flex items-center gap-2 sm:gap-3 border-r border-gray-200 dark:border-white/10 pr-2 sm:pr-4">
+                    <!-- Language Toggle Redesign -->
+                    <button onclick="toggleLanguage()"
+                        class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-gray-50/50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-forest-green dark:hover:border-emerald-500 hover:bg-white dark:hover:bg-white/10 transition-all duration-300 group focus:outline-none relative overflow-hidden">
+                        <div
+                            class="w-6 h-6 rounded-full bg-forest-green/10 dark:bg-emerald-500/10 flex items-center justify-center group-hover:bg-forest-green dark:group-hover:bg-emerald-500 transition-colors duration-300">
+                            <i
+                                class="fas fa-globe text-[10px] text-forest-green dark:text-emerald-400 group-hover:text-white transition-colors duration-300"></i>
+                        </div>
+                        <span
+                            class="hidden sm:inline text-[11px] font-black uppercase tracking-widest text-gray-600 dark:text-gray-300 group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors font-['Outfit']">
+                            <span class="lang-en">العربية</span>
+                            <span class="lang-ar">English</span>
+                        </span>
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button id="themeToggle"
+                        class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 text-gray-500 dark:text-gray-400 transition-colors focus:outline-none">
+                        <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M12.728 0l-.707-.707M6.343 6.343l-.707-.707m12.728 12.728L12 11a4 4 0 100 8 4 4 0 000-8z" />
+                        </svg>
+                        <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+
+                    {% if user.is_authenticated %}
+                    <!-- Notification Bell -->
+                    <div class="relative" id="notificationContainer">
+                        <button id="notificationBtn" onclick="toggleNotifications()"
+                            class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 text-gray-500 dark:text-gray-400 transition-colors focus:outline-none relative group">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
+                            <!-- Badge -->
+                            {% if user.profile.unread_count > 0 %}
+                            <span id="notificationBadge" class="absolute top-1.5 right-1.5 flex h-4 w-4">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span
+                                    class="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-[9px] font-bold text-white items-center justify-center border-2 border-white dark:border-midnight">
+                                    {{ user.profile.unread_count }}
+                                </span>
+                            </span>
+                            {% endif %}
+                        </button>
+
+                        <!-- Aura Dropdown -->
+                        <div id="notificationDropdown"
+                            class="hidden absolute right-0 mt-4 w-80 bg-white/90 dark:bg-charcoal/90 backdrop-blur-2xl rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-gray-100 dark:border-white/5 overflow-hidden z-50 transform origin-top-right transition-all duration-300">
+
+                            <div
+                                class="p-6 border-b border-gray-100 dark:border-white/5 flex justify-between items-center bg-gray-50/50 dark:bg-white/5">
+                                <h3
+                                    class="font-black text-sm uppercase tracking-widest text-gray-900 dark:text-white font-['Outfit']">
+                                    Inbox</h3>
+                                <button onclick="markAllRead()"
+                                    class="text-[10px] font-black uppercase tracking-widest text-forest-green dark:text-emerald-400 hover:opacity-70 transition-opacity">
+                                    Clear All
+                                </button>
+                            </div>
+
+                            <div class="max-h-[24rem] overflow-y-auto custom-scrollbar">
+                                {% for notification in user.notifications.all|slice:":15" %}
+                                <div
+                                    class="block p-5 hover:bg-white dark:hover:bg-white/5 transition-all border-b border-gray-50 dark:border-white/5 relative group {% if not notification.is_read %}unread-notification{% endif %}">
+                                    <div class="flex items-start space-x-4">
+                                        <div
+                                            class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-110 {% if 'Registered' in notification.title %}bg-blue-50 text-blue-500 dark:bg-blue-900/40 dark:text-blue-400 {% elif 'Uploaded' in notification.title %}bg-emerald-50 text-emerald-500 dark:bg-emerald-900/40 dark:text-emerald-400 {% else %}bg-gray-50 text-gray-500 dark:bg-white/5 dark:text-gray-400{% endif %}">
+                                            {% if 'Registered' in notification.title %}
+                                            <i class="fas fa-user-plus text-sm"></i>
+                                            {% elif 'Uploaded' in notification.title %}
+                                            <i class="fas fa-file-upload text-sm"></i>
+                                            {% else %}
+                                            <i class="fas fa-bell text-sm"></i>
+                                            {% endif %}
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p
+                                                class="text-[11px] font-black text-gray-900 dark:text-gray-100 tracking-tight leading-snug">
+                                                {{ notification.title }}</p>
+                                            <p
+                                                class="text-[10px] text-gray-500 dark:text-gray-400 mt-1 leading-relaxed line-clamp-2">
+                                                {{ notification.message|default:"" }}</p>
+                                            <p
+                                                class="text-[9px] font-bold text-gray-400 dark:text-gray-500 mt-2 flex items-center uppercase tracking-widest">
+                                                <i class="far fa-clock mr-1.5 text-[8px]"></i>
+                                                {{ notification.created_at|timesince }} ago
+                                                {% if not notification.is_read %}
+                                                <span
+                                                    class="ml-2 w-1 h-1 bg-forest-green dark:bg-emerald-500 rounded-full status-dot"></span>
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <div class="p-12 text-center flex flex-col items-center">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center mb-4">
+                                        <i class="fas fa-check text-gray-300 dark:text-gray-600"></i>
+                                    </div>
+                                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">All Caught Up!
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                            <a href="#"
+                                class="block p-4 bg-gray-50/50 dark:bg-white/5 text-[10px] font-black uppercase tracking-[0.2em] text-center text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors">
+                                View History
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% if user.is_authenticated %}
+                <!-- User Profile  & Logout -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <a href="{% url 'hub:profile' %}"
+                        class="hidden sm:flex items-center space-x-3 pl-1 pr-4 py-1.5 bg-white dark:bg-white/5 rounded-full border border-gray-100 dark:border-white/10 hover:border-forest-green dark:hover:border-emerald-500 hover:shadow-md transition-all group">
+                        <div
+                            class="w-9 h-9 rounded-full bg-forest-green dark:bg-emerald-600 flex items-center justify-center text-white font-bold text-sm uppercase overflow-hidden ring-2 ring-white dark:ring-[#111827] shadow-sm">
+                            {% if user.profile.profile_picture %}
+                            <img src="{{ user.profile.profile_picture.url }}" class="w-full h-full object-cover">
+                            {% else %}
+                            {{ user.username|slice:":1" }}
+                            {% endif %}
+                        </div>
+                        <div class="flex flex-col">
+                            <span
+                                class="text-xs font-bold text-gray-900 dark:text-white group-hover:text-forest-green dark:group-hover:text-emerald-400 transition-colors leading-tight">
+                                {{ user.get_full_name|default:user.username }}
+                            </span>
+                            <span class="text-[10px] text-gray-500 dark:text-gray-400 font-medium">
+                                <span class="lang-en">{% if user.is_staff %}Admin{% else %}Student{% endif %}</span>
+                                <span class="lang-ar">{% if user.is_staff %}مسؤول{% else %}طالب{% endif %}</span>
+                            </span>
+                        </div>
+                    </a>
+
+                    <form id="logout-form" action="{% url 'hub:logout' %}" method="POST" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                    <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        class="hidden sm:block p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-full transition-all duration-200 group"
+                        title="Sign Out">
+                        <svg class="w-5 h-5 group-hover:transform group-hover:translate-x-0.5 transition-transform"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                    </button>
+                </div>
+                {% else %}
+                <a href="{% url 'hub:login' %}"
+                    class="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-forest-green hover:bg-[#23471e] rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 font-['Outfit'] tracking-wide">
+                    <span class="lang-en">Sign In</span><span class="lang-ar">تسجيل الدخول</span>
+                </a>
+                {% endif %}
+
+                <button id="mobileMenuButton"
+                    class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all lg:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                        <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <script>
+                    function toggleNotifications() {
+                        const dropdown = document.getElementById('notificationDropdown');
+                        const badge = document.getElementById('notificationBadge');
+                        const isOpen = !dropdown.classList.contains('hidden');
+
+                        dropdown.classList.toggle('hidden');
+
+                        if (!isOpen) { // Opening
+                            if (badge) badge.style.display = 'none';
+
+                            // Visual Feedback: Clean up unread status immediately
+                            const unreadItems = document.querySelectorAll('.unread-notification');
+                            unreadItems.forEach(item => {
+                                item.classList.remove('unread-notification');
+                                item.style.backgroundColor = 'transparent';
+                                const dot = item.querySelector('.status-dot');
+                                if (dot) dot.style.opacity = '0';
+                            });
+
+                            // Sync with Server
+                            fetch("{% url 'hub:mark_notifications_read' %}", {
+                                method: "POST",
+                                headers: {
+                                    "X-CSRFToken": "{{ csrf_token }}",
+                                    "Content-Type": "application/json"
+                                },
+                            }).then(response => {
+                                if (!response.ok) console.error('Failed to sync notifications');
+                            });
+                        }
+                    }
+
+                    function markAllRead() {
+                        const unreadItems = document.querySelectorAll('.unread-notification');
+                        unreadItems.forEach(item => {
+                            item.classList.remove('unread-notification');
+                            item.style.backgroundColor = 'transparent';
+                            const dot = item.querySelector('.status-dot');
+                            if (dot) dot.style.opacity = '0';
+                        });
+                        const badge = document.getElementById('notificationBadge');
+                        if (badge) badge.style.display = 'none';
+
+                        // We also call this explicitly just in case, though toggleNotifications should have handled it
+                        fetch("{% url 'hub:mark_notifications_read' %}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRFToken": "{{ csrf_token }}",
+                                "Content-Type": "application/json"
+                            },
+                        });
+                    }
+
+                    document.addEventListener('click', function (event) {
+                        const container = document.getElementById('notificationContainer');
+                        const dropdown = document.getElementById('notificationDropdown');
+                        if (container && !container.contains(event.target)) {
+                            dropdown.classList.add('hidden');
+                        }
+                    });
+                </script>
+                <style>
+                    .unread-notification {
+                        background-color: rgba(74, 222, 128, 0.05);
+                    }
+
+                    .dark .unread-notification {
+                        background-color: rgba(52, 211, 153, 0.03);
+                    }
+
+                    #notificationDropdown::-webkit-scrollbar {
+                        width: 4px;
+                    }
+
+                    #notificationDropdown::-webkit-scrollbar-thumb {
+                        background: rgba(0, 0, 0, 0.1);
+                        border-radius: 10px;
+                    }
+                </style>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer"
+        class="fixed inset-0 z-[90] lg:hidden bg-white/95 dark:bg-midnight/95 backdrop-blur-xl mobile-menu flex flex-col pt-24 px-6 space-y-4 hidden">
+        <a href="{% url 'hub:home' %}"
+            class="mobile-nav-link text-lg font-bold text-charcoal dark:text-off-white py-4 border-b border-gray-100 dark:border-white/5">
+            <span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span>
+        </a>
+        <a href="{% url 'hub:about' %}"
+            class="mobile-nav-link text-lg font-bold text-charcoal dark:text-off-white py-4 border-b border-gray-100 dark:border-white/5">
+            <span class="lang-en">About</span><span class="lang-ar">عن المنصة</span>
+        </a>
+        {% if user.is_authenticated %}
+        {% if user.is_staff %}
+        <a href="{% url 'hub:admin_dashboard' %}"
+            class="mobile-nav-link text-lg font-bold text-charcoal dark:text-off-white py-4 border-b border-gray-100 dark:border-white/5">
+            <span class="lang-en">Dashboard</span><span class="lang-ar">لوحة التحكم</span>
+        </a>
+        {% else %}
+        <a href="{% url 'hub:student_dashboard' %}"
+            class="mobile-nav-link text-lg font-bold text-charcoal dark:text-off-white py-4 border-b border-gray-100 dark:border-white/5">
+            <span class="lang-en">Dashboard</span><span class="lang-ar">لوحة الطالب</span>
+        </a>
+        {% endif %}
+        {% endif %}
+        <a href="{% url 'hub:levels' %}"
+            class="mobile-nav-link text-lg font-bold text-charcoal dark:text-off-white py-4 border-b border-gray-100 dark:border-white/5">
+            <span class="lang-en">Levels</span><span class="lang-ar">المستويات</span>
+        </a>
+        <!-- Student Support (Chat) for Mobile Sidebar -->
+        <a href="{% url 'hub:contact' %}"
+            class="mobile-nav-link text-lg font-bold text-charcoal dark:text-off-white py-4 border-b border-gray-100 dark:border-white/5 w-full text-left">
+            <span class="lang-en">Student Support</span><span class="lang-ar">الدعم الفني</span>
+        </a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'hub:ai_assistant' %}"
+            class="mobile-nav-link text-lg font-bold text-forest-green dark:text-emerald-green py-4 border-b border-gray-100 dark:border-white/5 flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-forest-green dark:bg-emerald-500 animate-pulse"></span>
+            <span class="lang-en">AI Academy</span><span class="lang-ar">أكاديمية الذكاء</span>
+        </a>
+        {% endif %}
+        {% if not user.is_authenticated %}
+        <a href="{% url 'hub:login' %}"
+            class="mobile-nav-link text-lg font-bold text-forest-green dark:text-emerald-green py-4">
+            <span class="lang-en">Sign In</span><span class="lang-ar">تسجيل الدخول</span>
+        </a>
+        {% else %}
+        <form method="POST" action="{% url 'hub:logout' %}" class="pt-4">
+            {% csrf_token %}
+            <button type="submit"
+                class="w-full py-4 bg-red-500/10 text-red-500 font-black rounded-2xl uppercase tracking-[0.2em]">
+                <span class="lang-en">Logout</span><span class="lang-ar">تسجيل الخروج</span>
+            </button>
+        </form>
+        {% endif %}
+    </div>
+
+    <div class="{% block main_padding %}pt-24{% endblock %} flex-grow page-transition subtle-grid">
+        {% if messages and 'login' not in request.path and 'signup' not in request.path %}
+        <div id="message-container" class="container mx-auto px-4 pt-8 transition-opacity duration-500">
+            {% for message in messages %}
+            <div
+                class="p-4 rounded-[20px] text-sm font-bold shadow-sm border mb-4 {% if message.tags == 'success' %}bg-green-50 text-green-700 border-green-100{% else %}bg-red-50 text-red-700 border-red-100{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        <script>
+            setTimeout(function () {
+                const container = document.getElementById('message-container');
+                if (container) {
+                    container.style.opacity = '0';
+                    setTimeout(() => container.remove(), 500);
+                }
+            }, 4000);
+        </script>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer
+        class="bg-white dark:bg-midnight/40 border-t border-gray-100 dark:border-white/5 pt-16 pb-8 {% block footer_margin %}{% endblock %} transition-colors relative overflow-hidden backdrop-blur-xl">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Section -->
+                <div class="col-span-2 lg:col-span-1 space-y-6">
+                    <a href="{% url 'hub:home' %}" class="flex items-center space-x-3 group">
+                        <img src="{% static 'img/logo.png' %}" alt="Logo" class="h-10 w-auto">
+                        <div class="flex flex-col">
+                            <span
+                                class="text-lg font-bold text-charcoal dark:text-white leading-none font-['Playfair_Display']">
+                                <span class="lang-en">Mechatronics Data</span><span class="lang-ar">بيانات
+                                    الميكاترونكس</span>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                        <span class="lang-en">Mechatronics Data is a platform to help students in the Mechatronics
+                            Engineering Department. We empower future engineers with curated resources and a seamless
+                            digital learning experience.</span>
+                        <span class="lang-ar">منصة بيانات هندسة الميكاترونكس هي منصة لمساعدة الطلاب في قسم هندسة
+                            الميكاترونكس. نحن نسعى لتمكين مهندسي المستقبل عبر توفير مصادر منتقاة وتجربة تعليمية رقمية
+                            سلسة.</span>
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors">
+                            <i class="fab fa-facebook-f text-xs"></i>
+                        </a>
+                        <a href="#"
+                            class="w-8 h-8 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors">
+                            <i class="fab fa-linkedin-in text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-span-1">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white mb-8">
+                        <span class="lang-en">Navigation</span><span class="lang-ar">التنقل</span>
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="{% url 'hub:home' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Home</span><span class="lang-ar">الرئيسية</span></a></li>
+                        <li><a href="{% url 'hub:about' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">About Us</span><span class="lang-ar">من نحن</span></a></li>
+                        <li><a href="{% url 'hub:contact' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Contact Support</span><span class="lang-ar">الدعم الفني</span></a>
+                        </li>
+                        <li><a href="{% url 'hub:levels' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Academic Levels</span><span class="lang-ar">المستويات
+                                    الأكاديمية</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div class="col-span-1">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white mb-8">
+                        <span class="lang-en">Resources</span><span class="lang-ar">المصادر</span>
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="{% url 'hub:study_plan' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Study Plans</span><span class="lang-ar">خطط الدراسة</span></a></li>
+                        <li><a href="{% url 'hub:tools' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Software Tools</span><span class="lang-ar">الأدوات
+                                    البرمجية</span></a></li>
+                        <li><a href="{% url 'hub:online_courses' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Digital Library</span><span class="lang-ar">المكتبة
+                                    الإلكترونية</span></a></li>
+                        <li><a href="{% url 'hub:academic_regulations' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Academic Regulations</span><span class="lang-ar">اللائحة
+                                    الأكاديمية</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- More Resources -->
+                <div class="col-span-2 lg:col-span-1">
+                    <h4 class="text-xs font-black uppercase tracking-[0.2em] text-gray-900 dark:text-white mb-8">
+                        <span class="lang-en">More Info</span><span class="lang-ar">المزيد</span>
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="{% url 'hub:credit_hour' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Credit Hour System</span><span class="lang-ar">نظام الساعات
+                                    المعتمدة</span></a></li>
+                        <li><a href="{% url 'hub:academic_advice' %}"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">Academic Advice</span><span class="lang-ar">الإرشاد
+                                    الأكاديمي</span></a></li>
+                        <li><a href="#"
+                                class="text-sm text-gray-500 dark:text-gray-400 hover:text-forest-green dark:hover:text-emerald-400 transition-colors font-medium"><span
+                                    class="lang-en">FAQ</span><span class="lang-ar">الأسئلة الشائعة</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Developer Credits Bar -->
+            <div class="mb-12 overflow-hidden whitespace-nowrap">
+                <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 py-6">
+                    <span
+                        class="text-[12px] font-black uppercase tracking-[0.4em] text-gray-400 dark:text-gray-500 shrink-0">
+                        <span class="lang-en">ZNU Development Team</span><span class="lang-ar">فريق تطوير جامعة الزقازيق
+                            الأهلية</span>
+                    </span>
+                    <div
+                        class="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-x-10 gap-y-4 text-center">
+                        <a href="https://www.linkedin.com/in/moaaz-mohamed-elghamry-164a00303/" target="_blank"
+                            class="text-sm md:text-base font-bold text-forest-green dark:text-emerald-500 hover:scale-110 transition-transform">Moaaz
+                            Elghamry</a>
+                        <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-white/10"></div>
+                        <a href="https://www.linkedin.com/in/mohamed-mohamed-atia-57138b360/" target="_blank"
+                            class="text-sm md:text-base font-bold text-forest-green dark:text-emerald-500 hover:scale-110 transition-transform">Mohamed
+                            Atia</a>
+                        <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-white/10"></div>
+                        <a href="https://www.linkedin.com/in/mohamed-khaled-ramadan-56a332332/" target="_blank"
+                            class="text-sm md:text-base font-bold text-forest-green dark:text-emerald-500 hover:scale-110 transition-transform">Mohamed
+                            Khaled</a>
+                        <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-gray-200 dark:bg-white/10"></div>
+                        <a href="https://www.linkedin.com/in/mohamed-ahmed-romy-811198323/" target="_blank"
+                            class="text-sm md:text-base font-bold text-forest-green dark:text-emerald-500 hover:scale-110 transition-transform">Mohammed
+                            Romy</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+                    <span class="lang-en">&copy; 2026 Mechatronics Data Hub. All Rights Reserved.</span>
+                    <span class="lang-ar">&copy; 2026 منصة بيانات الميكاترونكس. جميع الحقوق محفوظة.</span>
+                </p>
+                <div class="flex items-center space-x-6 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                    <a href="#" class="hover:text-forest-green transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-forest-green transition-colors">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        // Initialize Theme Icons on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const sunIcon = document.getElementById('sunIcon');
+            const moonIcon = document.getElementById('moonIcon');
+            if (sunIcon && moonIcon) {
+                sunIcon.classList.toggle('hidden', !isDark);
+                moonIcon.classList.toggle('hidden', isDark);
+            }
+        });
+
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        if (mobileMenuButton && mobileDrawer) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isActive = mobileDrawer.classList.toggle('active');
+
+                if (isActive) {
+                    mobileDrawer.classList.remove('hidden');
+                    // Small timeout to allow transition from 'hidden' state
+                    setTimeout(() => mobileDrawer.style.transform = 'translateX(0)', 10);
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                } else {
+                    mobileDrawer.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (!mobileDrawer.classList.contains('active')) {
+                            mobileDrawer.classList.add('hidden');
+                        }
+                    }, 300);
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileDrawer.classList.remove('active');
+                    mobileDrawer.classList.add('hidden');
+                    mobileDrawer.style.transform = 'translateX(100%)';
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            });
+        }
+    </script>
+    {% block extra_js %}{% endblock %}
+    <!-- Bottom Navigation Bar (Mobile Only) -->
+    <nav id="bottomNav"
+        class="fixed bottom-4 left-4 right-4 z-[100] bg-white/10 dark:bg-black/5 backdrop-blur-2xl border border-white/20 dark:border-white/10 lg:hidden rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 ease-in-out transform will-change-transform">
+        <div class="flex items-center justify-around h-16 relative px-4">
+            <a href="{% url 'hub:home' %}"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 {% if request.resolver_match.url_name == 'home' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide {% if request.resolver_match.url_name == 'home' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors">
+                    <span class="lang-en">Home</span><span class="lang-ar">الرئيسية</span>
+                </span>
+            </a>
+            <a href="{% url 'hub:levels' %}"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 {% if request.resolver_match.url_name == 'levels' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide {% if request.resolver_match.url_name == 'levels' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors">
+                    <span class="lang-en">Levels</span><span class="lang-ar">المستويات</span>
+                </span>
+            </a>
+            {% if user.is_authenticated %}
+            <a href="{% if user.is_staff %}{% url 'hub:admin_dashboard' %}{% else %}{% url 'hub:student_dashboard' %}{% endif %}"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 {% if 'dashboard' in request.resolver_match.url_name %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide {% if 'dashboard' in request.resolver_match.url_name %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors">
+                    <span class="lang-en">Dashboard</span><span class="lang-ar">اللوحة</span>
+                </span>
+            </a>
+            <a href="{% url 'hub:ai_assistant' %}"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 {% if request.resolver_match.url_name == 'ai_assistant' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide {% if request.resolver_match.url_name == 'ai_assistant' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors">
+                    <span class="lang-en">Academy</span><span class="lang-ar">Academy</span>
+                </span>
+            </a>
+            <a href="{% url 'hub:profile' %}"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <div
+                    class="w-6 h-6 rounded-full overflow-hidden border {% if request.resolver_match.url_name == 'profile' %}border-forest-green dark:border-emerald-500{% else %}border-transparent{% endif %}">
+                    {% if user.profile.profile_picture %}
+                    <img src="{{ user.profile.profile_picture.url }}" class="w-full h-full object-cover">
+                    {% else %}
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center text-[8px] font-bold">{{
+                        user.username|slice:":1" }}</div>
+                    {% endif %}
+                </div>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide {% if request.resolver_match.url_name == 'profile' %}text-forest-green dark:text-emerald-500{% else %}text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500{% endif %} transition-colors">
+                    <span class="lang-en">Profile</span><span class="lang-ar">حسابي</span>
+                </span>
+            </a>
+            <button onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 text-gray-400 dark:text-gray-500 group-hover:text-red-500 transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500 group-hover:text-red-500 transition-colors">
+                    <span class="lang-en">Exit</span><span class="lang-ar">خروج</span>
+                </span>
+            </button>
+            {% else %}
+            <a href="#" class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500 transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500 transition-colors">
+                    <span class="lang-en">About</span><span class="lang-ar">عن المنصة</span>
+                </span>
+            </a>
+            <a href="{% url 'hub:login' %}"
+                class="flex flex-col items-center justify-center w-full h-full space-y-1 group">
+                <svg class="w-6 h-6 text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500 transition-colors"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                </svg>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-wide text-gray-400 dark:text-gray-500 group-hover:text-forest-green dark:group-hover:text-emerald-500 transition-colors">
+                    <span class="lang-en">Sign In</span><span class="lang-ar">دخول</span>
+                </span>
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- GLOBAL CHAT WIDGET -->
+    <!-- Floating Button (Above Mobile Nav) -->
+    <!-- Floating Button Removed as per request -->
+    <!-- <button onclick="toggleChat()" ... > -->
+
+
+    <!-- Smart Bottom Navigation Logic (Placed at end to ensure element exists) -->
+    <script>
+        (function () {
+            let isScrolling;
+            const bottomNav = document.getElementById('bottomNav');
+
+            if (bottomNav) {
+                const handleScroll = () => {
+                    // Hide when scrolling
+                    bottomNav.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+
+                    window.clearTimeout(isScrolling);
+
+                    // Show when stopped
+                    isScrolling = setTimeout(() => {
+                        bottomNav.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+                    }, 250);
+                };
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                document.addEventListener('scroll', handleScroll, { passive: true, capture: true });
+            }
+        })();
+    </script>
+</body>
+
+</html>

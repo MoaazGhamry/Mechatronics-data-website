@@ -1,0 +1,819 @@
+{% extends "base.html" %}
+
+{% block title %}<span class="lang-en">Admin Control Panel - Mechatronics Hub</span><span class="lang-ar">لوحة تحكم
+    المسؤول - بوابة الميكاترونكس</span>{% endblock %}
+
+{% block content %}
+<main class="container mx-auto px-4 py-4 sm:py-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="mb-6 sm:mb-12">
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold text-charcoal dark:text-off-white tracking-tight text-center sm:text-left">
+                <span class="lang-en">Admin Dashboard</span><span class="lang-ar">لوحة المسؤول</span>
+            </h2>
+            <p class="text-gray-500 dark:text-gray-400 font-medium mt-1 text-center sm:text-left text-sm sm:text-base">
+                <span class="lang-en">Management and Data Oversight</span><span class="lang-ar">الإدارة ومراقبة
+                    البيانات</span>
+            </p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8 sm:mb-12">
+            <div
+                class="bg-white dark:bg-charcoal p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] shadow-sm border border-gray-100 dark:border-white/5">
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
+                    <span class="lang-en">Students</span><span class="lang-ar">الطلاب</span>
+                </span>
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <span class="text-2xl sm:text-4xl font-black text-charcoal dark:text-off-white">
+                        {{ total_students }}
+                    </span>
+                    <span
+                        class="px-1.5 py-0.5 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-[10px] sm:text-xs font-bold rounded-lg">+12%</span>
+                </div>
+            </div>
+            <div
+                class="bg-white dark:bg-charcoal p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] shadow-sm border border-gray-100 dark:border-white/5">
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
+                    <span class="lang-en">Resources</span><span class="lang-ar">المصادر</span>
+                </span>
+                <span class="text-2xl sm:text-4xl font-black text-charcoal dark:text-off-white">
+                    {{ total_resources }}
+                </span>
+            </div>
+            <div
+                class="bg-white dark:bg-charcoal p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] shadow-sm border border-gray-100 dark:border-white/5 text-center sm:text-left">
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
+                    <span class="lang-en">Downloads</span><span class="lang-ar">التحميلات</span>
+                </span>
+                <span class="text-2xl sm:text-4xl font-black text-charcoal dark:text-off-white">1.2k</span>
+            </div>
+            <div
+                class="bg-white dark:bg-charcoal p-4 sm:p-8 rounded-[24px] sm:rounded-[32px] shadow-sm border border-gray-100 dark:border-white/5 text-center sm:text-left">
+                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">
+                    <span class="lang-en">Traffic</span><span class="lang-ar">الزيارات</span>
+                </span>
+                <span class="text-2xl sm:text-4xl font-black text-charcoal dark:text-off-white">4.8k</span>
+            </div>
+
+            <!-- Global Semester Switch -->
+            <div
+                class="col-span-2 lg:col-span-3 bg-gradient-to-r from-forest-green to-[#2d5a27] dark:from-emerald-900 dark:to-midnight p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] shadow-lg text-white flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden group">
+                <!-- Decorative Background -->
+                <div class="absolute right-0 top-0 h-full w-1/3 opacity-10 pointer-events-none">
+                    <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 100 L 100 0 L 100 100 Z" fill="white" />
+                    </svg>
+                </div>
+
+                <div class="relative z-10 text-center sm:text-left">
+                    <h3 class="text-2xl font-black font-['Outfit'] mb-1">
+                        <span class="lang-en">Active Semester: Semester {{ current_semester }}</span>
+                        <span class="lang-ar">الفصل النشط: الفصل {{ current_semester }}</span>
+                    </h3>
+                    <p class="text-white/80 text-sm font-medium">
+                        <span class="lang-en">This setting controls which courses are visible to students.</span>
+                        <span class="lang-ar">هذا الإعداد يتحكم في المواد التي تظهر للطلاب.</span>
+                    </p>
+                </div>
+
+                <form method="POST"
+                    class="relative z-10 flex items-center bg-black/20 p-1.5 rounded-2xl backdrop-blur-md border border-white/10">
+                    {% csrf_token %}
+                    <input type="hidden" name="toggle_semester" value="true">
+
+                    {% if current_semester == 1 %}
+                    <!-- Semester 1 Active -->
+                    <div
+                        class="px-6 py-2.5 bg-white text-forest-green rounded-xl shadow-lg shadow-black/10 transform scale-100 transition-all">
+                        <span class="text-xs font-black uppercase tracking-widest flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-forest-green"></span>
+                            Semester 1
+                        </span>
+                    </div>
+                    <button type="submit"
+                        class="px-6 py-2.5 text-white/50 hover:text-white hover:bg-white/5 rounded-xl transition-all group">
+                        <span
+                            class="text-xs font-bold uppercase tracking-widest group-hover:scale-105 inline-block transition-transform">Semester
+                            2</span>
+                    </button>
+                    {% else %}
+                    <!-- Semester 2 Active -->
+                    <button type="submit"
+                        class="px-6 py-2.5 text-white/50 hover:text-white hover:bg-white/5 rounded-xl transition-all group">
+                        <span
+                            class="text-xs font-bold uppercase tracking-widest group-hover:scale-105 inline-block transition-transform">Semester
+                            1</span>
+                    </button>
+                    <div
+                        class="px-6 py-2.5 bg-white text-forest-green rounded-xl shadow-lg shadow-black/10 transform scale-100 transition-all">
+                        <span class="text-xs font-black uppercase tracking-widest flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-forest-green"></span>
+                            Semester 2
+                        </span>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+
+            <!-- Live Chat Management Card (Next to Active Semester) -->
+            <div class="col-span-2 lg:col-span-1 bg-white dark:bg-charcoal p-6 rounded-[24px] sm:rounded-[32px] shadow-sm border border-gray-100 dark:border-white/5 flex flex-col justify-between cursor-pointer hover:shadow-lg transition-all group relative overflow-hidden"
+                onclick="window.location.href='{% url 'hub:admin_chat' %}'">
+
+                <!-- Hover Effect BG -->
+                <div
+                    class="absolute inset-0 bg-forest-green/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                </div>
+
+                <div class="flex items-center justify-between mb-4 relative z-10">
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"><span
+                            class="lang-en">Support</span><span class="lang-ar">الدعم</span></span>
+                    <i
+                        class="fa-solid fa-arrow-right text-gray-300 group-hover:text-forest-green transform group-hover:translate-x-1 transition-all"></i>
+                </div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div
+                            class="w-10 h-10 rounded-2xl bg-forest-green/10 flex items-center justify-center text-forest-green">
+                            <i class="fa-solid fa-comments text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 dark:text-white leading-none"><span
+                                class="lang-en">Messages</span><span class="lang-ar">الرسائل</span></h3>
+                    </div>
+                    <p class="text-xs text-gray-500 font-medium pl-1">
+                        <span class="lang-en">View student inquiries</span><span class="lang-ar">عرض استفسارات
+                            الطلاب</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Smart Upload Form -->
+            <section
+                class="h-full flex flex-col bg-white dark:bg-charcoal p-6 sm:p-8 rounded-[32px] sm:rounded-[40px] shadow-xl border border-gray-100 dark:border-white/5">
+                <h3
+                    class="text-xl sm:text-2xl font-bold text-charcoal dark:text-off-white mb-6 sm:mb-8 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-forest-green dark:text-emerald-green" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                    <span class="lang-en">Smart Upload Form</span><span class="lang-ar">نموذج الرفع الذكي</span>
+                </h3>
+
+                <ul class="flex border-b border-gray-100 dark:border-white/5 mb-6" id="uploadParams">
+                    <li class="mr-2">
+                        <button onclick="switchTab('manual')" id="tab-manual"
+                            class="inline-block py-2 px-4 text-xs font-black uppercase tracking-widest text-forest-green dark:text-emerald-green border-b-2 border-forest-green dark:border-emerald-green active">
+                            Manual Link
+                        </button>
+                    </li>
+                    <li class="mr-2">
+                        <button onclick="switchTab('drive')" id="tab-drive"
+                            class="inline-block py-2 px-4 text-xs font-black uppercase tracking-widest text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                            Drive Folder
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Manual Upload Form -->
+                <form method="POST" enctype="multipart/form-data" id="uploadForm"
+                    class="flex-grow flex flex-col space-y-6">
+                    {% csrf_token %}
+
+                    <!-- Step 1: Context -->
+                    <div
+                        class="space-y-4 p-4 bg-gray-50/50 dark:bg-white/5 rounded-3xl border border-gray-100 dark:border-white/5">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span
+                                class="w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-green text-white dark:text-midnight text-[10px] flex items-center justify-center font-bold">1</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                                <span class="lang-en">Select Category</span><span class="lang-ar">اختر الفئة</span>
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Level</label>
+                                {{ form.level }}
+                            </div>
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Semester</label>
+                                {{ form.semester }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Target -->
+                    <div
+                        class="space-y-4 p-4 bg-gray-50/50 dark:bg-white/5 rounded-3xl border border-gray-100 dark:border-white/5">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span
+                                class="w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-green text-white dark:text-midnight text-[10px] flex items-center justify-center font-bold">2</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                                <span class="lang-en">Identify Subject</span><span class="lang-ar">حدد المادة</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <label
+                                class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Subject</label>
+                            {{ form.subject }}
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Content -->
+                    <div
+                        class="space-y-4 p-4 bg-gray-50/50 dark:bg-white/5 rounded-3xl border border-gray-100 dark:border-white/5">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span
+                                class="w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-green text-white dark:text-midnight text-[10px] flex items-center justify-center font-bold">3</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                                <span class="lang-en">Upload Content</span><span class="lang-ar">رفع المحتوى</span>
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Type</label>
+                                {{ form.category }}
+                            </div>
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Preview
+                                    URL (Embed)</label>
+                                {{ form.preview_url }}
+                            </div>
+                            <div class="space-y-1 sm:col-span-2">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Download
+                                    URL</label>
+                                {{ form.download_url }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" name="upload_submit"
+                        class="mt-auto w-full py-4 bg-forest-green hover:bg-forest-hover dark:bg-emerald-green dark:hover:bg-emerald-hover text-white dark:text-midnight font-extrabold rounded-2xl shadow-lg shadow-forest-green/20 dark:shadow-emerald-green/10 transform active:scale-95 active:brightness-90 transition-all flex items-center justify-center space-x-2 group">
+                        <svg class="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <span><span class="lang-en">Submit Upload</span><span class="lang-ar">إرسال الملف</span></span>
+                    </button>
+                </form>
+
+                <!-- Drive Folder Import Form (Initially Hidden) -->
+                <form method="POST" id="driveForm" class="hidden flex-grow flex-col space-y-6">
+                    {% csrf_token %}
+                    <input type="hidden" name="drive_import" value="true">
+
+                    <div
+                        class="p-4 bg-blue-50/50 dark:bg-blue-900/10 rounded-3xl border border-blue-100 dark:border-blue-500/20">
+                        <div class="flex items-start space-x-3">
+                            <svg class="w-6 h-6 text-blue-500 shrink-0 mt-0.5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <p class="text-xs text-blue-600 dark:text-blue-300">
+                                <strong class="uppercase block text-[10px] tracking-widest mb-1">How it works</strong>
+                                Paste a Google Drive Folder link. We will import ALL files inside as separate resources
+                                for the selected Subject & Category.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Context -->
+                    <div
+                        class="space-y-4 p-4 bg-gray-50/50 dark:bg-white/5 rounded-3xl border border-gray-100 dark:border-white/5">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span
+                                class="w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-green text-white dark:text-midnight text-[10px] flex items-center justify-center font-bold">1</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                                <span class="lang-en">Select Category</span><span class="lang-ar">اختر الفئة</span>
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Level</label>
+                                <select name="level_id" id="drive_level" onchange="updateDriveSubjects()"
+                                    class="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-forest-green outline-none transition-all">
+                                    <option value="" selected>---------</option>
+                                    {% for level in levels %}
+                                    <option value="{{ level.id }}">{{ level.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Semester</label>
+                                <select name="semester" id="drive_semester" onchange="updateDriveSubjects()"
+                                    class="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-forest-green outline-none transition-all">
+                                    <option value="" selected>---------</option>
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Target -->
+                    <div
+                        class="space-y-4 p-4 bg-gray-50/50 dark:bg-white/5 rounded-3xl border border-gray-100 dark:border-white/5">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span
+                                class="w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-green text-white dark:text-midnight text-[10px] flex items-center justify-center font-bold">2</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                                <span class="lang-en">Identify Subject</span><span class="lang-ar">حدد المادة</span>
+                            </span>
+                        </div>
+                        <div class="space-y-1">
+                            <label
+                                class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Subject</label>
+                            <select name="subject_id" id="drive_subject" disabled
+                                class="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-forest-green outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                <option value="">---------</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Content -->
+                    <div
+                        class="space-y-4 p-4 bg-gray-50/50 dark:bg-white/5 rounded-3xl border border-gray-100 dark:border-white/5">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span
+                                class="w-6 h-6 rounded-full bg-forest-green dark:bg-emerald-green text-white dark:text-midnight text-[10px] flex items-center justify-center font-bold">3</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                                <span class="lang-en">Import Content</span><span class="lang-ar">استيراد المحتوى</span>
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Type</label>
+                                <select name="category"
+                                    class="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-forest-green outline-none transition-all">
+                                    <option value="Lectures">Lectures</option>
+                                    <option value="Sheets">Sheets</option>
+                                    <option value="Midterm">Midterm</option>
+                                    <option value="Final">Final</option>
+                                    <option value="Revision">Revision</option>
+                                    <option value="Explanation">Explanation</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label
+                                    class="block text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Google
+                                    Drive Folder URL</label>
+                                <input type="url" name="folder_url" required
+                                    placeholder="https://drive.google.com/drive/folders/..."
+                                    class="w-full bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-forest-green outline-none transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="mt-auto w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-2xl shadow-lg shadow-blue-600/20 transform active:scale-95 active:brightness-90 transition-all flex items-center justify-center space-x-2 group">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                            </path>
+                        </svg>
+                        <span>Import Folder</span>
+                    </button>
+                </form>
+
+                <script>
+                    function updateDriveSubjects() {
+                        const levelId = document.getElementById('drive_level').value;
+                        const semesterId = document.getElementById('drive_semester').value;
+                        const subjectSelect = document.getElementById('drive_subject');
+
+                        subjectSelect.innerHTML = '<option value="">---------</option>';
+                        subjectSelect.disabled = true;
+
+                        if (levelId && semesterId) {
+                            subjectSelect.innerHTML = '<option value="">Loading...</option>';
+                            subjectSelect.disabled = false;
+
+                            fetch(`/ajax/get-subjects/?level=${levelId}&semester=${semesterId}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    subjectSelect.innerHTML = '<option value="">---------</option>';
+                                    if (data.subjects.length > 0) {
+                                        data.subjects.forEach(subject => {
+                                            const option = document.createElement('option');
+                                            option.value = subject.id;
+                                            option.textContent = subject.name;
+                                            subjectSelect.appendChild(option);
+                                        });
+                                        subjectSelect.disabled = false;
+                                    } else {
+                                        subjectSelect.innerHTML = '<option value="">No subjects found</option>';
+                                        subjectSelect.disabled = true;
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching subjects:', error);
+                                    subjectSelect.innerHTML = '<option value="">Error</option>';
+                                });
+                        }
+                    }
+                </script>
+
+                <script>
+                    function switchTab(tab) {
+                        const manualForm = document.getElementById('uploadForm');
+                        const driveForm = document.getElementById('driveForm');
+                        const tabManual = document.getElementById('tab-manual');
+                        const tabDrive = document.getElementById('tab-drive');
+
+                        if (tab === 'manual') {
+                            manualForm.classList.remove('hidden');
+                            manualForm.classList.add('flex');
+                            driveForm.classList.add('hidden');
+                            driveForm.classList.remove('flex');
+
+                            tabManual.classList.add('border-b-2', 'border-forest-green', 'dark:border-emerald-green', 'text-forest-green', 'dark:text-emerald-green');
+                            tabManual.classList.remove('text-gray-500', 'hover:text-gray-800');
+
+                            tabDrive.classList.remove('border-b-2', 'border-forest-green', 'dark:border-emerald-green', 'text-forest-green', 'dark:text-emerald-green');
+                            tabDrive.classList.add('text-gray-500', 'hover:text-gray-800');
+                        } else {
+                            manualForm.classList.add('hidden');
+                            manualForm.classList.remove('flex');
+                            driveForm.classList.remove('hidden');
+                            driveForm.classList.add('flex');
+
+                            tabDrive.classList.add('border-b-2', 'border-forest-green', 'dark:border-emerald-green', 'text-forest-green', 'dark:text-emerald-green');
+                            tabDrive.classList.remove('text-gray-500', 'hover:text-gray-800');
+
+                            tabManual.classList.remove('border-b-2', 'border-forest-green', 'dark:border-emerald-green', 'text-forest-green', 'dark:text-emerald-green');
+                            tabManual.classList.add('text-gray-500', 'hover:text-gray-800');
+                        }
+                    }
+                </script>
+
+            </section>
+
+
+
+            <!-- User Management Section -->
+            <section
+                class="h-full flex flex-col bg-white dark:bg-charcoal p-6 sm:p-8 rounded-[32px] sm:rounded-[40px] shadow-sm border border-gray-100 dark:border-white/5">
+                <div class="flex items-center justify-between mb-8">
+                    <h3
+                        class="text-xl sm:text-2xl font-bold text-forest-green dark:text-emerald-green flex items-center">
+                        <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span class="lang-en">User Management</span><span class="lang-ar">إدارة المستخدمين</span>
+                    </h3>
+                </div>
+
+                <!-- Add New User Form -->
+                <div class="mb-12">
+                    <div class="flex items-center space-x-2 mb-6 text-forest-green dark:text-emerald-green">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                        </svg>
+                        <span class="text-sm font-black uppercase tracking-widest"><span class="lang-en">Add New
+                                User</span><span class="lang-ar">أضف مستخدم جديد</span></span>
+                    </div>
+
+                    <form method="POST" class="flex-grow flex flex-col space-y-6" autocomplete="off">
+                        {% csrf_token %}
+
+                        <div class="flex flex-col space-y-6">
+                            <!-- Username -->
+                            <div class="space-y-2">
+                                <label
+                                    class="block text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] pl-1">Username</label>
+                                {{ user_form.username }}
+                            </div>
+
+                            <!-- First Name -->
+                            <div class="space-y-2">
+                                <label
+                                    class="block text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] pl-1">First
+                                    Name</label>
+                                {{ user_form.first_name }}
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="space-y-2">
+                                <label
+                                    class="block text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] pl-1">Last
+                                    Name</label>
+                                {{ user_form.last_name }}
+                            </div>
+
+                            <!-- Password -->
+                            <div class="space-y-2">
+                                <label
+                                    class="block text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] pl-1">Password</label>
+                                {{ user_form.password }}
+                            </div>
+
+                            <!-- Level -->
+                            <div class="space-y-2">
+                                <label
+                                    class="block text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] pl-1">Level</label>
+                                {{ user_form.level }}
+                            </div>
+
+                            <!-- Account Type -->
+                            <div class="space-y-2">
+                                <label
+                                    class="block text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] pl-1">Account
+                                    Type</label>
+                                {{ user_form.account_type }}
+                            </div>
+                        </div>
+
+                        <div class="mt-auto pt-2">
+                            <button type="submit" name="user_submit"
+                                class="w-full py-4 bg-forest-green hover:bg-forest-hover dark:bg-emerald-green dark:hover:bg-emerald-hover text-white dark:text-midnight font-black rounded-2xl shadow-lg shadow-forest-green/10 dark:shadow-emerald-green/5 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] group">
+                                <span class="text-lg font-bold group-hover:rotate-90 transition-transform">+</span>
+                                <span class="text-xs font-black uppercase tracking-[0.2em]"><span class="lang-en">Add
+                                        User</span><span class="lang-ar">أضف مستخدم</span></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Recent Users Section (Full Width) -->
+        <section
+            class="bg-white dark:bg-charcoal p-6 sm:p-8 rounded-[32px] sm:rounded-[40px] shadow-sm border border-gray-100 dark:border-white/5 mt-8 overflow-hidden">
+
+            <style>
+                /* Scalloped Edge Effect */
+                .scalloped-container {
+                    position: relative;
+                    max-height: 480px;
+                    overflow-y: auto;
+                    scrollbar-width: thin;
+                    scrollbar-color: rgba(45, 90, 39, 0.2) transparent;
+                }
+
+                .scalloped-container::-webkit-scrollbar {
+                    width: 4px;
+                }
+
+                .scalloped-container::-webkit-scrollbar-thumb {
+                    background: rgba(45, 90, 39, 0.2);
+                    border-radius: 10px;
+                }
+
+                .user-row {
+                    position: relative;
+                    margin-bottom: 1px;
+                }
+
+                /* The Scalloped "Cutouts" */
+                .user-row::before,
+                .user-row::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    width: 12px;
+                    height: 12px;
+                    background: white;
+                    /* Matches page bg or parent section bg */
+                    border-radius: 50%;
+                    transform: translateY(-50%);
+                    z-index: 10;
+                }
+
+                .dark .user-row::before,
+                .dark .user-row::after {
+                    background: #111111;
+                    /* Matches dark charcoal bg */
+                }
+
+                .user-row::before {
+                    left: -6px;
+                }
+
+                .user-row::after {
+                    right: -6px;
+                }
+
+                /* Decorative Dashed Divider line for "ticket" feel */
+                .user-row-divider {
+                    position: absolute;
+                    left: 20px;
+                    right: 20px;
+                    bottom: 0;
+                    border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+                }
+
+                .dark .user-row-divider {
+                    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+                }
+            </style>
+
+            <!-- Search & Header -->
+            <div class="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex items-center space-x-2 text-forest-green dark:text-emerald-green">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                    </svg>
+                    <span
+                        class="text-xs sm:text-sm font-black uppercase tracking-widest text-[#2D5A27] dark:text-emerald-green">
+                        <span class="lang-en">Registered Accounts</span><span class="lang-ar">الحسابات المسجلة</span>
+                    </span>
+                    <span
+                        class="px-2 py-0.5 bg-gray-100 dark:bg-white/5 rounded-full text-[10px] font-bold text-gray-500">
+                        {{ recent_users.count }}
+                    </span>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <form method="GET" class="relative max-w-xs w-full">
+                        <input type="text" name="search" placeholder="Search..."
+                            value="{{ request.GET.search|default:'' }}"
+                            class="w-full pl-9 sm:pl-10 pr-4 py-2 bg-gray-50 dark:bg-midnight/40 border border-gray-100 dark:border-white/5 rounded-xl text-[10px] sm:text-xs font-bold text-charcoal dark:text-off-white focus:outline-none focus:border-forest-green dark:focus:border-emerald-green transition-all">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Table Header (Grid Managed) -->
+            <div class="grid grid-cols-[1.5fr_2fr_1fr_0.5fr] items-center px-10 mb-2">
+                <div class="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em]">
+                    <span class="lang-en">Username</span><span class="lang-ar">اسم المستخدم</span>
+                </div>
+                <div class="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em]">
+                    <span class="lang-en">Details</span><span class="lang-ar">التفاصيل</span>
+                </div>
+                <div
+                    class="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] text-center">
+                    <span class="lang-en">Security</span><span class="lang-ar">الأمان</span>
+                </div>
+                <div
+                    class="text-[9px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] text-right">
+                    <span class="lang-en">Action</span><span class="lang-ar">الإجراء</span>
+                </div>
+            </div>
+
+            <!-- Scrollable Scalloped List -->
+            <div class="scalloped-container pr-2">
+                <div class="flex flex-col gap-2 pb-6">
+                    {% for u in recent_users %}
+                    <div
+                        class="user-row bg-gray-50/50 dark:bg-midnight/20 hover:bg-white dark:hover:bg-white/5 transition-all group overflow-hidden rounded-2xl grid grid-cols-[1.5fr_2fr_1fr_0.5fr] items-center px-6 py-4">
+                        <!-- Username & ID -->
+                        <div class="flex flex-col min-w-0 pr-4">
+                            <span class="font-bold text-charcoal dark:text-white text-sm truncate pr-2">
+                                {{ u.username }}
+                            </span>
+                            <span class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">
+                                #{{ u.id }}
+                            </span>
+                        </div>
+
+                        <!-- Display Name & Metadata -->
+                        <div class="flex flex-col min-w-0">
+                            <span class="font-bold text-charcoal dark:text-white text-xs truncate">
+                                {% if u.first_name %}{{ u.first_name }} {{ u.last_name }}{% else %}-{% endif %}
+                            </span>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span
+                                    class="px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[8px] font-black rounded uppercase tracking-tighter">
+                                    {% if u.is_staff %}Admin{% else %}Student{% endif %}
+                                </span>
+                                {% if not u.is_staff and u.profile.level %}
+                                <span class="text-[9px] font-bold text-gray-400 uppercase">LVL {{
+                                    u.profile.level.level_id }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Password Toggle -->
+                        <div class="flex items-center justify-center space-x-2">
+                            {% if not u.is_staff %}
+                            <span id="pass-{{ u.id }}"
+                                class="font-mono text-[10px] text-forest-green dark:text-emerald-500 font-bold tracking-widest transition-all">••••••••</span>
+                            <button id="eye-btn-{{ u.id }}"
+                                onclick="togglePass({{ u.id }}, '{{ u.profile.plain_password|default:""|escapejs }}')"
+                                class="p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-colors text-gray-400 hover:text-forest-green">
+                                <i class="fa-solid fa-eye text-[10px]"></i>
+                            </button>
+                            {% else %}
+                            <span
+                                class="font-mono text-[10px] text-gray-300 dark:text-gray-700 font-bold tracking-widest">••••••••</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Delete -->
+                        <div class="flex justify-end">
+                            <form method="POST" action="{% url 'hub:delete_user' u.pk %}"
+                                onsubmit="return confirm('Delete user {{ u.username }}?');">
+                                {% csrf_token %}
+                                <button type="submit"
+                                    class="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl transition-all">
+                                    <i class="fa-solid fa-trash-can text-sm"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="py-12 text-center text-gray-400 font-medium italic">
+                        No users registered yet.
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    // AJAX Dynamic Dropdown for Subjects
+    const levelSelect = document.getElementById('id_level');
+    const semesterSelect = document.getElementById('id_semester');
+    const subjectSelect = document.getElementById('id_subject');
+
+    // Initially disable subject select if empty or placeholder
+    if (!subjectSelect.value) {
+        subjectSelect.disabled = true;
+    }
+
+    function updateSubjects() {
+        const levelId = levelSelect.value;
+        const semesterId = semesterSelect.value;
+
+        // Reset subject select
+        subjectSelect.innerHTML = '<option value="">---------</option>';
+        subjectSelect.disabled = true;
+
+        if (levelId && semesterId) {
+            // Show loading state
+            subjectSelect.innerHTML = '<option value="">Loading subjects...</option>';
+            subjectSelect.disabled = false; // Enable to show loading text
+
+            fetch(`/ajax/get-subjects/?level=${levelId}&semester=${semesterId}`)
+                .then(response => response.json())
+                .then(data => {
+                    subjectSelect.innerHTML = '<option value="">---------</option>';
+                    if (data.subjects.length > 0) {
+                        data.subjects.forEach(subject => {
+                            const option = document.createElement('option');
+                            option.value = subject.id;
+                            option.textContent = subject.name;
+                            option.style.color = '#1F2937'; // Ensure visibility
+                            subjectSelect.appendChild(option);
+                        });
+                        subjectSelect.disabled = false;
+                    } else {
+                        subjectSelect.innerHTML = '<option value="">No subjects found</option>';
+                        subjectSelect.disabled = true;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching subjects:', error);
+                    subjectSelect.innerHTML = '<option value="">Error loading subjects</option>';
+                });
+        }
+    }
+
+    levelSelect.addEventListener('change', updateSubjects);
+    semesterSelect.addEventListener('change', updateSubjects);
+
+    function togglePass(id, pass) {
+        const span = document.getElementById('pass-' + id);
+        const btn = document.getElementById('eye-btn-' + id);
+        const icon = btn.querySelector('i');
+
+        if (span.innerText === '••••••••') {
+            span.innerText = pass || '-';
+            span.classList.remove('tracking-widest');
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            span.innerText = '••••••••';
+            span.classList.add('tracking-widest');
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+</script>
+{% endblock %}

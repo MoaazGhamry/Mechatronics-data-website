@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Basic Software - Mechatronics Data Hub{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50/50 dark:bg-charcoal/20 py-12 px-4 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-black text-charcoal dark:text-white font-['Playfair_Display'] mb-4 tracking-tight">
+                <span class="lang-en">Basic Software</span><span class="lang-ar">برامج أساسية</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-forest-green dark:bg-emerald-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                <span class="lang-en">Essential engineering software and applications you'll need throughout your
+                    studies.</span>
+                <span class="lang-ar">قائمة بالبرامج والتطبيقات الهندسية التي ستحتاجها خلال دراستك.</span>
+            </p>
+        </div>
+
+        <!-- Section 1: Design & Simulation -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    class="flex items-center justify-center w-12 h-12 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-2xl">🛠️</span>
+                <h2 class="text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                    <span class="lang-en">Design & Simulation</span><span class="lang-ar">برامج التصميم والمحاكاة</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- SolidWorks / AutoCAD -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">SolidWorks / AutoCAD</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed min-h-[48px]">
+                        <span class="lang-en">Leading software for mechanical design, assemblies, and engineering
+                            drawings.</span>
+                        <span class="lang-ar">برامج رائدة لتصميم الأجزاء الميكانيكية، التجميعات، والرسومات
+                            الهندسية.</span>
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.solidworks.com/" target="_blank"
+                            class="px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                            SolidWorks
+                        </a>
+                        <a href="https://www.autodesk.com/autocad" target="_blank"
+                            class="px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                            AutoCAD
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Proteus / Multisim -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Proteus / Multisim</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed min-h-[48px]">
+                        <span class="lang-en">Create and simulate electronic circuits and test their performance.</span>
+                        <span class="lang-ar">لإنشاء ومحاكاة الدوائر الإلكترونية واختبار أدائها.</span>
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.labcenter.com/" target="_blank"
+                            class="px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                            Proteus
+                        </a>
+                        <a href="https://www.ni.com/en-eg/shop/electronic-test-instrumentation/application-software/what-is-multisim.html"
+                            target="_blank"
+                            class="px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                            Multisim
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MATLAB -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">MATLAB / Simulink</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed min-h-[48px]">
+                        <span class="lang-en">Powerful environment for numerical computation, analysis, and control
+                            systems simulation.</span>
+                        <span class="lang-ar">بيئة قوية للحسابات العددية، التحليل، والمحاكاة لأنظمة التحكم
+                            والإشارات.</span>
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://www.mathworks.com/products/matlab.html" target="_blank"
+                            class="px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                            MATLAB Site
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: IDEs -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    class="flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/30 text-2xl">💻</span>
+                <h2 class="text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                    <span class="lang-en">Development Environments (IDEs)</span><span class="lang-ar">بيئات التطوير
+                        والبرمجة</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Arduino IDE -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Arduino IDE</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Official environment for coding and programming Arduino boards.</span>
+                        <span class="lang-ar">البيئة الرسمية لكتابة وبرمجة لوحات الأردوينو.</span>
+                    </p>
+                    <a href="https://www.arduino.cc/en/software" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                        Download
+                    </a>
+                </div>
+
+                <!-- VS Code -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Visual Studio Code</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Versatile code editor supporting many languages and extensions.</span>
+                        <span class="lang-ar">محرر أكواد متعدد الاستخدامات يدعم العديد من لغات البرمجة والإضافات.</span>
+                    </p>
+                    <a href="https://code.visualstudio.com/" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                        Download
+                    </a>
+                </div>
+
+                <!-- MPLAB X -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">MPLAB X IDE</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Development environment for programming PIC microcontrollers.</span>
+                        <span class="lang-ar">بيئة تطوير لبرمجة متحكمات PIC.</span>
+                    </p>
+                    <a href="https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: General Tools -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <span
+                    class="flex items-center justify-center w-12 h-12 rounded-2xl bg-teal-100 dark:bg-teal-900/30 text-2xl">📂</span>
+                <h2 class="text-2xl font-bold text-charcoal dark:text-white font-['Playfair_Display']">
+                    <span class="lang-en">General & Office Tools</span><span class="lang-ar">برامج عامة ومكتبية</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Office -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Microsoft Office 365</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Word, Excel, PowerPoint for reports, data analysis, and
+                            presentations.</span>
+                        <span class="lang-ar">لإعداد التقارير، تحليل البيانات، وإنشاء العروض التقديمية.</span>
+                    </p>
+                    <a href="https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products"
+                        target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Adobe Reader -->
+                <div
+                    class="bg-white dark:bg-white/5 rounded-[2rem] p-8 border border-gray-100 dark:border-white/5 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Adobe Acrobat Reader</h3>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+                        <span class="lang-en">Standard software for viewing and interacting with PDF documents.</span>
+                        <span class="lang-ar">البرنامج القياسي لقراءة وتصفح ملفات الـ PDF.</span>
+                    </p>
+                    <a href="https://get.adobe.com/reader/" target="_blank"
+                        class="inline-flex px-4 py-2 bg-gray-50 dark:bg-white/10 text-gray-600 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-colors">
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-16">
+            <a href="{% url 'hub:home' %}"
+                class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-full text-gray-600 dark:text-gray-300 font-bold hover:bg-forest-green hover:text-white dark:hover:bg-emerald-600 transition-all shadow-sm hover:shadow-lg">
+                <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span class="lang-en">Back to Home</span><span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

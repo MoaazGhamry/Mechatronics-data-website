@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}<span class="lang-en"></span>Contact Us - Mechatronics Hub</span><span class="lang-ar">اتصل بنا - بوابة
+    الميكاترونكس</span>{% endblock %}
+
+{% block content %}
+<main
+    class="min-h-screen relative bg-gray-50 dark:bg-midnight transition-colors pt-24 pb-safe flex flex-col items-center justify-center p-4">
+
+    <!-- Full Page Chat Container -->
+    <div id="chat-container"
+        class="w-full max-w-5xl h-[80vh] bg-white dark:bg-charcoal rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10 flex overflow-hidden relative">
+
+        <!-- Sidebar / Header / Info (Optional left panel or top bar for desktop could go here, but keeping it simple as requested) -->
+        <!-- We'll keep the single column layout but make it responsive and full height -->
+
+        <div class="flex-1 flex flex-col h-full relative">
+
+            <!-- Header -->
+            <div class="bg-forest-green dark:bg-emerald-700 p-4 sm:p-6 flex items-center justify-between shrink-0">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-headset text-xl"></i>
+                        </div>
+                        <span
+                            class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-400 border-2 border-forest-green rounded-full"></span>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold text-lg sm:text-xl">
+                            <span class="lang-en">Student Support</span><span class="lang-ar">دعم الطالب</span>
+                        </h1>
+                        <p class="text-white/70 text-xs uppercase tracking-wider">
+                            <span class="lang-en">Reference ID</span><span class="lang-ar">رقم مرجعي</span>: #<span
+                                id="reference-id">{{ user.id|default:'GUEST' }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Body (Messages) -->
+            <div id="chat-messages" class="flex-1 p-6 overflow-y-auto bg-gray-50 dark:bg-midnight/50 space-y-6">
+                <!-- Welcome Message -->
+                <div class="flex flex-col space-y-1 items-start">
+                    <div
+                        class="bg-white dark:bg-white/10 text-gray-800 dark:text-gray-200 px-6 py-4 rounded-3xl rounded-tl-none shadow-sm max-w-[85%] sm:max-w-[70%] text-base">
+                        <span class="lang-en">Hello! 👋 How can we help you today?</span>
+                        <span class="lang-ar">أهلاً! 👋 كيف يمكننا مساعدتك اليوم؟</span>
+                    </div>
+                    <span class="text-xs text-gray-400 pl-2">
+                        <span class="lang-en">System</span><span class="lang-ar">النظام</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Guest Form (Overlay) - Hidden by default for frictionless experience -->
+            <div id="guest-form"
+                class="absolute inset-0 bg-white/95 dark:bg-charcoal/95 z-20 flex flex-col items-center justify-center p-8 text-center hidden">
+                <div
+                    class="w-20 h-20 bg-forest-green/10 rounded-full flex items-center justify-center text-forest-green mb-6">
+                    <i class="fa-solid fa-user text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                    <span class="lang-en">Welcome to Support</span><span class="lang-ar">مرحباً بك في الدعم</span>
+                </h3>
+                <p class="text-gray-500 mb-8 max-w-md">
+                    <span class="lang-en">Please enter your name and email to start a secure chat session with our
+                        administration team.</span>
+                    <span class="lang-ar">يرجى إدخال اسمك وبريدك الإلكتروني لبدء محادثة آمنة مع فريق الإدارة.</span>
+                </p>
+
+                <div class="w-full max-w-md space-y-4">
+                    <input type="text" id="guest-name" placeholder="Your Name"
+                        class="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-base focus:outline-none focus:border-forest-green focus:ring-1 focus:ring-forest-green">
+                    <input type="email" id="guest-email" placeholder="Email Address (Optional)"
+                        class="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-base focus:outline-none focus:border-forest-green focus:ring-1 focus:ring-forest-green">
+
+                    <button onclick="startGuestChat()"
+                        class="w-full py-4 bg-forest-green hover:bg-[#23471e] text-white font-bold rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all uppercase tracking-wide">
+                        <span class="lang-en">Start Chat</span><span class="lang-ar">بدء المحادثة</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 sm:p-6 bg-white dark:bg-white/5 border-t border-gray-100 dark:border-white/10 shrink-0">
+                <form onsubmit="sendMessage(event)" class="relative flex items-center max-w-4xl mx-auto w-full gap-2">
+                    <input type="file" id="file-input" class="hidden" onchange="handleFileSelect(this)">
+                    <button type="button" onclick="document.getElementById('file-input').click()"
+                        class="p-3 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
+                        <i class="fa-solid fa-paperclip text-xl"></i>
+                    </button>
+                    <!-- Preview Area -->
+                    <div id="file-preview"
+                        class="hidden absolute left-14 bottom-16 bg-white dark:bg-charcoal border border-gray-200 dark:border-white/10 p-2 rounded-lg shadow-lg flex items-center gap-2 max-w-xs">
+                        <i class="fa-solid fa-file text-gray-500"></i>
+                        <span id="preview-name"
+                            class="text-xs truncate max-w-[150px] dark:text-white">filename.png</span>
+                        <button type="button" onclick="clearFile()" class="text-red-500 hover:text-red-700 ml-2">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                    </div>
+
+                    <input type="text" id="message-input" placeholder="Type your message here..."
+                        class="w-full pl-6 pr-16 py-4 bg-gray-100 dark:bg-white/5 rounded-full text-base focus:outline-none focus:ring-2 focus:ring-forest-green/50 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 shadow-inner">
+                    <button type="submit"
+                        class="absolute right-2 p-3 bg-forest-green text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-emerald-600 transition-colors shadow-md">
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let sessionToken = "{{ active_session_token|default:'' }}";
+    let lastMessageId = 0;
+    let pollInterval = null;
+    const isUser = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+
+    if (!sessionToken && !isUser) {
+        sessionToken = localStorage.getItem('chat_session_token') || "";
+    }
+
+    if (sessionToken || isUser) {
+        if (sessionToken) startPolling();
+    }
+
+    // Start Guest Chat
+    function startGuestChat() {
+        const name = document.getElementById('guest-name').value;
+        const email = document.getElementById('guest-email').value;
+
+        if (!name) return alert('Name is required');
+
+        fetch("{% url 'hub:chat_start' %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ name, email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    sessionId = data.session_id;
+                    localStorage.setItem('chat_session_id', sessionId);
+                    document.getElementById('guest-form').classList.add('hidden');
+                    startPolling();
+                }
+            });
+    }
+
+    // Handle File Selection
+    function handleFileSelect(input) {
+        if (input.files && input.files[0]) {
+            document.getElementById('file-preview').classList.remove('hidden');
+            document.getElementById('preview-name').textContent = input.files[0].name;
+        }
+    }
+
+    function clearFile() {
+        document.getElementById('file-input').value = '';
+        document.getElementById('file-preview').classList.add('hidden');
+    }
+
+    // Send Message
+    async function sendMessage(e) {
+        e.preventDefault();
+        const input = document.getElementById('message-input');
+        const fileInput = document.getElementById('file-input');
+        const text = input.value.trim();
+        const file = fileInput.files[0];
+
+        if (!text && !file) return;
+
+        // Auto-create session if missing (now for BOTH users and guests)
+        if (!sessionToken) {
+            try {
+                const res = await fetch("{% url 'hub:chat_start' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({}) // Empty body triggers auto-guest or auth session
+                });
+                const data = await res.json();
+                if (data.success) {
+                    sessionToken = data.session_token;
+                    if (!isUser) localStorage.setItem('chat_session_token', sessionToken);
+                    document.getElementById('reference-id').textContent = sessionToken.split('-')[0].toUpperCase();
+                    startPolling();
+                } else {
+                    console.error("Failed to start session");
+                    return;
+                }
+            } catch (err) {
+                console.error("Error starting chat:", err);
+                return;
+            }
+        }
+
+        if (!sessionToken) return;
+
+        // Prepare FormData
+        const formData = new FormData();
+        formData.append('session_id', sessionToken);
+        formData.append('sender', 'student');
+        if (text) formData.append('message', text);
+        if (file) formData.append('file', file);
+
+        // Clear inputs immediately
+        input.value = '';
+        clearFile();
+
+        fetch("{% url 'hub:chat_send' %}", {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+                // No Content-Type header for FormData!
+            },
+            body: formData
+        }).then(() => {
+            fetchMessages(); // Fetch immediately to show the sent message
+        });
+    }
+
+    // Append Message to UI
+    function appendMessage(msg) {
+        const container = document.getElementById('chat-messages');
+        const isStudent = msg.sender === 'student';
+
+        const div = document.createElement('div');
+        div.className = `flex flex-col space-y-1 ${isStudent ? 'items-end' : 'items-start'}`;
+
+        let contentHtml = '';
+
+        // Check for file
+        if (msg.has_file) {
+            const isImage = msg.file_name.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+            if (isImage) {
+                contentHtml += `<div class="mb-2"><img src="${msg.file_url}" alt="Attachment" class="max-w-full rounded-lg shadow-sm max-h-48 object-cover cursor-pointer" onclick="window.open('${msg.file_url}', '_blank')"></div>`;
+            } else {
+                contentHtml += `
+                    <div class="mb-2 flex items-center p-3 bg-gray-100 dark:bg-white/10 rounded-lg group hover:bg-gray-200 dark:hover:bg-white/20 transition-colors cursor-pointer" onclick="window.open('${msg.file_url}', '_blank')">
+                        <div class="mr-3 w-8 h-8 flex items-center justify-center bg-gray-200 dark:bg-white/10 rounded-full text-gray-500 dark:text-gray-300">
+                             <i class="fa-solid fa-file-arrow-down"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                             <p class="text-xs font-bold truncate ${isStudent ? 'text-white' : 'text-gray-800 dark:text-gray-200'}">${msg.file_name}</p>
+                             <p class="text-[10px] opacity-70">Click to download</p>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        if (msg.message) {
+            contentHtml += `<span>${msg.message}</span>`;
+        }
+
+        div.innerHTML = `
+            <div class="${isStudent ? 'bg-forest-green text-white rounded-tr-none' : 'bg-white dark:bg-white/10 text-gray-800 dark:text-gray-200 rounded-tl-none'} px-6 py-3 rounded-3xl shadow-sm max-w-[85%] text-sm sm:text-base break-words">
+                ${contentHtml}
+            </div>
+            <span class="text-xs text-gray-400 ${isStudent ? 'pr-2' : 'pl-2'}">${msg.created_at}</span>
+        `;
+
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    // Poll for new messages
+    function startPolling() {
+        if (pollInterval) return;
+        fetchMessages(); // First fetch immediately
+        pollInterval = setInterval(fetchMessages, 3000);
+
+        // Hide guest form if it might still be there (re-check)
+        document.getElementById('guest-form').classList.add('hidden');
+    }
+
+    function stopPolling() {
+        if (pollInterval) {
+            clearInterval(pollInterval);
+            pollInterval = null;
+        }
+    }
+
+    function fetchMessages() {
+        if (!sessionToken) return;
+
+        fetch(`{% url 'hub:chat_get' %}?session_id=${sessionToken}&last_id=${lastMessageId}`)
+            .then(res => {
+                if (res.status === 404 || res.status === 403) {
+                    // Session invalid or expired
+                    stopPolling();
+                    sessionToken = "";
+                    localStorage.removeItem('chat_session_token');
+                    return null;
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (data && data.success && data.messages.length > 0) {
+                    data.messages.forEach(msg => {
+                        if (msg.sender !== 'student' || msg.id > lastMessageId) {
+                            appendMessage(msg);
+                        }
+                        lastMessageId = Math.max(lastMessageId, msg.id);
+                    });
+                }
+            });
+    }
+
+    // Initial check for guest form visibility
+    if (sessionId || isUser) {
+        // Should we hide guest form? 
+        // If user is logged in, yes.
+        // If active session ID is passed from context, yes.
+        if (isUser || sessionId) {
+            document.getElementById('guest-form').classList.add('hidden');
+        }
+    }
+</script>
+{% endblock %}

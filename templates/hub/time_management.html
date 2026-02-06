@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<span class="lang-en">Time Management - Mechatronics Data Hub</span>
+<span class="lang-ar">إدارة الوقت - منصة بيانات الميكاترونكس</span>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-off-white dark:bg-midnight py-12 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+
+        <!-- Header -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1
+                class="text-3xl md:text-5xl font-bold text-forest-green dark:text-emerald-400 mb-4 font-['Playfair_Display']">
+                <span class="lang-en">Time Management & Life Balance</span>
+                <span class="lang-ar">إدارة الوقت والتوازن</span>
+            </h1>
+            <div class="h-1.5 w-24 bg-gradient-to-r from-forest-green to-emerald-400 mx-auto rounded-full"></div>
+            <p class="mt-6 text-lg text-charcoal-light dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                <span class="lang-en">Learn practical strategies to organize your academic and personal day, avoid
+                    burnout, and enjoy a balanced university experience.</span>
+                <span class="lang-ar">تعلم استراتيجيات عملية لتنظيم يومك الدراسي والشخصي، وتجنب الإرهاق الأكاديمي،
+                    واستمتع بتجربة جامعية متوازنة ومثمرة.</span>
+            </p>
+        </div>
+
+        <!-- Section 1: Importance -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">💡</span>
+                <span class="lang-en">1. Why is Time Management Important?</span>
+                <span class="lang-ar">١. لماذا إدارة الوقت مهمة؟</span>
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                <span class="lang-en">University life requires significant effort and multi-tasking. Organizing your
+                    time helps you increase productivity, reduce stress, and significantly improve your academic
+                    performance while leaving room for personal growth.</span>
+                <span class="lang-ar">الحياة الجامعية تتطلب جهدًا كبيرًا ومهارات تعدد مهام. تنظيم وقتك يساعدك على زيادة
+                    الإنتاجية، تقليل التوتر، وتحسين الأداء الأكاديمي بشكل ملحوظ مع ترك مساحة للنمو الشخصي.</span>
+            </p>
+        </div>
+
+        <!-- Section 2: Strategies -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">🚀</span>
+                <span class="lang-en">2. Practical Strategies</span>
+                <span class="lang-ar">٢. استراتيجيات عملية</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Eisenhower -->
+                <div
+                    class="p-6 bg-forest-green/5 dark:bg-emerald-400/5 border border-forest-green/10 dark:border-emerald-400/10 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="text-forest-green dark:text-emerald-400 text-2xl mb-4 font-bold">A / أ</div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">
+                        <span class="lang-en">Eisenhower Matrix</span>
+                        <span class="lang-ar">مصفوفة آيزنهاور</span>
+                    </h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">Organize your tasks based on their importance and urgency to prioritize
+                            what truly matters.</span>
+                        <span class="lang-ar">رتب مهامك حسب الأهمية والعجلة لتعرف ما يجب إنجازه أولاً وما يمكن
+                            تأجيله.</span>
+                    </p>
+                </div>
+
+                <!-- Pomodoro -->
+                <div
+                    class="p-6 bg-forest-green/5 dark:bg-emerald-400/5 border border-forest-green/10 dark:border-emerald-400/10 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="text-forest-green dark:text-emerald-400 text-2xl mb-4 font-bold">B / ب</div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">
+                        <span class="lang-en">Pomodoro Technique</span>
+                        <span class="lang-ar">تقنية بومودورو</span>
+                    </h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">Work for 25 minutes with full focus, followed by a 5-minute break to
+                            maintain energy.</span>
+                        <span class="lang-ar">اعمل لمدة ٢٥ دقيقة بتركيز كامل، تليها استراحة لمدة ٥ دقائق للحفاظ على
+                            نشاطك.</span>
+                    </p>
+                </div>
+
+                <!-- Digital Tools -->
+                <div
+                    class="p-6 bg-forest-green/5 dark:bg-emerald-400/5 border border-forest-green/10 dark:border-emerald-400/10 rounded-xl hover:shadow-md transition-shadow">
+                    <div class="text-forest-green dark:text-emerald-400 text-2xl mb-4 font-bold">C / ج</div>
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">
+                        <span class="lang-en">Digital Tools</span>
+                        <span class="lang-ar">أدوات رقمية</span>
+                    </h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">Leverage apps like Google Calendar, Notion, or Trello to track assignments
+                            and schedules.</span>
+                        <span class="lang-ar">استخدم تطبيقات مثل Google Calendar أو Notion لجدولة مهامك ومتابعة
+                            مواعيدك.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Balance -->
+        <div
+            class="bg-white dark:bg-charcoal rounded-2xl shadow-lg p-6 md:p-8 mb-8 border border-gray-100 dark:border-white/10">
+            <h2
+                class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center border-b pb-4 dark:border-gray-700">
+                <span class="text-3xl mr-3 rtl:ml-3">⚖️</span>
+                <span class="lang-en">3. Achieving Life Balance</span>
+                <span class="lang-ar">٣. التوازن في الحياة</span>
+            </h2>
+            <ul class="space-y-4">
+                <li class="flex items-start">
+                    <div
+                        class="h-6 w-6 mt-1 rounded-full bg-forest-green dark:bg-emerald-400 flex items-center justify-center text-white text-[10px] shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 rtl:mr-4">
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold">
+                            <span class="lang-en">Sufficient Sleep:</span>
+                            <span class="lang-ar">النوم الكافي:</span>
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            <span class="lang-en">Getting 7-8 hours of quality sleep daily is essential for cognitive
+                                function and focus.</span>
+                            <span class="lang-ar">الحصول على ٧-٨ ساعات من النوم يومياً ضروري جداً للتركيز والوظائف
+                                العقلية.</span>
+                        </p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div
+                        class="h-6 w-6 mt-1 rounded-full bg-forest-green dark:bg-emerald-400 flex items-center justify-center text-white text-[10px] shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 rtl:mr-4">
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold">
+                            <span class="lang-en">Healthy Nutrition:</span>
+                            <span class="lang-ar">التغذية السليمة:</span>
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            <span class="lang-en">Balanced meals fuel your brain. Remember: "A sound mind in a sound
+                                body."</span>
+                            <span class="lang-ar">الوجبات المتوازنة هي وقود عقلك. تذكر دائماً: "العقل السليم في الجسم
+                                السليم".</span>
+                        </p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <div
+                        class="h-6 w-6 mt-1 rounded-full bg-forest-green dark:bg-emerald-400 flex items-center justify-center text-white text-[10px] shrink-0">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ml-4 rtl:mr-4">
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold">
+                            <span class="lang-en">Regular Exercise:</span>
+                            <span class="lang-ar">الرياضة المنتظمة:</span>
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            <span class="lang-en">Physical activity effectively reduces stress levels and renews your
+                                mental energy.</span>
+                            <span class="lang-ar">النشاط البدني يقلل من مستويات التوتر ويجدد طاقتك الذهنية
+                                باستمرار.</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+            <!-- Print Button -->
+            <button onclick="window.print()"
+                class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-forest-green dark:bg-emerald-500/20 dark:border-emerald-500/50 dark:hover:bg-emerald-500/30 text-white dark:text-emerald-400 border border-transparent rounded-full font-bold shadow-md hover:shadow-lg hover:bg-forest-green-dark transition-all duration-300">
+                <i class="fas fa-print mr-2 rtl:ml-2"></i>
+                <span class="lang-en">Print / Save PDF</span>
+                <span class="lang-ar">طباعة / تحميل PDF</span>
+            </button>
+
+            <!-- Back Button -->
+            <a href="{% url 'hub:home' %}"
+                class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-white dark:bg-charcoal text-forest-green dark:text-emerald-400 font-bold rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <i class="fas fa-arrow-left mr-2 rtl:hidden"></i>
+                <i class="fas fa-arrow-right ml-2 ltr:hidden"></i>
+                <span class="lang-en">Back to Home</span>
+                <span class="lang-ar">العودة للرئيسية</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
