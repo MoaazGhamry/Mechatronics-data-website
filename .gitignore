@@ -18,9 +18,13 @@ staticfiles/
 *.log
 
 # Data files
-*.txt
 *.jsonl
 *.xlsx
+
+# Documentation/Configs (but keep requirements.txt)
+!requirements.txt
+!runtime.txt
+
 
 # OS
 .DS_Store
